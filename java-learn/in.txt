@@ -1,0 +1,10 @@
+The test data
+Overview
+In this section, we'll look at two important components of buffers in NIO: state variables and accessor methods.
+State variables are key to the "internal accounting system" mentioned in the previous section. With each read/write operation, the buffer's state changes. By recording and tracking those changes, a buffer is able to internally manage its own resources.
+When you read data from a channel, the data is placed in a buffer. In some cases, you can write this buffer directly to another channel, but often, you'll want to look at the data itself. This is accomplished using the accessor method get(). Likewise, when you want to put raw data in a buffer, you use the accessor method put().
+In this section, you'll learn about state variables and accessor methods in NIO. Each component will be described, and then you'll have the opportunity to see it in action. While NIO's internal accounting system might seem complicated at first, you'll quickly see that most of the real work is done for you. The bookkeeping you're probably accustomed to coding by hand -- using byte arrays and index variables -- is handled internally in NIO.
+You will recall that a buffer is really just a glorified array. When you read from a channel, you put the data that you read into an underlying array. The position variable keeps track of how much data you have written. More precisely, it specifies into which array element the next byte will go. Thus, if you've read three bytes from a channel into a buffer, that buffer's position will be set to 3, referring to the fourth element of the array.
+Likewise, when you are writing to a channel, you get the data from a buffer. The position value keeps track of how much you have gotten from the buffer. More precisely, it specifies from which array element the next byte will come. Thus, if you've written 5 bytes to a channel from a buffer, that buffer's position will be set to 5, referring to the sixth element of the array.
+В лесу родилась елочка
+В лесу она росла
