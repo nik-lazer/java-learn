@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd"
+       default-lazy-init="false">
+
+	<jdbc:embedded-database id="backOfficeDataSource" type="H2"/>
+
+	<bean id="props" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<!--note -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="jdbc.use_streams_for_binary">true</prop>
+				<!--suppress SpringPlaceholdersInspection -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!--suppress SpringPlaceholdersInspection -->
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<jdbc:embedded-database id="ds" type="H2"/>
+
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="hibernateProperties" ref="props"/>
+		<property name="mappingResources">
+			<list>
+				<value>/package.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tm" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="transactionSynchronizationName" value="SYNCHRONIZATION_ON_ACTUAL_TRANSACTION"/>
+		<property name="nestedTransactionAllowed" value="true"/>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="txTest" class="TxTest">
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean>
+</beans>
+

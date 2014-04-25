@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field" default-cascade="save-update"
+                   default-lazy="true">
+
+	<class name="Org" table="Org">
+		<cache usage="nonstrict-read-write"/>
+
+		<id name="id" column="OrgID" type="long">
+			<generator class="native"/>
+		</id>
+		<version name="version" column="Version"/>
+
+		<property name="systemName" column="SystemName" not-null="true" unique="true"/>
+		<property name="name" column="Name" not-null="true"/>
+		<property name="externalSystemID" column="ExternalSystemID"/>
+
+		<many-to-one name="complex" column="REMOTECOMPLEXID"/>
+	</class>
+
+	<class name="Complex" table="Complex" lazy="false">
+		<id name="id" column="OrgID" type="long">
+			<generator class="native"/>
+		</id>
+		<version name="version" column="Version"/>
+
+		<property name="systemName" column="SystemName" not-null="true" unique="true"/>
+		<property name="name" column="Name" not-null="true"/>
+		<set name="orgs" lazy="false">
+			<key column="REMOTECOMPLEXID"/>
+			<one-to-many class="Org"/>
+		</set>
+	</class>
+</hibernate-mapping>
