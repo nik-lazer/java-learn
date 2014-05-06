@@ -1,5 +1,7 @@
-package model;
+package tree;
 
+import model.Group;
+import model.Student;
 import org.zkoss.zul.DefaultTreeModel;
 import org.zkoss.zul.DefaultTreeNode;
 import org.zkoss.zul.TreeNode;

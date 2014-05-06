@@ -1,6 +1,7 @@
 import model.Group;
 import model.ModelHelper;
-import model.RootTreeNode;
+import tree.MainTreeNode;
+import tree.RootTreeNode;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -30,7 +31,11 @@ public class WindowComposer extends GenericForwardComposer {
 
 		final Tree tree = new Tree();
 		final List<Group> pojoModel = ModelHelper.createModel();
-		tree.setModel(new DefaultTreeModel(new RootTreeNode(pojoModel)));
+		MainTreeNode mainTreeNode = new MainTreeNode(pojoModel);
+		DefaultTreeModel treeModel = new DefaultTreeModel(mainTreeNode);
+		mainTreeNode.setModel(treeModel);
+		tree.setModel(treeModel);
+		//tree.setModel(new DefaultTreeModel(new RootTreeNode(pojoModel)));
 //		tree.setItemRenderer(new TreeitemRenderer<Object>() {
 //			public void render(Treeitem item, Object data, int index) throws Exception {
 //				Treerow row = new Treerow();
@@ -59,10 +64,10 @@ public class WindowComposer extends GenericForwardComposer {
 		comp.appendChild(button);
 		button.addEventListener(Events.ON_CLICK, new SerializableEventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
-				final Group newGroup = new Group("Математика", list("Иванов", "Петров"), String.format("Предмет %d", ++grpCounter), new String("Студент " + ++studentCounter));
-				RootTreeNode root = (RootTreeNode) tree.getModel().getRoot();
+				//final Group newGroup = new Group("Математика", list("Иванов", "Петров"), String.format("Предмет %d", ++grpCounter), new String("Студент " + ++studentCounter));
+				//RootTreeNode root = (RootTreeNode) tree.getModel().getRoot();
 
-				root.add(new DefaultTreeNode(newGroup));
+				//root.add(new DefaultTreeNode(newGroup));
 			}
 		});
 		comp.addForward(Events.ON_OK, button, Events.ON_CLICK);
