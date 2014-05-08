@@ -12,12 +12,17 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * TODO: comment
+ * Tree node for group
  * @author lazarev_nv 06.05.2014   17:21
  */
 public class GroupTreeNode implements TreeNode {
 	private MainTreeNode rootTreeNode;
 	private List<TreeNode> studentTreeNodes = new ArrayList<TreeNode>();
+
+	public Group getGroup() {
+		return group;
+	}
+
 	private Group group;
 
 	public GroupTreeNode(MainTreeNode rootNode,Group group) {
@@ -68,6 +73,16 @@ public class GroupTreeNode implements TreeNode {
 
 	@Override
 	public int getIndex(TreeNode node) {
+		if (node instanceof StudentTreeNode) {
+			StudentTreeNode studentTreeNode = (StudentTreeNode) node;
+			Student student = studentTreeNode.getData();
+			for (int i=0; i<studentTreeNodes.size(); i++) {
+				StudentTreeNode treeNode = (StudentTreeNode) studentTreeNodes.get(i);
+				if (student.equals(treeNode.getData())) {
+					return i;
+				}
+			}
+		}
 		return 0;
 	}
 
@@ -111,7 +126,9 @@ public class GroupTreeNode implements TreeNode {
 
 	private void createChilds() {
 		for (Student student: group.getStudents()) {
-			TreeNode node = new StudentTreeNode(student);
+			StudentTreeNode node = new StudentTreeNode(this, student);
+			node.setInCouncil((group.getCouncil().isInCouncil(student)));
+			node.setGroupTreeNode(this);
 			add(node);
 		}
 	}
