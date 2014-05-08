@@ -31,4 +31,13 @@ public class Student {
 	public String toString() {
 		return name;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (!(obj instanceof Student)) return false;
+		Student otherStudent = (Student) obj;
+		if ((getName()==null) || otherStudent.getName() == null) return false;
+		return getName().equals(otherStudent.getName());
+	}
 }
