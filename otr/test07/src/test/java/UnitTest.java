@@ -1,8 +1,11 @@
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ErrorCollector;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 /**
  * @author Alexey Pobedyonny 07.05.2014
@@ -30,13 +33,20 @@ public class UnitTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testInvalid() {
-		service.eval("1+(-1)");
-		service.eval("'1'+2");
-		System.out.println(1);
-		service.eval("'1'+'a'");
-		System.out.println(2);
-		service.eval("'c'+'2'");
-		System.out.println(3);
+		testExp("1+1");
+		testExp("1+(-1)");
+		testExp("'1'+2");
+		testExp("'1'+'a'");
+		testExp("'c'+'2'");
+	}
+
+	private void testExp(String exp) {
+		try {
+			service.eval(exp);
+			fail("Expression must be failed");
+		} catch (IllegalArgumentException e) {
+			System.out.println("good:"+exp);
+		}
 	}
 
 	@Test
