@@ -36,8 +36,10 @@ public class UnitTest {
 		testExp("1+1");
 		testExp("1+(-1)");
 		testExp("'1'+2");
+		testExp("1+1");
 		testExp("'1'+'a'");
 		testExp("'c'+'2'");
+		throw new IllegalArgumentException("");
 	}
 
 	private void testExp(String exp) {
