@@ -1,0 +1,10 @@
+<language-addon>
+	<addon-name>custom</addon-name>
+	<depends>zul</depends>
+	<language-name>xul/html</language-name>
+
+	<version>
+		<version-class>lan.test.zk.Version</version-class>
+		<version-uid>0.0.1</version-uid>
+	</version>
+</language-addon>
