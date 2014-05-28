@@ -13,4 +13,8 @@
 		<name>org.zkoss.theme.preferred</name>
 		<value>custom</value>
 	</library-property>
+
+	<desktop-config>
+		<theme-provider-class>lan.test.zk.CustomThemeProvider</theme-provider-class>
+	</desktop-config>
 </zk>

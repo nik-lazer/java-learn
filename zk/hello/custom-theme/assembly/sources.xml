@@ -16,6 +16,7 @@
 			<directory>${project.basedir}/src/main/resources</directory>
 			<includes>
 				<include>**/*.less</include>
+				<include>**/*.dsp</include>
 			</includes>
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
