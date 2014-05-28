@@ -16,6 +16,14 @@
 	<packaging>war</packaging>
 	<name>The web Project</name>
 	<description>The web Project</description>
+	<repositories>
+		<repository>
+			<id>ZK CE</id>
+			<name>ZK CE Repository</name>
+			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
+		<!-- omitted other repository -->
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
@@ -56,6 +64,11 @@
 			<groupId>lan.test.zk</groupId>
 			<artifactId>customtheme</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.maven</groupId>
+			<artifactId>zkless-servlet</artifactId>
+			<version>0.8.3</version>
 		</dependency>
 	</dependencies>
 	<build>
