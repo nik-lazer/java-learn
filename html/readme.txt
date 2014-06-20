@@ -1,0 +1,1 @@
+http://demosthenes.info/blog/532/convert-images-to-black-and-white-with-css
