@@ -1,0 +1,19 @@
+<?link rel="stylesheet" href="../less/test.less"?>
+<zk>
+    <hbox>
+    <cell style="border:1px solid black;overflow:visible;float: left;">
+        <button label="Help 1"/>
+    </cell>
+    <cell style="border:1px solid black;overflow:visible;float: left;"
+          hflex="6" align="center">
+        <button label="Add"/>
+        <button label="Remove"/>
+        <button label="Update"/>
+    </cell>
+    <cell style="border:1px solid black;overflow:visible;float: left;"
+          hflex="4" align="right">
+        <button label="OK"/>
+        <button label="Cancel"/>
+    </cell>
+</hbox>
+</zk>
