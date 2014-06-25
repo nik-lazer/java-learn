@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Span valign test</title>
+<style>
+    .div1 {
+    }
+    .span1 {
+        height: 207px;
+        width: 450px;;
+        display:table-cell;
+        vertical-align:middle;
+        padding:0 0 0 10px;
+        text-align:left;
+        border: solid 1px #000;
+    }
+    .foo {
+        height: 50px;
+        border: 1px solid;
+    }
+    .foo span{
+        vertical-align: middle;
+    }
+
+    .textvalignmiddle {
+        line-height: 12px;
+        border: 1px solid;
+        height: 60px;
+    }
+
+    .textvalignmiddle > span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1em; /*set line height back to normal*/
+    }
+</style>
+</head>
+<body>
+    <div class="div1">
+        <span class="span1">
+            Recipe Added By: Test Person
+        </span>
+    </div>
+
+    <div class="foo"> <span>middle!</span></div>
+
+    <div class="textvalignmiddle"><span>YOUR TEXT HERE</span></div>
+</body>
+</html>

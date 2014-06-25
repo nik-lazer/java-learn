@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .largeButton {
+            height: 27px;
+            width: 29px;
+            padding: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .largeButton img {
+            position: relative;
+            top: 0px;
+            margin-left: -1px;
+        }
+
+        .largeButton:hover {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .largeButton:hover img {
+            top: -25px;
+            overflow: hidden;
+        }
+
+        .largeButton:active {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .largeButton:active img {
+            top: -75px;
+            overflow: hidden;
+        }
+
+        .largeButton:disabled {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .largeButton:disabled img {
+            top: -50px;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<button class="largeButton" disabled="disabled">
+    <img src="img/print-sprite.png">
+</button>
+<button class="largeButton">
+    <img src="img/print-sprite.png">
+</button>
+</body>
+</html>
