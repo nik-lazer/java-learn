@@ -1,0 +1,24 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        apply="lan.test.zk.ListBoxComposer"
+	        closable="true" border="normal" title="Настройка" ctrlKeys="" height="400px" width="300px">
+		<borderlayout width="100%" height="100%">
+			<center>
+				<listbox use="lan.test.zk.ExtendedListbox" id="table" checkmark="true" vflex="true" fixedLayout="true" multiple="true" width="100%" checkmarkDeselectOther="false">
+					<listhead>
+						<listheader align="left">Название колонки</listheader>
+					</listhead>
+				</listbox>
+			</center>
+
+			<south size="36" autoscroll="true">
+				<toolbar>
+					<button label="OK" id="okButton" height="24px" width="75px" mold="os"/>
+					<button label="Сбросить" id="resetButton" height="24px" width="75px"/>
+					<button label="Отмена" id="cancelButton" height="24px" width="75px" mold="os"/>
+				</toolbar>
+			</south>
+		</borderlayout>
+	</window>
+</zk>
