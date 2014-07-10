@@ -13,7 +13,7 @@
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
 	</properties>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>The customtheme Theme</name>
 	<description>The customtheme Theme</description>
 	<dependencies>
@@ -85,103 +85,6 @@
 						<Import-Package>*</Import-Package>
 					</instructions>
 				</configuration>
-			</plugin>
-			<!-- Build javadoc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.7</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<configuration>
-							<encoding>UTF-8</encoding>
-							<charset>UTF-8</charset>
-							<reportOutputDirectory>${project.basedir}/target/javadoc</reportOutputDirectory>
-							<destDir>customtheme</destDir>
-							<show>protected</show>
-						</configuration>
-						<goals>
-							<goal>javadoc</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- Pack zips -->
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<!-- Build sources.jar -->
-					<execution>
-						<id>sources</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>assembly/sources.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<!-- Build javadoc.jar -->
-					<execution>
-						<id>javadoc</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>assembly/javadoc.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<!-- Build bin.zip -->
-					<execution>
-						<id>bin</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<finalName>${project.artifactId}-bin${packname}</finalName>
-							<appendAssemblyId>false</appendAssemblyId>
-							<descriptors>
-								<descriptor>assembly/bin.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<!-- Build src.zip -->
-					<execution>
-						<id>src</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<finalName>${project.artifactId}-src${packname}</finalName>
-							<appendAssemblyId>false</appendAssemblyId>
-							<descriptors>
-								<descriptor>assembly/src.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<!-- Build bundle.jar -->
-					<execution>
-						<id>bundle</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>assembly/bundle.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

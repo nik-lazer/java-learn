@@ -7,6 +7,7 @@
 	<modules>
 		<module>web</module>
 		<module>custom-theme</module>
+		<module>hello-ear</module>
 	</modules>
 	<packaging>pom</packaging>
 	<licenses>
