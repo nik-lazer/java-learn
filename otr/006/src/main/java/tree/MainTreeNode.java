@@ -11,7 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+<<<<<<< HEAD
  * Root tree node
+=======
+ * TODO: comment
+>>>>>>> Try new nodes structure
  * @author lazarev_nv 06.05.2014   17:25
  */
 public class MainTreeNode implements TreeNode {
@@ -19,10 +23,14 @@ public class MainTreeNode implements TreeNode {
 	private List<TreeNode> groupTreeNodes = new ArrayList<TreeNode>();
 	private List<Group> groups = new ArrayList<Group>();
 
+<<<<<<< HEAD
 	public MainTreeNode() {
 	}
 
 	public void setGroups(List<Group> groupList) {
+=======
+	public MainTreeNode(List<Group> groupList) {
+>>>>>>> Try new nodes structure
 		this.groups = groupList;
 		createChilds();
 	}

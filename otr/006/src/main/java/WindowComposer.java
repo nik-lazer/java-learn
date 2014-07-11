@@ -1,10 +1,15 @@
 import model.Group;
 import model.ModelHelper;
+<<<<<<< HEAD
 import model.Student;
 import org.zkoss.zul.TreeNode;
 import tree.CustomTreeRenderer;
 import tree.GroupTreeNode;
 import tree.MainTreeNode;
+=======
+import tree.MainTreeNode;
+import tree.RootTreeNode;
+>>>>>>> Try new nodes structure
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -40,12 +45,19 @@ public class WindowComposer extends GenericForwardComposer {
 
 		final Tree tree = new Tree();
 		final List<Group> pojoModel = ModelHelper.createModel();
+<<<<<<< HEAD
 		MainTreeNode mainTreeNode = new MainTreeNode();
 		DefaultTreeModel treeModel = new DefaultTreeModel(mainTreeNode);
 		mainTreeNode.setModel(treeModel);
 		mainTreeNode.setGroups(pojoModel);
 		tree.setModel(treeModel);
 		tree.setItemRenderer(new CustomTreeRenderer());
+=======
+		MainTreeNode mainTreeNode = new MainTreeNode(pojoModel);
+		DefaultTreeModel treeModel = new DefaultTreeModel(mainTreeNode);
+		mainTreeNode.setModel(treeModel);
+		tree.setModel(treeModel);
+>>>>>>> Try new nodes structure
 		//tree.setModel(new DefaultTreeModel(new RootTreeNode(pojoModel)));
 //		tree.setItemRenderer(new TreeitemRenderer<Object>() {
 //			public void render(Treeitem item, Object data, int index) throws Exception {
@@ -109,6 +121,7 @@ public class WindowComposer extends GenericForwardComposer {
 		addToCouncil.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			@Override
 			public void onEvent(Event event) throws Exception {
+<<<<<<< HEAD
 				Set<TreeNode> selectedSet = ((DefaultTreeModel) tree.getModel()).getSelection();
 				for (TreeNode treeNode : selectedSet) {
 					if (treeNode instanceof StudentTreeNode) {
@@ -138,6 +151,12 @@ public class WindowComposer extends GenericForwardComposer {
 						studentTreeNode.setInCouncil(false);
 					}
 				}
+=======
+				//final Group newGroup = new Group("Математика", list("Иванов", "Петров"), String.format("Предмет %d", ++grpCounter), new String("Студент " + ++studentCounter));
+				//RootTreeNode root = (RootTreeNode) tree.getModel().getRoot();
+
+				//root.add(new DefaultTreeNode(newGroup));
+>>>>>>> Try new nodes structure
 			}
 		});
 
