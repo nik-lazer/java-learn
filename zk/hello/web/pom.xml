@@ -6,7 +6,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>web</artifactId>
+	<artifactId>hello-web</artifactId>
 	<properties>
 		<zk.version>7.0.0</zk.version>
 		<commons-io>1.3.1</commons-io>
@@ -14,7 +14,7 @@
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
 	</properties>
 	<packaging>war</packaging>
-	<name>The web Project</name>
+	<name>The hello-web Project</name>
 	<description>The web Project</description>
 	<repositories>
 		<repository>
