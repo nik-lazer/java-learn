@@ -5,11 +5,18 @@
 	<artifactId>hello</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>web</module>
+		<module>hello-web</module>
 		<module>custom-theme</module>
+		<module>hello-weblogic</module>
 		<module>hello-ear</module>
 	</modules>
 	<packaging>pom</packaging>
+	<properties>
+		<zk.version>7.0.2</zk.version>
+		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
+		<commons-io>1.3.1</commons-io>
+	</properties>
 	<licenses>
 		<license>
 			<name>GNU General Public License, Version 2.0</name>
@@ -36,5 +43,36 @@
 			<url>http://mavensync.zkoss.org/maven2/</url>
 		</pluginRepository>
 	</pluginRepositories>
-
+	<dependencies>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkbind</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zul</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkplus</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zhtml</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkmax</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+	</dependencies>
 </project>

@@ -8,26 +8,9 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>customtheme</artifactId>
-	<properties>
-		<zk.version>7.0.0</zk.version>
-		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
-		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
-	</properties>
 	<packaging>pom</packaging>
 	<name>The customtheme Theme</name>
 	<description>The customtheme Theme</description>
-	<dependencies>
-		<dependency>
-			<groupId>org.zkoss.zk</groupId>
-			<artifactId>zul</artifactId>
-			<version>${zk.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.zkoss.zk</groupId>
-			<artifactId>zkmax</artifactId>
-			<version>${zk.version}</version>
-		</dependency>
-	</dependencies>
 	<build>
 		<testOutputDirectory>${project.build.directory}/classes</testOutputDirectory>
 		<resources>
