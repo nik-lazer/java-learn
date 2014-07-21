@@ -6,7 +6,7 @@
 
 	<module>
 		<web>
-			<web-uri>web.war</web-uri>
+			<web-uri>hello.war</web-uri>
 			<context-root>hello</context-root>
 		</web>
 	</module>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+	<language-name>xul/html</language-name>
+	<renderer-class>lan.test.zk.portlet.PortletPageRenderer</renderer-class>
+	<namespace>http://www.zkoss.org/2005/zul</namespace>
+	<device-type>ajax</device-type>
+	<extension>zul</extension>
+	<extension>xul</extension>
+</language>

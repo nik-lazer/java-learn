@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>lan.test.zk</groupId>
-			<artifactId>web</artifactId>
+			<artifactId>hello-weblogic</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
@@ -71,8 +71,8 @@
 					<modules>
 						<webModule>
 							<groupId>lan.test.zk</groupId>
-							<artifactId>web</artifactId>
-							<bundleFileName>web.war</bundleFileName>
+							<artifactId>hello-weblogic</artifactId>
+							<bundleFileName>hello.war</bundleFileName>
 
 						</webModule>
 					</modules>
