@@ -1,0 +1,21 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        apply="lan.test.zk.StubOnlyComposer"
+	        border="normal" title="Stubonly test" width="100%" height="100%">
+		<borderlayout width="100%" height="100%">
+			<center>
+				<listbox id="table" checkmark="true" vflex="true">
+					<listhead>
+						<listheader></listheader>
+						<listheader align="center">Name</listheader>
+						<listheader align="center">Aurname</listheader>
+						<listheader align="center">Age</listheader>
+						<listheader align="center">Gender</listheader>
+						<listheader align="center">Address</listheader>
+					</listhead>
+				</listbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>
