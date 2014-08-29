@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * TODO: comment
- * @author lazarev_nv 23.05.2014   16:37
+ * Customized theme provider
+ * @author nik-lazer 23.05.2014   16:37
  */
 public class CustomThemeProvider implements ThemeProvider {
 	public Collection<Object> getThemeURIs(Execution execution, List<Object> objects) {

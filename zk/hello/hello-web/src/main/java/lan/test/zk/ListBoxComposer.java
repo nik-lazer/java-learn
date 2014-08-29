@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * TODO: comment
- * @author lazarev_nv 09.07.2014   11:30
+ * Composer for listbox behaivior testing
+ * @author nik-lazer 09.07.2014   11:30
  */
 public class ListBoxComposer extends SelectorComposer<Window> {
 	private Listbox table;

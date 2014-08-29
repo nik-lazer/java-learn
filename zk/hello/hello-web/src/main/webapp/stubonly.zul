@@ -4,6 +4,12 @@
 	        apply="lan.test.zk.StubOnlyComposer"
 	        border="normal" title="Stubonly test" width="100%" height="100%">
 		<borderlayout width="100%" height="100%">
+			<north>
+				<hlayout>
+					<button id="refreshButton">Refresh</button>
+					<button id="addButton">Add</button>
+				</hlayout>
+			</north>
 			<center>
 				<listbox id="table" checkmark="true" vflex="true">
 					<listhead>

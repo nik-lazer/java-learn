@@ -4,9 +4,9 @@ import org.zkoss.lang.Library;
 import org.zkoss.zul.Listbox;
 
 /**
- * Расширение  {@link org.zkoss.zul.Listbox}, позводяющая управлять свойством checkmarkDeselectOthers не глобально через
- * параметр конфигурации org.zkoss.zul.listbox.checkmarkDeselectOthers, а индивидуально для каждого компонента
- * @author lazarev_nv 09.07.2014   12:43
+ * Extension  {@link org.zkoss.zul.Listbox}, to ability change property checkmarkDeselectOthers for current component instead
+ * of uding global zk-configuration property org.zkoss.zul.listbox.checkmarkDeselectOthers
+ * @author nik-lazer 09.07.2014   12:43
  */
 public class ExtendedListbox extends Listbox {
 	private Boolean checkmarkDeselectOther = false;

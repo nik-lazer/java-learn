@@ -1,8 +1,8 @@
 package lan.test.zk.domain;
 
 /**
- * TODO: comment
- * @author lazarev.nikolay 25.08.2014   10:30
+ * Enum for {@link lan.test.zk.domain.Person} gender
+ * @author nik-lazer 25.08.2014   10:30
  */
 public enum Gender {
 	MALE("m"),

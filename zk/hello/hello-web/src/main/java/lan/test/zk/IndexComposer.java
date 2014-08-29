@@ -12,8 +12,8 @@ import org.zkoss.zul.Window;
 import org.zkoss.zul.theme.Themes;
 
 /**
- * TODO: comment
- * @author lazarev_nv 06.06.2014   16:20
+ * Composer for main page
+ * @author nik-lazer 06.06.2014   16:20
  */
 public class IndexComposer extends SelectorComposer<Window> {
 	@Wire

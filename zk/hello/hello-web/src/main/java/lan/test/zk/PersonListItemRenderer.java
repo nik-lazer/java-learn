@@ -11,17 +11,21 @@ import org.zkoss.zul.Listhead;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
+import org.zkoss.zul.ListitemRendererExt;
 import org.zkoss.zul.Messagebox;
 
 /**
- * TODO: comment
- * @author lazarev.nikolay 25.08.2014   11:08
+ * Renderer for the listbox with stubonly cells
+ * @author nik-lazer 25.08.2014   11:08
  */
-public class PersonListItemRenderer implements ListitemRenderer<Person> {
+public class PersonListItemRenderer implements ListitemRenderer<Person>, ListitemRendererExt {
 	public void render(Listitem item, Person data, int index) throws Exception {
 		item.setValue(data);
 
-		addActionColumn(item);
+		if (item.getFirstChild() instanceof Listcell) {
+			Listcell listcell = (Listcell) item.getFirstChild();
+			addActionColumn(item, listcell);
+		}
 		addListcell(item, data.getName());
 		addListcell(item, data.getSurname());
 		addListcell(item, data.getAge()+"");
@@ -37,8 +41,7 @@ public class PersonListItemRenderer implements ListitemRenderer<Person> {
 		lc.setParent(listitem);
 	}
 
-	private void addActionColumn(final Listitem item) {
-		Listcell lc = new Listcell ();
+	private void addActionColumn(final Listitem item, Listcell cell) {
 		Button nameButton = new Button("name");
 		nameButton.addEventListener("onClick", new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
@@ -46,7 +49,7 @@ public class PersonListItemRenderer implements ListitemRenderer<Person> {
 				Messagebox.show("Person name - " + person.getName());
 			}
 		});
-		nameButton.setParent(lc);
+		nameButton.setParent(cell);
 		Button helloButton = new Button("hello");
 		helloButton.addEventListener("onClick", new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
@@ -54,7 +57,19 @@ public class PersonListItemRenderer implements ListitemRenderer<Person> {
 				Messagebox.show(person.getName() + " hello you!");
 			}
 		});
-		helloButton.setParent(lc);
-		lc.setParent(item);
+		helloButton.setParent(cell);
+	}
+
+	public Listitem newListitem(Listbox listbox) {
+		Listitem listitem = new Listitem();
+		return listitem;
+	}
+
+	public Listcell newListcell(Listitem item) {
+		return null;
+	}
+
+	public int getControls() {
+		return 0;
 	}
 }

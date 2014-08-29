@@ -7,7 +7,7 @@
 			<center>
 				<listbox use="lan.test.zk.ExtendedListbox" id="table" checkmark="true" vflex="true" fixedLayout="true" multiple="true" width="100%" checkmarkDeselectOther="false">
 					<listhead>
-						<listheader align="left">Название колонки</listheader>
+						<listheader align="left">Column name</listheader>
 					</listhead>
 				</listbox>
 			</center>
@@ -15,8 +15,8 @@
 			<south size="36" autoscroll="true">
 				<toolbar>
 					<button label="OK" id="okButton" height="24px" width="75px" mold="os"/>
-					<button label="Сбросить" id="resetButton" height="24px" width="75px"/>
-					<button label="Отмена" id="cancelButton" height="24px" width="75px" mold="os"/>
+					<button label="Reset" id="resetButton" height="24px" width="75px"/>
+					<button label="Cancel" id="cancelButton" height="24px" width="75px" mold="os"/>
 				</toolbar>
 			</south>
 		</borderlayout>

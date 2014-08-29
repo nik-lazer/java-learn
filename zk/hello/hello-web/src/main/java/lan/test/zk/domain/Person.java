@@ -1,8 +1,8 @@
 package lan.test.zk.domain;
 
 /**
- * TODO: comment
- * @author lazarev.nikolay 25.08.2014   10:30
+ * Object for person data
+ * @author nik-lazer 25.08.2014   10:30
  */
 public class Person {
 	private String name;
