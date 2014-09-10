@@ -25,17 +25,10 @@
 			<param-name>update-uri</param-name>
 			<param-value>/zkau</param-value>
 		</init-param>
-		<!-- Optional. Specifies whether to compress the output
-		of the ZK loader. It speeds up the transmission over slow Internet.
-		However, if you configure a filter to post-processing the
-		output, you might have to disable it.
-
-		Default: true
 		<init-param>
 			<param-name>compress</param-name>
-			<param-value>true</param-value>
+			<param-value>false</param-value>
 		</init-param>
-		-->
 		<!-- [Optional] Specifies the default log level: OFF, ERROR, WARNING,
 			INFO, DEBUG and FINER. If not specified, the system default is used.
 		<init-param>
@@ -63,17 +56,10 @@
 		<description>The asynchronous update engine for ZK</description>
 		<servlet-name>auEngine</servlet-name>
 		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
-
-		<!-- [Optional] Specifies whether to compress the output
-		of the ZK loader. It speeds up the transmission over slow Internet.
-		However, if your server will do the compression, you might have to disable it.
-
-		Default: true
 		<init-param>
 			<param-name>compress</param-name>
-			<param-value>true</param-value>
+			<param-value>false</param-value>
 		</init-param>
-		-->
 		<!-- [Optional] Specifies the AU extension for particular prefix.
 		<init-param>
 			<param-name>extension0</param-name>
