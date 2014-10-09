@@ -31,7 +31,7 @@ public class StubOnlyComposer extends SelectorComposer<Window> {
 		final RefreshableListModel tableModel = new RefreshableListModel(getColumns());
 		table.setModel(tableModel);
 		table.setMold("paging");
-		table.setPageSize(50);
+		table.setPageSize(5);
 		table.setItemRenderer(new PersonListItemRenderer());
 		refreshButton.addEventListener("onClick", new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
