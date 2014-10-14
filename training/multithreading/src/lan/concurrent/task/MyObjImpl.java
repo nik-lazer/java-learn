@@ -1,7 +1,9 @@
-package lan.concurrent;
+package lan.concurrent.task;
+
+import lan.concurrent.task.MyObj;
 
 /**
- * Реализация оборачиваемого интерефейса
+ * {@link lan.concurrent.task.MyObj} implementation
  * @author lazarev_nv 25.12.2013   10:02
  */
 public class MyObjImpl implements MyObj {

@@ -1,8 +1,8 @@
-package lan.concurrent;
+package lan.concurrent.solution.synchronize;
 
 /**
- * Реализация конкурирующих тредов
- * @author lazarev_nv 25.12.2013   10:16
+ * Threads implementation
+ * @author nik-lazer 25.12.2013   10:16
  */
 public class Worker extends Thread {
 	private Wrapper wrapper;

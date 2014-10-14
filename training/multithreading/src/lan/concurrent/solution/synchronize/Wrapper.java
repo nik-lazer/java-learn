@@ -1,8 +1,11 @@
-package lan.concurrent;
+package lan.concurrent.solution.synchronize;
+
+import lan.concurrent.task.MyObj;
+import lan.concurrent.task.MyObjImpl;
 
 /**
- * Обертка вокруг {@link MyObj}
- * @author lazarev_nv 25.12.2013   10:01
+ * Wrapper around {@link lan.concurrent.task.MyObj}
+ * @author nik-lazer 25.12.2013   10:01
  */
 public class Wrapper {
 	private final MyObj obj = new MyObjImpl();

@@ -1,8 +1,8 @@
-package lan.concurrent;
+package lan.concurrent.solution.synchronize;
 
 /**
- * Тест - запускаем два треда, ждем 10 секунд и разблокируем ресурс
- * @author lazarev_nv 25.12.2013   10:15
+ * Test - It starts both threads, waits 10 sec and unlock resource
+ * @author nik-lazer 25.12.2013   10:15
  */
 public class Main {
 	public static void main(String[] args) {
