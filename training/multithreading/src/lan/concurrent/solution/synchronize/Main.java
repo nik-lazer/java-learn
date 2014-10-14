@@ -1,5 +1,7 @@
 package lan.concurrent.solution.synchronize;
 
+import lan.concurrent.solution.Worker;
+
 /**
  * Test - It starts both threads, waits 10 sec and unlock resource
  * @author nik-lazer 25.12.2013   10:15
@@ -7,7 +9,7 @@ package lan.concurrent.solution.synchronize;
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("Main started");
-		Wrapper wrapper = new Wrapper();
+		SynchronizedWrapperImpl wrapper = new SynchronizedWrapperImpl();
 		Worker worker1 = new Worker("qq1", wrapper);
 		Worker worker2 = new Worker("qq2", wrapper);
 		worker1.start();

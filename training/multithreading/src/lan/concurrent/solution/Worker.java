@@ -1,4 +1,6 @@
-package lan.concurrent.solution.synchronize;
+package lan.concurrent.solution;
+
+import lan.concurrent.solution.Wrapper;
 
 /**
  * Threads implementation

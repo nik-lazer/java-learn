@@ -1,5 +1,6 @@
 package lan.concurrent.solution.synchronize;
 
+import lan.concurrent.solution.Wrapper;
 import lan.concurrent.task.MyObj;
 import lan.concurrent.task.MyObjImpl;
 
@@ -7,7 +8,7 @@ import lan.concurrent.task.MyObjImpl;
  * Wrapper around {@link lan.concurrent.task.MyObj}
  * @author nik-lazer 25.12.2013   10:01
  */
-public class Wrapper {
+public class SynchronizedWrapperImpl implements Wrapper {
 	private final MyObj obj = new MyObjImpl();
 
 	public void setReady(boolean flag) {
@@ -21,6 +22,7 @@ public class Wrapper {
 
 		}
 	}
+
 	public void waitForReady() {
 		synchronized (obj) {
 			while (!obj.isReady()) {
