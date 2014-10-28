@@ -1,4 +1,4 @@
-package lan.training.swing;
+package lan.training.swing.table;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
