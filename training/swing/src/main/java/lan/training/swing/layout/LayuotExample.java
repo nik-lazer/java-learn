@@ -24,17 +24,75 @@ public class LayuotExample extends JFrame {
 		tabbedPane.addTab("Border", createBorderPanel());
 		tabbedPane.addTab("Grid", createGridPanel());
 		tabbedPane.addTab("GridBox", createGridBoxPanel());
+		tabbedPane.addTab("Spring", createSpringPanel());
+		tabbedPane.addTab("Box", createBoxPanel());
 		add(tabbedPane);
 		pack();
 		setVisible(true);
 	}
 
+	private Component createBoxPanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.setBorder(BorderFactory.createEtchedBorder());
+
+		addAButton("Button 1", panel);
+		addAButton("Button 2", panel);
+		addAButton("Button 3", panel, Component.LEFT_ALIGNMENT);
+		addAButton("Long-Named Button 4", panel);
+		addAButton("5", panel, Component.RIGHT_ALIGNMENT);
+		return panel;
+	}
+
+	private void addAButton(String text, Container container) {
+		addAButton(text, container, Component.CENTER_ALIGNMENT);
+	}
+
+	private void addAButton(String text, Container container, float alignment) {
+		JButton button = new JButton(text);
+		button.setAlignmentX(alignment);
+		container.add(button);
+	}
+
+	private Component createSpringPanel() {
+		JPanel panel = new JPanel();
+		SpringLayout layout = new SpringLayout();
+		panel.setLayout(layout);
+
+		//Create and add the components.
+		JLabel label = new JLabel("Label: ");
+		JTextField textField = new JTextField("Text field", 15);
+		panel.add(label);
+		panel.add(textField);
+
+		//Adjust constraints for the label so it's at (5,5).
+		layout.putConstraint(SpringLayout.WEST, label, 5, SpringLayout.WEST, panel);
+		layout.putConstraint(SpringLayout.NORTH, label, 5, SpringLayout.NORTH, panel);
+
+		//Adjust constraints for the text field so it's at
+		//(<label's right edge> + 5, 5).
+		layout.putConstraint(SpringLayout.WEST, textField, 5, SpringLayout.EAST, label);
+		layout.putConstraint(SpringLayout.NORTH, textField, 5, SpringLayout.NORTH, panel);
+
+		//Adjust constraints for the content pane: Its right
+		//edge should be 5 pixels beyond the text field's right
+		//edge, and its bottom edge should be 5 pixels beyond
+		//the bottom edge of the tallest component (which we'll
+		//assume is textField).
+		layout.putConstraint(SpringLayout.EAST, panel, 5, SpringLayout.EAST, textField);
+		layout.putConstraint(SpringLayout.SOUTH, panel, 5, SpringLayout.SOUTH, textField);
+		return panel;
+	}
+
 	private JPanel createFlowPanel() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 15));
 		panel.add(new JButton("One"));
 		panel.add(new JButton("Two"));
 		panel.add(new JButton("Three"));
+		panel.add(new JButton("Four"));
+		panel.add(new JButton("Five"));
+		panel.add(new JButton("Six"));
 		return panel;
 	}
 
