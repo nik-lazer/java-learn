@@ -1,0 +1,24 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        apply="lan.test.zk.ListboxPersonComposer"
+	        border="normal" title="Listbox test" width="100%" height="100%">
+		<borderlayout width="100%" height="100%">
+			<north>
+				<hlayout>
+					<button id="selButton">Get selected</button>
+				</hlayout>
+			</north>
+			<center>
+				<div height="300px" width="600px">
+				<listbox id="table" checkmark="true" vflex="true">
+					<listhead>
+						<listheader width="30"></listheader>
+						<listheader align="center" sort="auto(name)">Name</listheader>
+					</listhead>
+				</listbox>
+				</div>
+			</center>
+		</borderlayout>
+	</window>
+</zk>
