@@ -11,7 +11,7 @@
 				</hlayout>
 			</north>
 			<center>
-				<listbox id="table" checkmark="true" vflex="true">
+				<listbox id="table" checkmark="true" vflex="true" use="lan.test.zk.AdvancedListbox">
 					<listhead>
 						<listheader></listheader>
 						<listheader align="center">Name</listheader>
