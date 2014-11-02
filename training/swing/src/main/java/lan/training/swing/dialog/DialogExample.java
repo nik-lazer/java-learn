@@ -1,4 +1,4 @@
-package lan.training.swing;
+package lan.training.swing.dialog;
 
 import javax.swing.*;
 import java.awt.*;
