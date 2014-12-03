@@ -1,0 +1,25 @@
+package lan.training.spring.web.controller;
+
+import lan.training.spring.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
+
+/**
+ * TODO: comment
+ * @author nik-lazer 03.12.2014   13:15
+ */
+@Controller
+public class HomeController {
+	@Autowired
+	private BookService bookService;
+
+	@RequestMapping({"/","/home"})
+	public String showHomePage(Map<String, Object> model) {
+		model.put("books", bookService.getBooks());
+		return "home";
+	}
+
+}
