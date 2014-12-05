@@ -3,7 +3,7 @@ package lan.training.spring.model;
 import java.util.Date;
 
 /**
- * TODO: comment
+ * Book POJO
  * @author nik-lazer 03.12.2014   13:15
  */
 public class Book {

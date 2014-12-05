@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Map;
 
 /**
- * TODO: comment
+ * Home controller for application
  * @author nik-lazer 03.12.2014   13:15
  */
 @Controller

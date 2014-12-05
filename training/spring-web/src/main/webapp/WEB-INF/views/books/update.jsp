@@ -7,6 +7,6 @@
 	<title>Home page</title>
 </head>
 <body>
-<%@include file="books/table.jsp" %>
+<%@include file="form.jsp" %>
 </body>
 </html>

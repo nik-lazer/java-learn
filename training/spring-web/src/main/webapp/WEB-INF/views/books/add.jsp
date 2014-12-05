@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-	<title>Home page</title>
+	<title>Add book</title>
 </head>
 <body>
-<%@include file="books/table.jsp" %>
+<%@include file="form.jsp" %>
 </body>
 </html>

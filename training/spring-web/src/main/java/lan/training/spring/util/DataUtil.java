@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * TODO: comment
+ * Utilitary functions
  * @author nik-lazer 03.12.2014   13:27
  */
 public class DataUtil {
