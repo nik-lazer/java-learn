@@ -9,7 +9,10 @@
 			<table cellspacing="0">
 				<tr>
 					<th><label for="name">Name:</label></th>
-					<td><sf:input path="name" size="50" id="name"/></td>
+					<td>
+						<sf:input path="name" size="50" id="name"/>
+						<sf:errors path="name" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th><label for="publisher">publisher:</label></th>
@@ -21,7 +24,7 @@
 				</tr>
 				<tr>
 					<th><label for="language">language:</label></th>
-					<td><sf:input path="language" size="50" id="language"/></td>
+					<td><sf:select path="language" items="${langs}" itemLabel="name" itemValue="name" id="language"/></td>
 				</tr>
 				<tr>
 					<th><label for="desc">desc:</label></th>

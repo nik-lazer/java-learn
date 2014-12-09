@@ -1,5 +1,6 @@
 package lan.training.spring.model;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -7,6 +8,8 @@ import java.util.Date;
  * @author nik-lazer 03.12.2014   13:15
  */
 public class Book {
+	@Size(min=3, max=500,
+			message="Username must be between 3 and 500 characters long.")
 	private String name;
 	private String publisher;
 	private String author;

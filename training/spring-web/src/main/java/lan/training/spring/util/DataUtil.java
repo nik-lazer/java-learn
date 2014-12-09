@@ -1,6 +1,7 @@
 package lan.training.spring.util;
 
 import lan.training.spring.model.Book;
+import lan.training.spring.model.Language;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -28,5 +29,14 @@ public class DataUtil {
 		book2.setDesc("desc1");
 		book2.setDate(new Date());
 		return Arrays.asList(book1, book2);
+	}
+
+	public static List<Language> getLanguages() {
+		Language language1 = new Language();
+		language1.setName("English");
+
+		Language language2 = new Language();
+		language2.setName("German");
+		return Arrays.asList(language1, language2);
 	}
 }

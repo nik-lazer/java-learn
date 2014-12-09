@@ -20,23 +20,22 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> getBooks() {
+	public List<Book> getList() {
 		return books;
 	}
 
 	@Override
-	public void addBook(Book book) {
+	public void add(Book book) {
 		books.add(book);
 	}
 
 	@Override
-	public void updateBook(int id, Book book) {
-		Book book1 = books.get(id);
+	public void update(int id, Book book) {
 		books.set(id, book);
 	}
 
 	@Override
-	public void deleteBook(Book book) {
+	public void delete(Book book) {
 		books.remove(book);
 	}
 
