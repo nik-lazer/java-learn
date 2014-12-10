@@ -4,7 +4,7 @@ package lan.training.spring.model;
  * Publisher POJO
  * @author nik-lazer  09.12.2014   19:13
  */
-public class Publisher {
+public class Publisher extends AbstractDomain {
 	private String name;
 	private String address;
 

@@ -16,19 +16,28 @@
 				</tr>
 				<tr>
 					<th><label for="publisher">publisher:</label></th>
-					<td><sf:input path="publisher" size="50" id="publisher"/></td>
+					<td>
+						<sf:select path="publisher" items="${publishers}" itemLabel="name" itemValue="id" id="publisher"/>
+						<sf:errors path="publisher" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th><label for="author">author:</label></th>
-					<td><sf:input path="author" size="50" id="author"/></td>
+					<td>
+						<sf:select path="author" items="${authors}" itemLabel="lastName" itemValue="id" id="author"/>
+						<sf:errors path="author" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th><label for="language">language:</label></th>
-					<td><sf:select path="language" items="${langs}" itemLabel="name" itemValue="name" id="language"/></td>
+					<td>
+						<sf:select path="language" items="${langs}" itemLabel="name" itemValue="id" id="language"/>
+						<sf:errors path="language" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th><label for="desc">desc:</label></th>
-					<td><sf:textarea path="desc" cols="20" rows="5" id="desc"/></td>
+					<td><sf:textarea path="desc" cols="40" rows="5" id="desc"/></td>
 				</tr>
 				<tr>
 					<td colspan="2">

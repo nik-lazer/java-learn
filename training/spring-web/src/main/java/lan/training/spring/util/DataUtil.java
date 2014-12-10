@@ -1,11 +1,17 @@
 package lan.training.spring.util;
 
+import lan.training.spring.model.AbstractDomain;
+import lan.training.spring.model.Author;
 import lan.training.spring.model.Book;
 import lan.training.spring.model.Language;
+import lan.training.spring.model.Publisher;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Utilitary functions
@@ -15,17 +21,17 @@ public class DataUtil {
 	public static List<Book> getBooks() {
 		Book book1 = new Book();
 		book1.setName("test1");
-		book1.setAuthor("author1");
-		book1.setPublisher("publisher1");
-		book1.setLanguage("lang1");
+		book1.setAuthor(getAuthors().get(0));
+		book1.setPublisher(getPublishers().get(0));
+		book1.setLanguage(getLanguages().get(0));
 		book1.setDesc("desc1");
 		book1.setDate(new Date());
 
 		Book book2 = new Book();
 		book2.setName("test1");
-		book2.setAuthor("author1");
-		book2.setPublisher("publisher1");
-		book2.setLanguage("lang1");
+		book2.setAuthor(getAuthors().get(0));
+		book2.setPublisher(getPublishers().get(0));
+		book2.setLanguage(getLanguages().get(0));
 		book2.setDesc("desc1");
 		book2.setDate(new Date());
 		return Arrays.asList(book1, book2);
@@ -39,4 +45,26 @@ public class DataUtil {
 		language2.setName("German");
 		return Arrays.asList(language1, language2);
 	}
+
+	public static List<Author> getAuthors() {
+		Author author1 = new Author();
+		author1.setFirstName("Craig");
+		author1.setLastName("Walls");
+
+		Author author2 = new Author();
+		author2.setFirstName("Gerbert");
+		author2.setLastName("Wales");
+		return Arrays.asList(author1, author2);
+	}
+
+	public static List<Publisher> getPublishers() {
+		Publisher publisher1 = new Publisher();
+		publisher1.setName("O'Reily");
+
+		Publisher publisher2 = new Publisher();
+		publisher2.setName("BBC");
+		return Arrays.asList(publisher1, publisher2);
+	}
+
+
 }

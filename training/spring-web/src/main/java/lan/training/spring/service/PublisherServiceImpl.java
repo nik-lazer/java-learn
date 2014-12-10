@@ -1,34 +1,33 @@
 package lan.training.spring.service;
 
-import lan.training.spring.model.Language;
+import lan.training.spring.model.Publisher;
 import lan.training.spring.util.DataUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 /**
- * Language service implementation
+ * Publisher service implementation
  * @author nik-lazer  09.12.2014   19:31
  */
 @Service
-public class LanguageServiceImpl extends AbstractMemoryService implements LanguageService {
-	private Map<UUID, Language> data;
+public class PublisherServiceImpl extends AbstractMemoryService implements PublisherService {
+	private Map<UUID, Publisher> data;
 
-	public LanguageServiceImpl() {
-		data = listToMap(DataUtil.getLanguages());
+	public PublisherServiceImpl() {
+		data = listToMap(DataUtil.getPublishers());
 	}
 
 	@Override
-	public List<Language> getList() {
-		return new ArrayList<Language>(data.values());
+	public List<Publisher> getList() {
+		return new ArrayList<Publisher>(data.values());
 	}
 
 	@Override
-	public void add(Language model) {
+	public void add(Publisher model) {
 		if (model.getId() == null) {
 			model.setId(UUID.randomUUID());
 		}
@@ -36,7 +35,7 @@ public class LanguageServiceImpl extends AbstractMemoryService implements Langua
 	}
 
 	@Override
-	public void update(UUID id, Language model) {
+	public void update(UUID id, Publisher model) {
 		data.put(id, model);
 	}
 
@@ -46,7 +45,7 @@ public class LanguageServiceImpl extends AbstractMemoryService implements Langua
 	}
 
 	@Override
-	public Language getById(UUID id) {
+	public Publisher getById(UUID id) {
 		return data.get(id);
 	}
 }

@@ -1,6 +1,7 @@
 package lan.training.spring.service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * CRUD interface
@@ -9,7 +10,7 @@ import java.util.List;
 public interface CRUDService<T> {
 	List<T> getList();
 	void add(T model);
-	void update(int id, T model);
-	void delete(T model);
-	T getById(int id);
+	void update(UUID id, T model);
+	void delete(UUID id);
+	T getById(UUID id);
 }

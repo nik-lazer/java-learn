@@ -4,7 +4,7 @@ package lan.training.spring.model;
  * Author POJO
  * @author nik-lazer  09.12.2014   19:11
  */
-public class Author {
+public class Author extends AbstractDomain {
 	private String firstName;
 	private String lastName;
 
@@ -22,5 +22,9 @@ public class Author {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getName() {
+		return firstName + " " + lastName;
 	}
 }

@@ -6,41 +6,46 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Book service {@link lan.training.spring.service.BookService} implementation
  * @author nik-lazer 03.12.2014   13:25
  */
 @Service
-public class BookServiceImpl implements BookService {
-	private List<Book> books;
+public class BookServiceImpl extends AbstractMemoryService implements BookService {
+	private Map<UUID, Book> books;
 
 	public BookServiceImpl() {
-		books = new ArrayList<>(DataUtil.getBooks());
+		books = listToMap(DataUtil.getBooks());
 	}
 
 	@Override
 	public List<Book> getList() {
-		return books;
+		return new ArrayList<Book>(books.values());
 	}
 
 	@Override
 	public void add(Book book) {
-		books.add(book);
+		if (book.getId() == null) {
+			book.setId(UUID.randomUUID());
+		}
+		books.put(book.getId(), book);
 	}
 
 	@Override
-	public void update(int id, Book book) {
-		books.set(id, book);
+	public void update(UUID id, Book book) {
+		books.put(id, book);
 	}
 
 	@Override
-	public void delete(Book book) {
-		books.remove(book);
+	public void delete(UUID id) {
+		books.remove(id);
 	}
 
 	@Override
-	public Book getById(int id) {
+	public Book getById(UUID id) {
 		return books.get(id);
 	}
 }

@@ -7,13 +7,12 @@ import java.util.Date;
  * Book POJO
  * @author nik-lazer 03.12.2014   13:15
  */
-public class Book {
-	@Size(min=3, max=500,
-			message="Username must be between 3 and 500 characters long.")
+public class Book extends AbstractDomain {
+	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;
-	private String publisher;
-	private String author;
-	private String language;
+	private Publisher publisher;
+	private Author author;
+	private Language language;
 	private Date date;
 	private String desc;
 
@@ -25,27 +24,27 @@ public class Book {
 		this.name = name;
 	}
 
-	public String getPublisher() {
+	public Publisher getPublisher() {
 		return publisher;
 	}
 
-	public void setPublisher(String publisher) {
+	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 

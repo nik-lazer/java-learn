@@ -10,7 +10,18 @@
 
 	<context:component-scan base-package="lan.training.spring"/>
 
-	<mvc:annotation-driven/>
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="lan.training.spring.util.LanguageConverter"/>
+				<bean class="lan.training.spring.util.AuthorConverter"/>
+				<bean class="lan.training.spring.util.PublisherConverter"/>
+			</set>
+		</property>
+	</bean>
+
+
+	<mvc:annotation-driven conversion-service="conversionService"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
