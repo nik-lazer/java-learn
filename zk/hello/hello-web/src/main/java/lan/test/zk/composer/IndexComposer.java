@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.composer;
 
 import org.zkoss.bind.BindComposer;
 import org.zkoss.web.theme.StandardTheme;
@@ -35,5 +35,11 @@ public class IndexComposer extends SelectorComposer<Window> {
 			Themes.setTheme(Executions.getCurrent(), "custom");
 		}
 		Executions.sendRedirect("/");
+	}
+
+	@Listen("onClick=#openDialog")
+	public void openDialog() {
+		Window window = (Window)Executions.createComponents("/dialog.zul", null, null);
+		window.doModal();
 	}
 }

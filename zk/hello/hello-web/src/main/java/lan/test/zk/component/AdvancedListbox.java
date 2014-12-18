@@ -1,18 +1,8 @@
-package lan.test.zk;
+package lan.test.zk.component;
 
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zk.ui.sys.StubComponent;
+import lan.test.zk.model.RefreshableListModel;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listcell;
-import org.zkoss.zul.Listitem;
-import org.zkoss.zul.ext.Paginal;
-
-import javax.swing.event.ListDataEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Override Listbox for fixing ZK-2486
@@ -21,8 +11,8 @@ import java.util.List;
 public class AdvancedListbox extends Listbox {
 	/**
 	 * Method is overridden for fixing ZK-2486 - it force to render stubonly cells, which was created by
-	 * {@link lan.test.zk.PersonListItemRenderer}. Model must be to able to refresh it's data. So, in this case
-	 * it's {@link lan.test.zk.RefreshableListModel}
+	 * {@link lan.test.zk.renderer.PersonListItemRenderer}. Model must be to able to refresh it's data. So, in this case
+	 * it's {@link lan.test.zk.model.RefreshableListModel}
 	 */
 	public void onPagingInitRender() {
 		ListModel<Object> model = getModel();

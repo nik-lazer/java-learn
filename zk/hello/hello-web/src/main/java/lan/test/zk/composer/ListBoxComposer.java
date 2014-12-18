@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.composer;
 
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zul.ListModelList;

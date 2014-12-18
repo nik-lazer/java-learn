@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.renderer;
 
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;

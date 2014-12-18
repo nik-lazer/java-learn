@@ -1,5 +1,7 @@
-package lan.test.zk;
+package lan.test.zk.composer;
 
+import lan.test.zk.renderer.PersonListItemRenderer;
+import lan.test.zk.model.RefreshableListModel;
 import lan.test.zk.data.DataUtil;
 import lan.test.zk.domain.Gender;
 import lan.test.zk.domain.Person;
@@ -8,12 +10,8 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
-import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Window;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Composer for the testing table with stubonly cells

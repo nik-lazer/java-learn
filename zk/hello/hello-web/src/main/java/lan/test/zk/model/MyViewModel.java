@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.model;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;

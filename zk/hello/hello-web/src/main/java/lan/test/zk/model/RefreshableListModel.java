@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.model;
 
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;

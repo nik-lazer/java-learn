@@ -1,4 +1,4 @@
-package lan.test.zk;
+package lan.test.zk.component;
 
 import org.zkoss.lang.Library;
 import org.zkoss.zul.Listbox;

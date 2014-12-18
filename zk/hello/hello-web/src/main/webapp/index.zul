@@ -1,12 +1,13 @@
 <?link rel="stylesheet" href="../less/test.less"?>
 <zk>
-	<window apply="lan.test.zk.IndexComposer"
-		viewModel="@id('vm')@init('lan.test.zk.MyViewModel')"
+	<window apply="lan.test.zk.composer.IndexComposer"
+		viewModel="@id('vm')@init('lan.test.zk.model.MyViewModel')"
 		validationMessages="@id('vmsgs')">
 		<hlayout>count: <label value="@load(vm.count)" /></hlayout>
 		<button label="add" onClick="@command('cmd')"/>
 		<label id="currentTheme"></label>
 		<button label="Switch theme" id="switchTheme"></button>
+		<button label="Dialog" id="openDialog"></button>
 	</window>
 
 	<grid>
