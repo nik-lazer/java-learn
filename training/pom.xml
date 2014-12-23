@@ -11,6 +11,7 @@
 	<modules>
 		<module>swing</module>
 		<module>multithreading</module>
+		<module>hibernate</module>
 	</modules>
 
 
