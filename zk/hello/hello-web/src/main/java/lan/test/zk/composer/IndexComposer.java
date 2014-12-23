@@ -20,6 +20,10 @@ public class IndexComposer extends SelectorComposer<Window> {
 	Button switchTheme;
 	@Wire
 	Label currentTheme;
+	@Wire
+	Button openDialog;
+	@Wire
+	Button openFindDialog;
 
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -40,6 +44,12 @@ public class IndexComposer extends SelectorComposer<Window> {
 	@Listen("onClick=#openDialog")
 	public void openDialog() {
 		Window window = (Window)Executions.createComponents("/dialog.zul", null, null);
+		window.doModal();
+	}
+
+	@Listen("onClick=#openFindDialog")
+	public void openFindDialog() {
+		Window window = (Window)Executions.createComponents("/find.zul", null, null);
 		window.doModal();
 	}
 }

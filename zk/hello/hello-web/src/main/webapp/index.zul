@@ -8,6 +8,7 @@
 		<label id="currentTheme"></label>
 		<button label="Switch theme" id="switchTheme"></button>
 		<button label="Dialog" id="openDialog"></button>
+		<button label="Find" id="openFindDialog"></button>
 	</window>
 
 	<grid>
