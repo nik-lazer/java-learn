@@ -10,5 +10,6 @@ import java.util.List;
  * @author nik-lazer  23.12.2014   16:16
  */
 public interface MessageDao {
-	List<Message> getMessages(int messageId) throws MessageException;
+	List<Message> getMessages() throws MessageException;
+	void add(Message message);
 }

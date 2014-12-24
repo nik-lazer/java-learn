@@ -1,5 +1,6 @@
 package lan.training.hibernate.dao;
 
+import lan.training.hibernate.domain.Message;
 import lan.training.hibernate.exception.MessageException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ import java.util.logging.Level;
  */
 public class JdbcMessageDaoImpl implements MessageDao {
 	private static Logger log = LoggerFactory.getLogger(JdbcMessageDaoImpl.class);
-	public List getMessages(int messageId) throws MessageException {
+	public List getMessages() throws MessageException {
 		Connection c = null;
 		PreparedStatement p = null;
 		List list = new ArrayList();
@@ -56,5 +57,10 @@ public class JdbcMessageDaoImpl implements MessageDao {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void add(Message message) {
+
 	}
 }
