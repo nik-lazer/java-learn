@@ -3,9 +3,13 @@
 	        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
 
-	        id="quickSearch" closable="true" border="normal"
+	        id="quickSearch" closable="true" border="none" sclass="quickSearch"
 	        title="Search">
 		<style>
+			.quickSearch .z-window-content {
+				padding: 0px;
+			}
+
 			.findSeparator {
 				background-color: #eeeeef;
 			}
@@ -27,7 +31,7 @@
 				<tablechildren>
 					<panel>
 						<panelchildren>
-							<combobox id="searchColumn">
+							<combobox id="searchColumn" width="100%">
 								<comboitem>first</comboitem>
 								<comboitem>second</comboitem>
 								<comboitem>third</comboitem>
@@ -39,11 +43,11 @@
 				<tablechildren>
 					<panel>
 						<panelchildren>
-							<vbox>
+							<vlayout>
 								<checkbox label="Any part matching" id="wholeWord"/>
 								<checkbox label="Case sensitive" id="caseSensitive"/>
 								<checkbox label="Start from first page" id="fromBeginning"/>
-							</vbox>
+							</vlayout>
 							<hlayout>
 								<div align="center">
 									<button sclass="imageButton findButton" label="Find" width="100px" mold="os" id="findButton"/>

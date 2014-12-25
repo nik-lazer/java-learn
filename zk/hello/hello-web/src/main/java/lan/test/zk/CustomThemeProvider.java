@@ -15,7 +15,7 @@ import java.util.List;
 public class CustomThemeProvider implements ThemeProvider {
 	public Collection<Object> getThemeURIs(Execution execution, List<Object> objects) {
 		if ("custom".equals(Themes.getCurrentTheme())) {
-			objects.add("~./custom/custom.css.dsp");
+			objects.add("~./custom/override.custom.css.dsp");
 		}
 		return objects;
 	}

@@ -1,4 +1,5 @@
 <?link rel="stylesheet" href="../less/test.less"?>
+<?link rel="stylesheet" href="../less/test.less"?>
 <zk>
 	<window apply="lan.test.zk.composer.IndexComposer"
 		viewModel="@id('vm')@init('lan.test.zk.model.MyViewModel')"
