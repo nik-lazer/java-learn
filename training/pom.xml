@@ -12,6 +12,8 @@
 		<module>swing</module>
 		<module>multithreading</module>
 		<module>hibernate</module>
+		<module>spring-web</module>
+		<module>advanced</module>
 	</modules>
 
 
