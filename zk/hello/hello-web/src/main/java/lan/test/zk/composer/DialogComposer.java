@@ -1,6 +1,6 @@
 package lan.test.zk.composer;
 
-import lan.test.zk.data.DataUtil;
+import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -9,7 +9,6 @@ import org.zkoss.zul.Button;
 import org.zkoss.zul.Cell;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.Label;
-import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.RowRenderer;

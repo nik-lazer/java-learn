@@ -1,4 +1,4 @@
-package lan.test.zk.data;
+package lan.test.zk.util;
 
 import lan.test.zk.domain.Gender;
 import lan.test.zk.domain.Person;

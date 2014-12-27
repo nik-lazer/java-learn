@@ -2,7 +2,7 @@ package lan.test.zk.composer;
 
 import lan.test.zk.renderer.PersonListItemRenderer;
 import lan.test.zk.model.RefreshableListModel;
-import lan.test.zk.data.DataUtil;
+import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Gender;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;

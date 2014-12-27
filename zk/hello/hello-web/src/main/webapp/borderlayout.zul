@@ -1,0 +1,15 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        apply="lan.test.zk.composer.BorderlayoutComposer"
+	        border="normal" title="BorderLayout test" width="100%" height="100%">
+		<borderlayout width="100%" height="100%" id="main">
+			<center id="minCenter">
+				<label>Center</label>
+			</center>
+			<south size="50%" splittable="true" minsize="150" id="mainSouth">
+				<label>South</label>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

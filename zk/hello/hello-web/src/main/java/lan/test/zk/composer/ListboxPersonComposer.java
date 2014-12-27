@@ -1,7 +1,7 @@
 package lan.test.zk.composer;
 
 import lan.test.zk.renderer.PersonListItemSimpleRenderer;
-import lan.test.zk.data.DataUtil;
+import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
