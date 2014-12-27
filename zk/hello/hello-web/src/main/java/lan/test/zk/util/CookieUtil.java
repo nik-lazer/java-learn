@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Helper for working with cookies
- * @author lazarev_nv  27.12.2014   13:42
+ * @author nik-lazer  27.12.2014   13:42
  */
 public class CookieUtil {
 	public static void setCookie(String name, String value) {

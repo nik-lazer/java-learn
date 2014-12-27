@@ -19,7 +19,7 @@ import java.util.Random;
 
 /**
  * Dialog composer
- * @author lazarev_nv  17.12.2014   17:28
+ * @author nik-lazer  17.12.2014   17:28
  */
 public class DialogComposer extends SelectorComposer<Window> {
 	@Wire

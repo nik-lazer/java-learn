@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  * Composer for using {@link org.zkoss.zul.Borderlayout} splittable feature
- * @author lazarev_nv  27.12.2014   13:31
+ * @author nik-lazer  27.12.2014   13:31
  */
 public class BorderlayoutComposer extends SelectorComposer<Window> {
 	private static Logger log = Logger.getLogger(BorderlayoutComposer.class.getName());

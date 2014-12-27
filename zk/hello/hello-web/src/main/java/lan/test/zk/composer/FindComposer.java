@@ -6,7 +6,7 @@ import org.zkoss.zul.Window;
 
 /**
  * Composer for the search dialog
- * @author lazarev_nv  19.12.2014   13:21
+ * @author nik-lazer  19.12.2014   13:21
  */
 public class FindComposer extends SelectorComposer<Window> {
 

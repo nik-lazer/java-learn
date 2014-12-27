@@ -49,8 +49,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * TODO: comment
- * @author lazarev_nv 21.07.2014   09:05
+ * Helper for custom page renderer
+ * @author nik-lazer 21.07.2014   09:05
  */
 public class PortletHtmlPageRenders {
 	//	private static final Logger log = LoggerFactory.getLogger(HtmlPageRenders.class);

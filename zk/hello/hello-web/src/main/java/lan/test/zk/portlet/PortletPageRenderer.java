@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * TODO: comment
- * @author lazarev_nv 21.07.2014   09:06
+ * Custom page renderer trying
+ * @author nik-lazer 21.07.2014   09:06
  */
 public class PortletPageRenderer extends PageRenderer {
 	/** Renders the desktop and the page.
