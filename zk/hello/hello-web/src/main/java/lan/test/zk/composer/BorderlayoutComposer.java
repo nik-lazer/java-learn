@@ -3,6 +3,7 @@ package lan.test.zk.composer;
 import lan.test.zk.util.CookieUtil;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.metainfo.EventHandler;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -35,7 +36,7 @@ public class BorderlayoutComposer extends SelectorComposer<Window> {
 		if (userSize != null) {
 			mainSouth.setSize(userSize);
 		}
-		mainSouth.addEventListener("onSize", new EventListener<Event>() {
+		mainSouth.addEventListener(Events.ON_SIZE, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				handleSize();
 			}

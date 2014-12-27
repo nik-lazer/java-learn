@@ -7,6 +7,7 @@ import lan.test.zk.domain.Gender;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
@@ -32,12 +33,12 @@ public class StubOnlyComposer extends SelectorComposer<Window> {
 		table.setMold("paging");
 		table.setPageSize(5);
 		table.setItemRenderer(new PersonListItemRenderer());
-		refreshButton.addEventListener("onClick", new EventListener<Event>() {
+		refreshButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				tableModel.refresh();
 			}
 		});
-		addButton.addEventListener("onClick", new EventListener<Event>() {
+		addButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				Person person = new Person("Debora", "Raily", 32, Gender.FEMALE, "Newcastle, Oak street, 26");
 				tableModel.add(person);

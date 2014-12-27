@@ -5,6 +5,7 @@ import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Clients;
@@ -32,7 +33,7 @@ public class ListboxPersonComposer extends SelectorComposer<Window> {
 		tableModel.addAll(DataUtil.getPersons());
 		table.setModel(tableModel);
 		table.setItemRenderer(new PersonListItemSimpleRenderer());
-		selButton.addEventListener("onClick", new EventListener<Event>() {
+		selButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				Set<Person> set = tableModel.getSelection();
 				if (set.size()>0) {

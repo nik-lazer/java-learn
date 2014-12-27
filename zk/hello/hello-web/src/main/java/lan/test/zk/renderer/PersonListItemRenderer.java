@@ -3,6 +3,7 @@ package lan.test.zk.renderer;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Listbox;
@@ -43,7 +44,7 @@ public class PersonListItemRenderer implements ListitemRenderer<Person>, Listite
 
 	private void addActionColumn(final Listitem item, Listcell cell) {
 		Button nameButton = new Button("name");
-		nameButton.addEventListener("onClick", new EventListener<Event>() {
+		nameButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				Person person = item.getValue();
 				Messagebox.show("Person name - " + person.getName());
@@ -51,7 +52,7 @@ public class PersonListItemRenderer implements ListitemRenderer<Person>, Listite
 		});
 		nameButton.setParent(cell);
 		Button helloButton = new Button("hello");
-		helloButton.addEventListener("onClick", new EventListener<Event>() {
+		helloButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				Person person = item.getValue();
 				Messagebox.show(person.getName() + " hello you!");
