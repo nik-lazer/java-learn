@@ -1,4 +1,6 @@
-package lan.training.advanced.jetty;
+package lan.training.advanced.servlet;
+
+import lan.training.advanced.jetty.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

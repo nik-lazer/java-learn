@@ -1,4 +1,6 @@
-package lan.training.advanced.jetty;
+package lan.training.advanced.servlet;
+
+import lan.training.advanced.jetty.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -6,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
