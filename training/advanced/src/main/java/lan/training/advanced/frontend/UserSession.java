@@ -1,7 +1,7 @@
-package lan.training.advanced.jetty;
+package lan.training.advanced.frontend;
 
 /**
- * User data for {@link lan.training.advanced.jetty.Frontend}
+ * User data for {@link lan.training.advanced.frontend.FrontendImpl}
  * @author nik-lazer  29.12.2014   12:13
  */
 public class UserSession {

@@ -1,10 +1,10 @@
-package lan.training.advanced.jetty;
+package lan.training.advanced.frontend;
 
-import lan.training.advanced.message.Abonent;
+import lan.training.advanced.base.Frontend;
+import lan.training.advanced.jetty.PageGenerator;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
-import lan.training.advanced.message.MsgGetUserId;
-import org.eclipse.jetty.server.Server;
+import lan.training.advanced.account.MsgGetUserId;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
@@ -23,17 +23,19 @@ import static java.lang.Thread.sleep;
  * Abstarct handler uding sample
  * @author nik-lazer  26.12.2014   11:41
  */
-public class Frontend extends AbstractHandler implements Runnable, Abonent {
-	private static Logger log = Logger.getLogger(Frontend.class.getName());
+public class FrontendImpl extends AbstractHandler implements Runnable, Frontend {
+	private static Logger log = Logger.getLogger(FrontendImpl.class.getName());
 
 	private volatile int handleCount = 0;
 	private MessageSystem messageSystem;
+	private Address recipientAddress;
 	private Address address = new Address();
 	Map<Integer, UserSession> userSessionMap = new ConcurrentHashMap<>();
 
-	public Frontend(MessageSystem messageSystem) {
+	public FrontendImpl(MessageSystem messageSystem, Address recipientAddress) {
 		this.messageSystem = messageSystem;
 		messageSystem.addService(this);
+		this.recipientAddress = recipientAddress;
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class Frontend extends AbstractHandler implements Runnable, Abonent {
 		if (name != null && !name.isEmpty()) {
 			UserSession session = userSessionMap.get(id);
 			session.setUserName(name);
-			messageSystem.sendMessage(new MsgGetUserId(getAddress(), messageSystem.getAddressService().getAddress(AccountService.class), name));
+			messageSystem.sendMessage(new MsgGetUserId(getAddress(), recipientAddress, name));
 		}
 		incCounter();
 		response.getWriter().println(PageGenerator.createRefreshingFormPage(userSessionMap.get(id)));
@@ -76,6 +78,12 @@ public class Frontend extends AbstractHandler implements Runnable, Abonent {
 		log.info("handleCount increment: old val=" + (handleCount - 1) + ", new value=" + handleCount);
 	}
 
+	@Override
+	public MessageSystem getMessageSystem() {
+		return messageSystem;
+	}
+
+	@Override
 	public void updateUserId(String name, int userId) {
 		for (UserSession userSession: userSessionMap.values()) {
 			if (name.equals(userSession.getUserName())) {

@@ -1,40 +1,16 @@
 package lan.training.advanced.message;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Logger;
+import lan.training.advanced.message.Abonent;
+import lan.training.advanced.message.AddressService;
+import lan.training.advanced.message.Msg;
 
 /**
- * Message system
- * @author nik-lazer  29.12.2014   12:36
+ * Message system interface
+ * Created by nik-lazer on 29.12.14.
  */
-public class MessageSystem {
-	private static Logger log = Logger.getLogger(MessageSystem.class.getName());
-	private Map<Address, ConcurrentLinkedQueue<Msg>> messages = new HashMap<>();
-	private AddressService addressService = new AddressService();
-
-	public void addService(Abonent abonent) {
-		addressService.addAdress(abonent.getClass(), abonent.getAddress());
-		messages.put(abonent.getAddress(), new ConcurrentLinkedQueue<Msg>());
-	}
-
-	public void sendMessage(Msg message) {
-		ConcurrentLinkedQueue<Msg> messageQueue = messages.get(message.getTo());
-		messageQueue.add(message);
-		log.info("Message sended: " + message.toString());
-	}
-
-	public void execForAbonent(Abonent abonent) {
-		ConcurrentLinkedQueue<Msg> messageQueue = messages.get(abonent.getAddress());
-		while (!messageQueue.isEmpty()) {
-			Msg msg = messageQueue.poll();
-			log.info("Message received: " + msg.toString());
-			msg.exec(abonent);
-		}
-	}
-
-	public AddressService getAddressService() {
-		return addressService;
-	}
+public interface MessageSystem {
+	public void addService(Abonent abonent);
+	public void sendMessage(Msg message);
+	public void execForAbonent(Abonent abonent);
+	public AddressService getAddressService();
 }

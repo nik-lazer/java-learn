@@ -1,9 +1,12 @@
-package lan.training.advanced.message;
+package lan.training.advanced.account;
 
-import lan.training.advanced.jetty.AccountService;
+import lan.training.advanced.base.AccountService;
+import lan.training.advanced.message.Abonent;
+import lan.training.advanced.message.Address;
+import lan.training.advanced.message.Msg;
 
 /**
- * Abstract message to {@link lan.training.advanced.jetty.AccountService}
+ * Abstract message to {@link lan.training.advanced.base.AccountService}
  * @author nik-lazer  29.12.2014   12:29
  */
 public abstract class MsgToAS extends Msg {

@@ -1,6 +1,8 @@
-package lan.training.advanced.message;
+package lan.training.advanced.account;
 
-import lan.training.advanced.jetty.AccountService;
+import lan.training.advanced.base.AccountService;
+import lan.training.advanced.message.Address;
+import lan.training.advanced.frontend.MsgUpdateUserId;
 
 /**
  * Message for requesting user id by login

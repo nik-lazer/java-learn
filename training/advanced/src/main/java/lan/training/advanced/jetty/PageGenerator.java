@@ -1,5 +1,7 @@
 package lan.training.advanced.jetty;
 
+import lan.training.advanced.frontend.UserSession;
+
 import java.util.Random;
 
 /**

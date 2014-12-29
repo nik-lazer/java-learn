@@ -1,6 +1,8 @@
-package lan.training.advanced.message;
+package lan.training.advanced.frontend;
 
-import lan.training.advanced.jetty.Frontend;
+import lan.training.advanced.base.Frontend;
+import lan.training.advanced.frontend.MsgToFrontend;
+import lan.training.advanced.message.Address;
 
 /**
  * Answer message with userId

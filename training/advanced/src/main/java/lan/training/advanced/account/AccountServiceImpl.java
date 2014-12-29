@@ -1,6 +1,6 @@
-package lan.training.advanced.jetty;
+package lan.training.advanced.account;
 
-import lan.training.advanced.message.Abonent;
+import lan.training.advanced.base.AccountService;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
 
@@ -12,17 +12,17 @@ import java.util.logging.Logger;
 import static java.lang.Thread.sleep;
 
 /**
- * Account service for serarching users. Store data in map
+ * Account service for searching users. Store data in map
  * @author nik-lazer  29.12.2014   12:12
  */
-public class AccountService implements Runnable, Abonent {
-	private static Logger log = Logger.getLogger(AccountService.class.getName());
+public class AccountServiceImpl implements Runnable, AccountService {
+	private static Logger log = Logger.getLogger(AccountServiceImpl.class.getName());
 	private static Map<String, Integer> users = new HashMap<>();
 
 	private Address address = new Address();
 	private MessageSystem messageSystem;
 
-	public AccountService(MessageSystem messageSystem) {
+	public AccountServiceImpl(MessageSystem messageSystem) {
 		this.messageSystem = messageSystem;
 		messageSystem.addService(this);
 		users.put("first", 1);
@@ -48,10 +48,12 @@ public class AccountService implements Runnable, Abonent {
 		return address;
 	}
 
+	@Override
 	public MessageSystem getMessageSystem() {
 		return messageSystem;
 	}
 
+	@Override
 	public Integer getUserId(String name) {
 		log.info("Id for name" + name + " requested");
 		try {
