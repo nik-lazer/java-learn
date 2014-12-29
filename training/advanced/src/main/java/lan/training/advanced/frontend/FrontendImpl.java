@@ -5,6 +5,7 @@ import lan.training.advanced.jetty.PageGenerator;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
 import lan.training.advanced.account.MsgGetUserId;
+import lan.training.advanced.util.TimeHelper;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
@@ -62,14 +63,9 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 	@Override
 	public void run() {
 		while (true) {
-			try {
-				messageSystem.execForAbonent(this);
-				sleep(5000);
-				log.info("handleCount=" + handleCount);
-			} catch (InterruptedException e) {
-				log.log(Level.WARNING, "Frontend was interrupted", e);
-				e.printStackTrace();
-			}
+			messageSystem.execForAbonent(this);
+			TimeHelper.sleep(5000);
+			log.info("handleCount=" + handleCount);
 		}
 	}
 

@@ -3,6 +3,7 @@ package lan.training.advanced.account;
 import lan.training.advanced.base.AccountService;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
+import lan.training.advanced.util.TimeHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +34,8 @@ public class AccountServiceImpl implements Runnable, AccountService {
 	@Override
 	public void run() {
 		while (true) {
-			try {
-				messageSystem.execForAbonent(this);
-				sleep(5000);
-			} catch (InterruptedException e) {
-				log.log(Level.WARNING, "Frontend was interrupted", e);
-				e.printStackTrace();
-			}
+			messageSystem.execForAbonent(this);
+			TimeHelper.sleep(5000);
 		}
 	}
 
@@ -56,11 +52,7 @@ public class AccountServiceImpl implements Runnable, AccountService {
 	@Override
 	public Integer getUserId(String name) {
 		log.info("Id for name" + name + " requested");
-		try {
-			sleep(5000);
-		} catch (InterruptedException e) {
-			log.log(Level.WARNING, "Account Service was interrupted", e);
-		}
+		TimeHelper.sleep(5000);
 		int id = users.get(name);
 		log.info("Id for name" + name + " equals " + id);
 		return id;
