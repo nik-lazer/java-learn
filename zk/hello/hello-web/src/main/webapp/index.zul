@@ -23,22 +23,11 @@
 			<column hflex="4">Comment</column>
 		</columns>
 		<rows sclass="narrow">
+			<group label="Asia"/>
 			<row>
 				<label value="Arabic (ar)" />
 				<label value="Ayman Elgharabawy" />
 				<label value="iso-8859-6" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Hungarian (hu)" />
-				<label value="Andreas Klein" />
-				<label value="iso-8859-2" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Italian (it)" />
-				<label value="Matteo Barbieri" />
-				<label value="iso-8859-1" />
 				<textbox />
 			</row>
 			<row>
@@ -60,6 +49,25 @@
 				<textbox />
 			</row>
 			<row>
+				<label value="Turkish (tr)" />
+				<label value="Kursat Kurt" />
+				<label value="iso-8859-9" />
+				<textbox />
+			</row>
+			<group label="Europe"/>
+			<row>
+				<label value="Hungarian (hu)" />
+				<label value="Andreas Klein" />
+				<label value="iso-8859-2" />
+				<textbox />
+			</row>
+			<row>
+				<label value="Italian (it)" />
+				<label value="Matteo Barbieri" />
+				<label value="iso-8859-1" />
+				<textbox />
+			</row>
+			<row>
 				<label value="Dutch (nl)" />
 				<label value="Wido Jansen" />
 				<label value="iso-8859-1" />
@@ -67,12 +75,6 @@
 			</row>
 			<row>
 				<label value="Portuguese (pt)" />
-				<label value="Airton Carrara" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Brazilian Portugese (pt_BR)" />
 				<label value="Airton Carrara" />
 				<label value="iso-8859-1" />
 				<textbox />
@@ -132,12 +134,6 @@
 				<textbox />
 			</row>
 			<row>
-				<label value="Turkish (tr)" />
-				<label value="Kursat Kurt" />
-				<label value="iso-8859-9" />
-				<textbox />
-			</row>
-			<row>
 				<label value="Swedish (sv)" />
 				<label value="Easit AB" />
 				<label value="iso-8859-1" />
@@ -147,6 +143,13 @@
 				<label value="Slovenian (sl)" />
 				<label value="Ziga" />
 				<label value="iso-8859-2" />
+				<textbox />
+			</row>
+			<group label="South America"/>
+			<row>
+				<label value="Brazilian Portugese (pt_BR)" />
+				<label value="Airton Carrara" />
+				<label value="iso-8859-1" />
 				<textbox />
 			</row>
 		</rows>

@@ -15,7 +15,7 @@
 					<listhead>
 						<listheader></listheader>
 						<listheader align="center">Name</listheader>
-						<listheader align="center">Aurname</listheader>
+						<listheader align="center">Surname</listheader>
 						<listheader align="center">Age</listheader>
 						<listheader align="center">Gender</listheader>
 						<listheader align="center">Address</listheader>

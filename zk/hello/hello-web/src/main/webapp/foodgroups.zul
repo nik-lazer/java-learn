@@ -1,0 +1,11 @@
+<zk>
+	<grid apply="lan.test.zk.composer.FoodComposer">
+		<columns menupopup="auto">
+			<column label="Category" sort="auto(category)" sortDirection="ascending"/>
+			<column label="Name" sort="auto(name)"/>
+			<column label="Top Nutrients" sort="auto(nutrients)"/>
+			<column label="% of Daily" sort="auto(percentageOfDaily)"/>
+			<column label="Calories" sort="auto(calories)"/>
+		</columns>
+	</grid>
+</zk>

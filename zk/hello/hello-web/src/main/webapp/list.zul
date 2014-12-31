@@ -2,7 +2,7 @@
 	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
 	        apply="lan.test.zk.composer.ListBoxComposer"
-	        closable="true" border="normal" title="Настройка" ctrlKeys="" height="400px" width="300px">
+	        closable="true" border="normal" title="Listbox" ctrlKeys="" height="400px" width="300px">
 		<borderlayout width="100%" height="100%">
 			<center>
 				<listbox use="lan.test.zk.component.ExtendedListbox" id="table" checkmark="true" vflex="true" fixedLayout="true" multiple="true" width="100%" checkmarkDeselectOther="false">
