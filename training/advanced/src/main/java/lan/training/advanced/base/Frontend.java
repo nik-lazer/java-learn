@@ -1,5 +1,6 @@
 package lan.training.advanced.base;
 
+import lan.training.advanced.mechanics.GameSession;
 import lan.training.advanced.message.Abonent;
 import lan.training.advanced.message.MessageSystem;
 import lan.training.advanced.message.MessageSystemImpl;
@@ -9,6 +10,7 @@ import lan.training.advanced.message.MessageSystemImpl;
  * Created by nik-lazer on 29.12.14.
  */
 public interface Frontend extends Abonent {
-	public MessageSystem getMessageSystem();
-	public void updateUserId(String name, int userId);
+	MessageSystem getMessageSystem();
+	void updateUserId(String name, int userId);
+	void replicateGameSession(GameSession gameSession);
 }

@@ -10,6 +10,7 @@ public class UserSession {
 	private int sessionId;
 	private String userName = "";
 	private int userId = 0;
+	private boolean isTakePart;
 	private Date timeToFinish;
 	private int clickedByUser;
 	private String enemyName;
@@ -73,5 +74,13 @@ public class UserSession {
 
 	public void setGetClickedByEnemy(int getClickedByEnemy) {
 		this.getClickedByEnemy = getClickedByEnemy;
+	}
+
+	public boolean isTakePart() {
+		return isTakePart;
+	}
+
+	public void setTakePart(boolean isTakePart) {
+		this.isTakePart = isTakePart;
 	}
 }

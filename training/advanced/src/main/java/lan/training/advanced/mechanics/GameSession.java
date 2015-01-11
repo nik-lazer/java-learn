@@ -36,16 +36,16 @@ public class GameSession {
 		return clickCount1;
 	}
 
-	public void setClickCount1(int clickCount1) {
-		this.clickCount1 = clickCount1;
+	public void incrementClickCount1() {
+		clickCount1++;
 	}
 
 	public int getClickCount2() {
 		return clickCount2;
 	}
 
-	public void setClickCount2(int clickCount2) {
-		this.clickCount2 = clickCount2;
+	public void incrementClickCount2() {
+		clickCount2++;
 	}
 
 	public GameState getGameState() {

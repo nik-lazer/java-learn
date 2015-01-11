@@ -35,6 +35,17 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 	}
 
 	@Override
+	public void incrementUserClick(int userId) {
+		GameSession session = gameSessionMap.get(userId);
+		if (userId == session.getUserId1()) {
+			session.incrementClickCount1();
+		}
+		if (userId == session.getUserId2()) {
+			session.incrementClickCount2();
+		}
+	}
+
+	@Override
 	public Address getAddress() {
 		return address;
 	}
@@ -45,7 +56,7 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 			processMessages();
 			doGMStep();
 			replicateGamesToFrontend();
-			TimeHelper.sleep(5000);
+			TimeHelper.sleep(2000);
 		}
 	}
 
@@ -58,6 +69,6 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 	}
 
 	private void processMessages() {
-
+		messageSystem.execForAbonent(this);
 	}
 }

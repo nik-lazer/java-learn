@@ -10,4 +10,5 @@ import lan.training.advanced.message.MessageSystem;
 public interface GameMechanics extends Abonent {
 	MessageSystem getMessageSystem();
 	void startGame(int userId1, int userId2);
+	void incrementUserClick(int userId);
 }
