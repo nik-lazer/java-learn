@@ -1,7 +1,5 @@
 package lan.training.advanced.frontend;
 
-import java.util.Date;
-
 /**
  * User data for {@link lan.training.advanced.frontend.FrontendImpl}
  * @author nik-lazer  29.12.2014   12:13
@@ -11,10 +9,21 @@ public class UserSession {
 	private String userName = "";
 	private int userId = 0;
 	private boolean isTakePart;
-	private Date timeToFinish;
+	private long timeToFinish;
 	private int clickedByUser;
 	private String enemyName;
 	private int getClickedByEnemy;
+	private int winner;
+
+	public boolean isGameFinished() {
+		return isGameFinished;
+	}
+
+	public void setGameFinished(boolean isGameFinished) {
+		this.isGameFinished = isGameFinished;
+	}
+
+	private boolean isGameFinished;
 
 	public UserSession(int sessionId) {
 		this.sessionId = sessionId;
@@ -44,11 +53,11 @@ public class UserSession {
 		this.userId = userId;
 	}
 
-	public Date getTimeToFinish() {
+	public long getTimeToFinish() {
 		return timeToFinish;
 	}
 
-	public void setTimeToFinish(Date timeToFinish) {
+	public void setTimeToFinish(long timeToFinish) {
 		this.timeToFinish = timeToFinish;
 	}
 
@@ -82,5 +91,19 @@ public class UserSession {
 
 	public void setTakePart(boolean isTakePart) {
 		this.isTakePart = isTakePart;
+	}
+
+	public void setWinner(int winner) {
+		this.winner = winner;
+	}
+
+	public String getWinner() {
+		if (winner == 0) {
+			return "Friendship";
+		}
+		if (winner == userId) {
+			return userName;
+		}
+		return enemyName;
 	}
 }

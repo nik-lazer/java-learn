@@ -9,7 +9,7 @@ import lan.training.advanced.message.Msg;
  * Created by nik-lazer on 29.12.14.
  */
 public interface MessageSystem {
-	public void addService(Abonent abonent);
+	public void addService(Recipients key, Abonent abonent);
 	public void sendMessage(Msg message);
 	public void execForAbonent(Abonent abonent);
 	public AddressService getAddressService();

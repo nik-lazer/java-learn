@@ -7,6 +7,7 @@ import java.util.Date;
  * Created by nik-lazer on 30.12.14.
  */
 public class GameSession {
+	public static long DURATION = 60000;
 	private int userId1;
 	private int clickCount1 = 0;
 	private int userId2;
@@ -54,5 +55,19 @@ public class GameSession {
 
 	public void stop() {
 		gameState = GameState.FINISHED;
+	}
+
+	public int getWinner() {
+		if (!isFinished()) {
+			return -1;
+		}
+		if (getClickCount1() == getClickCount2()) {
+			return 0;
+		}
+		return (clickCount1>clickCount2?userId1:userId2);
+	}
+
+	public boolean isFinished() {
+		return getGameState().equals(GameState.FINISHED);
 	}
 }

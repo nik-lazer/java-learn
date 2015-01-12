@@ -1,10 +1,14 @@
 package lan.training.advanced.mechanics;
 
+import lan.training.advanced.base.Frontend;
 import lan.training.advanced.base.GameMechanics;
+import lan.training.advanced.frontend.MsgReplicateGameSession;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
+import lan.training.advanced.message.Recipients;
 import lan.training.advanced.util.TimeHelper;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +23,7 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 
 	public GameMechanicsImpl(MessageSystem messageSystem) {
 		this.messageSystem = messageSystem;
-		messageSystem.addService(this);
+		messageSystem.addService(Recipients.GAME_MECHANICS, this);
 	}
 
 	@Override
@@ -37,11 +41,13 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 	@Override
 	public void incrementUserClick(int userId) {
 		GameSession session = gameSessionMap.get(userId);
-		if (userId == session.getUserId1()) {
-			session.incrementClickCount1();
-		}
-		if (userId == session.getUserId2()) {
-			session.incrementClickCount2();
+		if (!session.isFinished()) {
+			if (userId == session.getUserId1()) {
+				session.incrementClickCount1();
+			}
+			if (userId == session.getUserId2()) {
+				session.incrementClickCount2();
+			}
 		}
 	}
 
@@ -61,11 +67,22 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 	}
 
 	private void replicateGamesToFrontend() {
-
+		for (GameSession gameSession: gameSessionMap.values()) {
+			messageSystem.sendMessage(new MsgReplicateGameSession(getAddress(), messageSystem.getAddressService().getAddress(Recipients.FRONTEND), gameSession));
+		}
 	}
 
 	private void doGMStep() {
-
+		for (GameSession gameSession: gameSessionMap.values()) {
+			if (!gameSession.isFinished()) {
+				Date endDate = new Date();
+				endDate.setTime(gameSession.getStartTime().getTime() + gameSession.DURATION);
+				Date now = new Date();
+				if (now.after(endDate)) {
+					gameSession.stop();
+				}
+			}
+		}
 	}
 
 	private void processMessages() {

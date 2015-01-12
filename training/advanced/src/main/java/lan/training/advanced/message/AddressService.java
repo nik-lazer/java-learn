@@ -8,13 +8,13 @@ import java.util.Map;
  * @author nik-lazer  29.12.2014   13:47
  */
 public class AddressService {
-	private Map<Class, Address> addressMap = new HashMap<>();
+	private Map<Recipients, Address> addressMap = new HashMap<>();
 
-	public void addAdress(Class clazz, Address address) {
-		addressMap.put(clazz, address);
+	public void addAdress(Recipients key, Address address) {
+		addressMap.put(key, address);
 	}
 
-	public Address getAddress(Class clazz) {
-		return addressMap.get(clazz);
+	public Address getAddress(Recipients key) {
+		return addressMap.get(key);
 	}
 }

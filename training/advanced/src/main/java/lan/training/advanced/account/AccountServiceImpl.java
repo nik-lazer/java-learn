@@ -3,6 +3,7 @@ package lan.training.advanced.account;
 import lan.training.advanced.base.AccountService;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
+import lan.training.advanced.message.Recipients;
 import lan.training.advanced.util.TimeHelper;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class AccountServiceImpl implements Runnable, AccountService {
 
 	public AccountServiceImpl(MessageSystem messageSystem) {
 		this.messageSystem = messageSystem;
-		messageSystem.addService(this);
+		messageSystem.addService(Recipients.ACCOUNT_SERVICE, this);
 		users.put("first", 1);
 		users.put("second", 2);
 		users.put("third", 3);

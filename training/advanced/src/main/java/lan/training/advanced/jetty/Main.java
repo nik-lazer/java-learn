@@ -18,7 +18,7 @@ public class Main {
 		MessageSystem messageSystem = new MessageSystemImpl();
 		AccountServiceImpl accountService = new AccountServiceImpl(messageSystem);
 		GameMechanicsImpl gameMechanics = new GameMechanicsImpl(messageSystem);
-		FrontendImpl frontend = new FrontendImpl(messageSystem, accountService.getAddress(), gameMechanics.getAddress());
+		FrontendImpl frontend = new FrontendImpl(messageSystem);
 		server.setHandler(frontend);
 		new Thread(frontend).start();
 		new Thread(accountService).start();

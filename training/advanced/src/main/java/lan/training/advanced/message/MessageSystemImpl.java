@@ -14,8 +14,8 @@ public class MessageSystemImpl implements MessageSystem {
 	private Map<Address, ConcurrentLinkedQueue<Msg>> messages = new HashMap<>();
 	private AddressService addressService = new AddressService();
 
-	public void addService(Abonent abonent) {
-		addressService.addAdress(abonent.getClass(), abonent.getAddress());
+	public void addService(Recipients key, Abonent abonent) {
+		addressService.addAdress(key, abonent.getAddress());
 		messages.put(abonent.getAddress(), new ConcurrentLinkedQueue<Msg>());
 	}
 

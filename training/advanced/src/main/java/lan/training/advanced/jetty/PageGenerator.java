@@ -71,6 +71,36 @@ public class PageGenerator {
 		return stringBuilder.toString();
 	}
 
+	public static String createGameFormPage(UserSession userSession) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("<html>");
+		stringBuilder.append("<head><title>Game page</title></head>");
+		stringBuilder.append("<body>");
+		if (userSession.isGameFinished()) {
+			stringBuilder.append("<div>Game finished!</div>");
+			if (userSession.getWinner().equals(userSession.getUserName())) {
+				stringBuilder.append("<div>You are winner!!!</div>");
+			} else {
+				stringBuilder.append("<div>Winner is " + userSession.getWinner() + "</div>");
+			}
+			stringBuilder.append("<div>You clicked " + userSession.getClickedByUser() + "times</div>");
+			stringBuilder.append("<div>Your enemy is " + userSession.getEnemyName() + "</div>");
+			stringBuilder.append("<div>Enemy clicked " + userSession.getGetClickedByEnemy() + "times</div>");
+		} else {
+			stringBuilder.append("<div>Time to finish of game: " + userSession.getTimeToFinish() + "</div>");
+			stringBuilder.append("<div>You clicked " + userSession.getClickedByUser() + "times</div>");
+			stringBuilder.append("<div>Your enemy is " + userSession.getEnemyName() + "</div>");
+			stringBuilder.append("<div>Enemy clicked " + userSession.getGetClickedByEnemy() + "times</div>");
+			stringBuilder.append("<form id='form' method='POST'>");
+			stringBuilder.append("<input type='hidden' name='id' value='" + userSession.getSessionId() + "'/>");
+			stringBuilder.append("<input type='submit' name='click' value='Click'/></div>");
+			stringBuilder.append("<script>setInterval('document.getElementById(\"form\").submit()', " + userSession.getTimeToFinish() + ");</script>");
+			stringBuilder.append("</form>");
+		}
+		stringBuilder.append("</body>");
+		stringBuilder.append("</html>");
+		return stringBuilder.toString();
+	}
 
 	public static Integer getId(String param) {
 		Integer id = null;
