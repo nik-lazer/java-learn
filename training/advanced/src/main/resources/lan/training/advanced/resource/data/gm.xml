@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="lan.training.advanced.resource.GMResource">
+	<runDelay>2000</runDelay>
+	<duration>60000</duration>
+</class>

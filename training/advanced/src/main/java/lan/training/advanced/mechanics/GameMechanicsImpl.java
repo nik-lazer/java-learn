@@ -6,6 +6,7 @@ import lan.training.advanced.frontend.MsgReplicateGameSession;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
 import lan.training.advanced.message.Recipients;
+import lan.training.advanced.resource.ResourceFactory;
 import lan.training.advanced.util.TimeHelper;
 
 import java.util.Date;
@@ -62,7 +63,7 @@ public class GameMechanicsImpl implements GameMechanics, Runnable {
 			processMessages();
 			doGMStep();
 			replicateGamesToFrontend();
-			TimeHelper.sleep(2000);
+			TimeHelper.sleep(ResourceFactory.getGMResource().getRunDelay());
 		}
 	}
 

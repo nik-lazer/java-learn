@@ -4,6 +4,7 @@ import lan.training.advanced.base.AccountService;
 import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
 import lan.training.advanced.message.Recipients;
+import lan.training.advanced.resource.ResourceFactory;
 import lan.training.advanced.util.TimeHelper;
 
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class AccountServiceImpl implements Runnable, AccountService {
 	public void run() {
 		while (true) {
 			messageSystem.execForAbonent(this);
-			TimeHelper.sleep(5000);
+			TimeHelper.sleep(ResourceFactory.getAccountResource().getRunDelay());
 		}
 	}
 
@@ -53,7 +54,7 @@ public class AccountServiceImpl implements Runnable, AccountService {
 	@Override
 	public Integer getUserId(String name) {
 		log.info("Id for name" + name + " requested");
-		TimeHelper.sleep(5000);
+		TimeHelper.sleep(ResourceFactory.getAccountResource().getAuthDelay());
 		int id = users.get(name);
 		log.info("Id for name" + name + " equals " + id);
 		return id;

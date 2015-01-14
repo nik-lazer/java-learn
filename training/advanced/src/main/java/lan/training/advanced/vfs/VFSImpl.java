@@ -25,6 +25,7 @@ import java.util.logging.Logger;
  */
 public class VFSImpl implements VFS {
 	private static Logger log = Logger.getLogger(VFSImpl.class.getName());
+
 	private String rootDir;
 
 	public VFSImpl(String rootDir) {

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="lan.training.advanced.resource.FrontendResource">
+	<runDelay>5000</runDelay>
+</class>

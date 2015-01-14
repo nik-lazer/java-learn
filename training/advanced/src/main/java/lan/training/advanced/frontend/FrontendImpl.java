@@ -10,6 +10,7 @@ import lan.training.advanced.message.Address;
 import lan.training.advanced.message.MessageSystem;
 import lan.training.advanced.account.MsgGetUserId;
 import lan.training.advanced.message.Recipients;
+import lan.training.advanced.resource.ResourceFactory;
 import lan.training.advanced.util.TimeHelper;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -79,7 +80,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 	public void run() {
 		while (true) {
 			messageSystem.execForAbonent(this);
-			TimeHelper.sleep(5000);
+			TimeHelper.sleep(ResourceFactory.getFrontendResource().getRunDelay());
 			log.finest("handleCount=" + handleCount);
 		}
 	}
@@ -131,7 +132,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 			}
 		}
 		Date endDate = new Date();
-		endDate.setTime(gameSession.getStartTime().getTime() + GameSession.DURATION);
+		endDate.setTime(gameSession.getStartTime().getTime() + ResourceFactory.getGMResource().getDuration());
 		Date now = new Date();
 		long timeToFinish = endDate.getTime() - now.getTime();
 
