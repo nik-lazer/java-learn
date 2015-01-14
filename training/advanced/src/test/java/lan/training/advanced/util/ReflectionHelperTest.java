@@ -20,7 +20,7 @@ public class ReflectionHelperTest {
 	public void settingFieldTest() {
 		Domain domain = new Domain(1, "first", 2);
 		ReflectionHelper.setFieldValue(domain, "id", "2");
-		ReflectionHelper.setFieldValue(domain, "name1", "second");
+		ReflectionHelper.setFieldValue(domain, "name", "second");
 		ReflectionHelper.setFieldValue(domain, "nextId", "3");
 		assertEquals("ID must be 2", 2, domain.getId());
 		assertEquals("Name must be 'second'", "second", domain.getName());
