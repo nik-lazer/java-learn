@@ -1,6 +1,7 @@
 package lan.training.advanced.resource;
 
 import lan.training.advanced.base.VFS;
+import lan.training.advanced.parser.ResourceParser;
 import lan.training.advanced.parser.sax.ResourceSaxParser;
 import lan.training.advanced.vfs.VFSImpl;
 
@@ -55,15 +56,8 @@ public class ResourceFactory {
 
 	private Resource getResource(String xmlName) {
 		if (vfs.isExist(xmlName)) {
-			try {
-				SAXParserFactory factory = SAXParserFactory.newInstance();
-				SAXParser saxParser = factory.newSAXParser();
-				ResourceSaxParser handler = new ResourceSaxParser();
-				saxParser.parse(vfs.getAbsolutePath(xmlName), handler);
-				return (Resource)handler.getObject();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			ResourceParser parser = new ResourceSaxParser();
+			return parser.parse(vfs.getAbsolutePath(xmlName));
 		} else {
 			log.severe("Resource " + xmlName + " not exists!");
 		}

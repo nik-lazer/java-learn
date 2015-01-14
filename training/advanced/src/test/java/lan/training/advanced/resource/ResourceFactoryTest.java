@@ -13,8 +13,6 @@ public class ResourceFactoryTest {
 	@Test
 	public void resourceLoadTest() {
 		AccountResource accountResource = ResourceFactory.getAccountResource();
-		assertNotNull("account resource must be loaded", accountResource);
-		assertEquals("Fireld runDelay in accountResource must be right", 5000, accountResource.getRunDelay());
-		assertEquals("Fireld authDelay in accountResource must be right", 5000, accountResource.getAuthDelay());
+		assertNotNull("Account resource must be loaded", accountResource);
 	}
 }
