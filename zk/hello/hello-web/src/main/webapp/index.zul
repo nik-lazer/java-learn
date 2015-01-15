@@ -1,6 +1,6 @@
 <?link rel="stylesheet" href="../less/test.less"?>
-<?link rel="stylesheet" href="../less/test.less"?>
-<zk>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 	<window apply="lan.test.zk.composer.IndexComposer"
 		viewModel="@id('vm')@init('lan.test.zk.model.MyViewModel')"
 		validationMessages="@id('vmsgs')">
@@ -11,6 +11,10 @@
 		<button label="Dialog" id="openDialog"></button>
 		<button label="Find" id="openFindDialog"></button>
 	</window>
+	<style>
+	</style>
+
+	<separator bar="true" orient="horizontal" spacing="20px" sclass="sep"/>
 
 	<grid>
 		<auxhead>
