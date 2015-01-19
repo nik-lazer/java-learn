@@ -1,6 +1,8 @@
 package lan.training.advanced.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,5 +43,22 @@ public class ReflectionHelper {
 		} catch (IllegalAccessException e) {
 			log.log(Level.SEVERE, "Illegal access error", e);
 		}
+	}
+
+	public static Object methodInvoke(String methodName, Object instance) {
+		try {
+			Method method = instance.getClass().getMethod(methodName);
+			method.setAccessible(true);
+			Object result = method.invoke(instance);
+			method.setAccessible(false);
+			return result;
+		} catch (NoSuchMethodException e) {
+			log.log(Level.SEVERE, "Method " + methodName + "is not exist in class " + instance.getClass(), e);
+		} catch (InvocationTargetException e) {
+			log.log(Level.SEVERE, "Invocation target method error", e);
+		} catch (IllegalAccessException e) {
+			log.log(Level.SEVERE, "Illeegal method access error", e);
+		}
+		return null;
 	}
 }

@@ -3,6 +3,7 @@ package lan.training.advanced.util;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -27,4 +28,12 @@ public class ReflectionHelperTest {
 		assertEquals("nextID must be 3", 3, domain.getNextId().intValue());
 	}
 
+	@Test
+	public void invokeMethodTest() {
+		Domain domain = new Domain(1, "one", 2);
+		Object result = ReflectionHelper.methodInvoke("getNextId", domain);
+		assertNotNull("Invoke result must be not null", result);
+		assertTrue("Result must be int", result instanceof Integer);
+		assertEquals("Name must be equal '2'", domain.getNextId(), (Integer)result);
+	}
 }
