@@ -1,0 +1,60 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Scale test</title>
+    <style>
+        .outer {
+            width: 500px;
+            height: 500px;
+            overflow: auto;
+            text-align: center;
+            background: #eee;
+        }
+
+        /*.outer:before   { content: ''; display: inline-block; vertical-align: middle; height: 100%; }*/
+        .outer img {
+            vertical-align: middle;
+        }
+
+        .scale_x2 {
+            -webkit-transform: scale(2);
+            -moz-transform: scale(2);
+            -ms-transform: scale(2);
+            -o-transform: scale(2);
+            transform: scale(2);
+        }
+
+        .scale_x4 {
+            -webkit-transform: scale(4);
+            -moz-transform: scale(4);
+            -ms-transform: scale(4);
+            -o-transform: scale(4);
+            transform: scale(4);
+        }
+    </style>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.zoom').on("click", function () {
+                if ($(this).hasClass('orig')) {
+                    $("#profile").removeClass();
+                } else if ($(this).hasClass('x2')) {
+                    $("#profile").removeClass().addClass('scale_x2');
+                } else if ($(this).hasClass('x4')) {
+                    $("#profile").removeClass().addClass('scale_x4');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="external">
+        <div class="outer">
+            <img id="profile" src="img/fail_win.jpg"/>
+        </div>
+    </div>
+    <button class="zoom orig">Original 2</button>
+    <button class="zoom x2">x2</button>
+    <button class="zoom x4">x4</button>
+</body>
+</html>
