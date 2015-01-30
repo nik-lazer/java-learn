@@ -1,9 +1,11 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <zk>
 	<window xmlns="http://www.zkoss.org/2005/zul"
 	        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
 
 	        id="quickSearch" closable="true" border="none" sclass="quickSearch"
+	        apply="lan.test.zk.composer.FindComposer"
 	        title="Search">
 		<style>
 			.quickSearch .z-window-content {
@@ -49,10 +51,10 @@
 								<checkbox label="Start from first page" id="fromBeginning"/>
 							</vlayout>
 							<hlayout>
-								<div align="center">
-									<button sclass="imageButton findButton" label="Find" width="100px" mold="os" id="findButton"/>
-									<button label="Find next" id="findNext" disabled="true" mold="os"/>
-									<button label="Cancel" width="100px" mold="os" id="cancelButton"/>
+								<div align="center" sclass="buttonBox">
+									<button sclass="imageButton findButton" label="Find" tooltip="Find data" id="findButton" image="${c:encodeThemeURL('~./find.png')}"/>
+									<button sclass="imageButton" label="Find next" id="findNextButton" tooltiptext="Find next data" disabled="true" image="${c:encodeThemeURL('~./find_next.png')}"/>
+									<button sclass="imageButton" label="Cancel" id="cancelButton" image="${c:encodeThemeURL('~./exit.png')}"/>
 								</div>
 							</hlayout>
 						</panelchildren>

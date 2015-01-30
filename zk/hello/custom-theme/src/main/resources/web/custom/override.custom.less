@@ -11,4 +11,54 @@
 	.encodeThemeURL(background-image, "~./gray_dot.png");
 }
 
+.buttonBox {
+	height: 26px;
+}
+
+.imageButton, .acceptButton, .cancelButton, .settingsButton {
+	height: 24px;
+	overflow: hidden;
+	padding-left: 27px !important;
+	text-align: center;
+	position: relative;
+	background: none;
+	border: 0;
+	min-height: 10px;
+	line-height: @baseLineHeight;
+	text-shadow: 0 1px #FFFFFF;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #3e67a4;
+	font-family: Arial;
+	font-size: 12px;
+
+  &:hover {
+	color: #173c73;
+	background-position: 0 -25px;
+	background: none;
+  }
+  &:focus {
+	border-color: #b7b7b7;
+	.boxShadow('none');
+	background: none;
+  }
+  &:active {
+	color: #051630;
+	background-position: 0 -76px;
+	background: none;
+  }
+  &[disabled] {
+	color: #999999;
+	.opacity(@disabledOpacity);
+	.boxShadow('none');
+	cursor: default;
+	background-position: 0 -50px;
+	background: none;
+  }
+  img {
+	vertical-align: middle;
+  }
+}
+
+
 
