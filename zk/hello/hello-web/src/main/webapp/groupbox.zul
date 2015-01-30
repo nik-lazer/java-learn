@@ -1,0 +1,61 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul"
+	        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xmlns:w="client"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        closable="true" title="Groupbox">
+		<script type="text/javascript" defer="true"><![CDATA[
+			var expandAllBtn = zk.Widget.$("$expandAll");
+			var collapseAllBtn = zk.Widget.$("$collapseAll");
+			var groupboxes = jq(".dialog-edit @groupbox");
+			jq(".dialog-edit @groupbox").each(function() {
+				zk.Widget.$(this).listen({
+					onOpen: function(evt) {
+						var expandAllDisabled = true;
+						var collapseAllDisabled = true;
+						for (var i = 0; i < groupboxes.length; i++) {
+							var groupboxWidget = zk.Widget.$(groupboxes[i]);
+							if (!groupboxWidget.isOpen()) {
+								expandAllDisabled = false;
+								break;
+							}
+						}
+						for (var j = 0; j < groupboxes.length; j++) {
+							var groupboxWidget = zk.Widget.$(groupboxes[j]);
+							if (groupboxWidget.isOpen()) {
+								collapseAllDisabled = false;
+								break;
+							}
+						}
+						expandAllBtn.setDisabled(expandAllDisabled);
+						collapseAllBtn.setDisabled(collapseAllDisabled);
+					}
+				});
+			});
+
+			]]>
+		</script>
+		<vlayout class="dialog-edit">
+			<groupbox mold="3d">
+				<caption>Groupbox 1</caption>
+				<label>Box 1</label>
+			</groupbox>
+			<groupbox mold="3d">
+				<caption>Groupbox 2</caption>
+				<label>Box 2</label>
+			</groupbox>
+			<groupbox mold="3d">
+				<caption>Groupbox 3</caption>
+				<label>Box 3</label>
+			</groupbox>
+			<groupbox mold="3d">
+				<caption>Groupbox 4</caption>
+				<label>Box 4</label>
+			</groupbox>
+			<hlayout>
+				<button id="expandAll" w:onClick="jq('.dialog-edit @groupbox').each(function () {zk.Widget.$(this.id).setOpen(true)})">expandAll</button>
+				<button id="collapseAll" w:onClick="jq('.dialog-edit @groupbox').each(function () {zk.Widget.$(this.id).setOpen(false)})">collapseAll</button>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

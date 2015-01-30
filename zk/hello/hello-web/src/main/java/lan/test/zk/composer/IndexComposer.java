@@ -24,6 +24,8 @@ public class IndexComposer extends SelectorComposer<Window> {
 	Button openDialog;
 	@Wire
 	Button openFindDialog;
+	@Wire
+	Button openGroupBoxdialog;
 
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -52,4 +54,11 @@ public class IndexComposer extends SelectorComposer<Window> {
 		Window window = (Window)Executions.createComponents("/find.zul", null, null);
 		window.doModal();
 	}
+
+	@Listen("onClick=#openGroupBoxDialog")
+	public void openGroupboxDialog() {
+		Window window = (Window)Executions.createComponents("/groupbox.zul", null, null);
+		window.doModal();
+	}
+
 }

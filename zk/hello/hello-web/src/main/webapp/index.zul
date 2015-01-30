@@ -10,6 +10,7 @@
 		<button label="Switch theme" id="switchTheme"></button>
 		<button label="Dialog" id="openDialog"></button>
 		<button label="Find" id="openFindDialog"></button>
+		<button label="GroupBox" id="openGroupBoxDialog"></button>
 	</window>
 	<style>
 	</style>
