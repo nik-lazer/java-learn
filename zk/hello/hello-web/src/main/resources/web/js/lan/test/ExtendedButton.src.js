@@ -1,10 +1,10 @@
-lan.test.ExtendButton = zk.$extends(zul.wgt.Button, {
+lan.test.ExtendedButton = zk.$extends(zul.wgt.Button, {
 	domContent_: function () {
 		var label = zUtl.encodeXML(this.getLabel()),
 				img = this.getImage(),
 				iconSclass = this.domIcon_();
 		if (!img && !iconSclass) return label;
-		label = "<div>"+ label + "</div>";
+		label = '<div class="' + this.$s('label') + '">'+ label + '</div>';
 
 		if (!img) img = iconSclass;
 		else
@@ -13,6 +13,6 @@ lan.test.ExtendButton = zk.$extends(zul.wgt.Button, {
 		var space = "vertical" == this.getOrient() ? '<br/>': ' ';
 		return this.getDir() == 'reverse' ?
 		       label + space + img: img + space + label;
-	},
+	}
 
 });

@@ -1,0 +1,15 @@
+<language-addon>
+	<addon-name>extendedbutton</addon-name>
+	<language-name>xul/html</language-name>
+
+	<component>
+		<component-name>extendedbutton</component-name>
+		<component-class>lan.test.zk.component.ExtendedButton</component-class>
+		<widget-class>lan.test.ExtendedButton</widget-class>
+		<mold>
+			<mold-name>default</mold-name>
+			<mold-uri>mold/extended-button.js</mold-uri>
+			<css-uri>css/extended-button.css.dsp</css-uri>
+		</mold>
+	</component>
+</language-addon>

@@ -52,9 +52,9 @@
 							</vlayout>
 							<hlayout>
 								<div align="center" sclass="buttonBox">
-									<button sclass="imageButton findButton" label="Find" tooltip="Find data" id="findButton" image="${c:encodeThemeURL('~./find.png')}"/>
-									<button sclass="imageButton" label="Find next" id="findNextButton" tooltiptext="Find next data" disabled="true" image="${c:encodeThemeURL('~./find_next.png')}"/>
-									<button sclass="imageButton" label="Cancel" id="cancelButton" image="${c:encodeThemeURL('~./exit.png')}"/>
+									<extendedbutton label="Find" tooltip="Find data" id="findButton" image="${c:encodeThemeURL('~./find.png')}"/>
+									<extendedbutton label="Find next" id="findNextButton" tooltiptext="Find next data" disabled="true" image="${c:encodeThemeURL('~./find_next.png')}"/>
+									<extendedbutton label="Cancel" id="cancelButton" image="${c:encodeThemeURL('~./exit.png')}"/>
 								</div>
 							</hlayout>
 						</panelchildren>

@@ -1,0 +1,59 @@
+@import "~./custom/zul/less/_header.less";
+
+.z-extendedbutton {
+	.fontStyle(Arial, 12px, normal, #3e67a4);
+	min-height: 10px;
+	border: none;
+	cursor: pointer;
+	white-space: nowrap;
+	height: 24px;
+	overflow: hidden;
+	position: relative;
+	background: none;
+	display: inline-block;
+
+	&:hover {
+		color: #173c73;
+		img {
+			position: absolute;
+			top: -25px;
+			left: 0;
+		}
+	}
+	&:focus {
+		border-color: #b7b7b7;
+		.boxShadow('none');
+ 	}
+	&:active {
+		color: #051630;
+		img {
+			position: absolute;
+			top: -75px;
+			left: 0;
+		}
+	}
+	&[disabled] {
+		color: #999999;
+		.opacity(@disabledOpacity);
+		.boxShadow('none');
+		cursor: default;
+		img {
+			left: 0;
+			position: absolute;
+			top: -50px;
+		}
+	}
+	img {
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.z-extendedbutton-label {
+		display: inline-block;
+		height: 100%;
+		padding: 4px 0px 4px 27px;
+		text-shadow: 0 1px #FFFFFF;
+		vertical-align: middle;
+	}
+}

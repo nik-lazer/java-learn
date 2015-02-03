@@ -30,6 +30,7 @@ public class CustomThemeProvider implements ThemeProvider {
 
 	public String beforeWidgetCSS(Execution execution, String uri) {
 		if (uri.startsWith("~./zul/css/") ||
+		    uri.startsWith("~./js/lan/") ||
 		    uri.startsWith("~./js/zul/")) {
 			uri = ServletFns.resolveThemeURL(uri);
 		}
