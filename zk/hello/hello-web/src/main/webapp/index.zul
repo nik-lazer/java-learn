@@ -5,12 +5,19 @@
 		viewModel="@id('vm')@init('lan.test.zk.model.MyViewModel')"
 		validationMessages="@id('vmsgs')">
 		<hlayout>count: <label value="@load(vm.count)" /></hlayout>
-		<button label="add" onClick="@command('cmd')"/>
-		<label id="currentTheme"></label>
-		<button label="Switch theme" id="switchTheme"></button>
-		<button label="Dialog" id="openDialog"></button>
-		<button label="Find" id="openFindDialog"></button>
-		<button label="GroupBox" id="openGroupBoxDialog"></button>
+		<hbox id="outerBox" width="100%">
+			<hbox id="leftBox" pack="start">
+				<button label="add" onClick="@command('cmd')"/>
+				<label id="currentTheme"></label>
+				<button label="Switch theme" id="switchTheme"></button>
+			</hbox>
+			<hbox id="separatorBox" hflex="100%"></hbox>
+			<hbox id="rightBox" pack="end" hflex="min">
+				<button label="Dialog" id="openDialog"></button>
+				<button label="Find" id="openFindDialog"></button>
+				<button label="GroupBox" id="openGroupBoxDialog"></button>
+			</hbox>
+		</hbox>
 	</window>
 	<style>
 	</style>
