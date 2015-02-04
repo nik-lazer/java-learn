@@ -1,0 +1,25 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul"
+	        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        sizable="false" apply="lan.test.zk.composer.ErrorDialogComposer"
+	        closable="true" sclass="errorDialog" position="center,center"
+	        width="300px" height="100px" border="none"
+	        id="errorDialog">
+
+		<borderlayout>
+			<north border="none">
+				<hlayout id="dialogTitle" valign="middle">
+					<image id="titleImage"></image>
+					<label id="titleText" style="font-weight: bold">title</label>
+				</hlayout>
+			</north>
+			<center border="none">
+				<label id="errorText" style="font-weight: bold">Error</label>
+			</center>
+			<south border="none">
+				<label id="descriptionText">Text</label>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

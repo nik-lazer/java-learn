@@ -16,6 +16,7 @@
 				<button label="Dialog" id="openDialog"></button>
 				<button label="Find" id="openFindDialog"></button>
 				<button label="GroupBox" id="openGroupBoxDialog"></button>
+				<button label="Error Dialog" id="errorDialog"></button>
 			</hbox>
 		</hbox>
 	</window>

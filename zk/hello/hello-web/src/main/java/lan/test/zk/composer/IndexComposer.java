@@ -49,6 +49,12 @@ public class IndexComposer extends SelectorComposer<Window> {
 		window.doModal();
 	}
 
+	@Listen("onClick=#errorDialog")
+	public void openErrorDialog() {
+		Window window = (Window)Executions.createComponents("/errorDialog.zul", null, null);
+		window.doModal();
+	}
+
 	@Listen("onClick=#openFindDialog")
 	public void openFindDialog() {
 		Window window = (Window)Executions.createComponents("/find.zul", null, null);
