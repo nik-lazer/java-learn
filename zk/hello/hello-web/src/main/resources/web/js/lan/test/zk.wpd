@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package name="lan.test" language="xul/html" depends="zul.wgt">
 	<widget name="ExtendedButton"/>
+	<widget name="PointerPopupWindow"/>
 </package>

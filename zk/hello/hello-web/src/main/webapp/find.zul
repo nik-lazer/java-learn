@@ -18,7 +18,7 @@
 		</style>
 		<vlayout>
 			<label value="Find" id="label"/>
-			<textbox id="editor"/>
+			<textbox id="editor" constraint="no empty"/>
 			<hlayout width="100%" sclass="findSeparator">
 				<label value="Search parameters"/>
 			</hlayout>
@@ -52,9 +52,9 @@
 							</vlayout>
 							<hlayout>
 								<div align="center" sclass="buttonBox">
-									<extendedbutton label="Find" tooltip="Find data" id="findButton" image="${c:encodeThemeURL('~./find.png')}"/>
-									<extendedbutton label="Find next" id="findNextButton" tooltiptext="Find next data" disabled="true" image="${c:encodeThemeURL('~./find_next.png')}"/>
-									<extendedbutton label="Cancel" id="cancelButton" image="${c:encodeThemeURL('~./exit.png')}"/>
+									<extendedbutton label="Find" tooltip="Find data" id="findButton"/>
+									<extendedbutton label="Find next" id="findNextButton" tooltiptext="Find next data" disabled="false"/>
+									<extendedbutton label="Cancel" id="cancelButton"/>
 								</div>
 							</hlayout>
 						</panelchildren>
