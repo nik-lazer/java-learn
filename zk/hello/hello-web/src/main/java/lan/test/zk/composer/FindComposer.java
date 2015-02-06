@@ -1,6 +1,7 @@
 package lan.test.zk.composer;
 
 import lan.test.zk.au.PointerPopupAuResponse;
+import lan.test.zk.constraint.PopupNoEmptyConstraint;
 import org.zkoss.web.fn.ServletFns;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
@@ -35,6 +36,7 @@ public class FindComposer extends SelectorComposer<Window> {
 		findButton.setImage(ServletFns.resolveThemeURL("~./find.png"));
 		findNextButton.setImage(ServletFns.resolveThemeURL("~./find_next.png"));
 		cancelButton.setImage(ServletFns.resolveThemeURL("~./exit.png"));
+		editor.setConstraint(new PopupNoEmptyConstraint());
 	}
 
 	@Listen("onClick=#findButton")
@@ -44,16 +46,6 @@ public class FindComposer extends SelectorComposer<Window> {
 
 	@Listen("onClick=#findNextButton")
 	public void findNext() {
-		showPointerPopup(editor, "Attention!", "Find next button clicked!", "It's a second button", null);
-	}
-
-	private void showPointerPopup(Component component, String title, String msg, String desc, String type) {
-		Execution exec = Executions.getCurrent();
-		Page page = component != null ? component.getPage() : null;
-		if (page == null && exec instanceof ExecutionCtrl)
-			page = ((ExecutionCtrl) exec).getCurrentPage();
-		if (type == null)
-			type = Clients.NOTIFICATION_TYPE_INFO;
-		Clients.response(new PointerPopupAuResponse(title, msg, desc, type, page, editor, "after_start", 0, false));
+		editor.getValue();
 	}
 }
