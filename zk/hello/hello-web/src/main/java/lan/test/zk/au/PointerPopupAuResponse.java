@@ -12,7 +12,7 @@ public class PointerPopupAuResponse extends AuResponse {
 	public PointerPopupAuResponse(String title, String msg, String desc, String type, Page page, Component ref,
 	                      String position, int duration, boolean closable) {
 		super("showPointerPopup", new Object[] {
-				msg, type, page.getUuid(), ref, position, null, duration, closable });
+				title, msg, desc, type, page.getUuid(), ref, position, null, duration, closable });
 	}
 
 	/** Shows notification at given coordinate
@@ -20,6 +20,6 @@ public class PointerPopupAuResponse extends AuResponse {
 	public PointerPopupAuResponse(String title, String msg, String desc, String type, Page page, Component ref,
 	                      int x, int y, int duration, boolean closable) {
 		super("showPointerPopup", new Object[] {
-				msg, type, page.getUuid(), ref, null, new int[]{x, y}, duration, closable });
+				title, msg, desc, type, page.getUuid(), ref, null, new int[]{x, y}, duration, closable });
 	}
 }

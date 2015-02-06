@@ -267,66 +267,76 @@
 	</c:if>
 }
 
+@popupBackgroundColor: #FFFFFF;
+@popupArrowColor: @notificationArrowColor;
+@popupTextColor: #000000;
+
 .z-pointerpopupwindow {
-  color: #FFFFFF;
+  color: @popupTextColor;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.z-pointerpopupwindow-icon {
-  position: absolute;
-  top: 50%;
-  left: 2px;
-  z-index: 1;
-
-  &.z-icon-times {
-	margin-top: -5px;
-  }
-
-  &.z-icon-times-circle,
-  &.z-icon-exclamation-circle,
-  &.z-icon-info-circle {
-	font-size: 24px;
-	margin-top: -12px;
-	left: 12px;
-  }
+.z-pointerpopupwindow-title {
+  display: table;
+  vertical-align: middle;
 }
 
-.z-pointerpopupwindow-pointer + .z-pointerpopupwindow-icon {
-  left: 14px;
+.z-pointerpopupwindow-title-text {
+  display: table-cell;
+  font-weight: bold;
+  padding-left: 7px;
+  vertical-align: middle;
 }
 
-.z-pointerpopupwindow-left + .z-pointerpopupwindow-icon {
-  left: 24px;
+.z-pointerpopupwindow-msg {
+  font-weight: bold;
+  padding-top: 10px;
 }
 
-.z-pointerpopupwindow-up + .z-pointerpopupwindow-icon {
-  margin-top: -6px;
+.z-pointerpopupwindow-desc {
+  padding-top: 15px;
 }
 
-.z-pointerpopupwindow-down + .z-pointerpopupwindow-icon {
-  margin-top: -18px;
+.z-pointerpopupwindow-info-image,
+.z-pointerpopupwindow-warning-image,
+.z-pointerpopupwindow-error-image {
+  width: 16px;
+  height: 16px;
+  display: table-cell;
 }
 
-.z-pointerpopupwindow-content,  {
+.z-pointerpopupwindow-error-image {
+  .encodeThemeURL(background, "~./lan/error.png", no-repeat);
+}
+
+.z-pointerpopupwindow-info-image {
+  .encodeThemeURL(background, "~./lan/blocker.png", no-repeat);
+}
+
+.z-pointerpopupwindow-warning-image {
+  .encodeThemeURL(background, "~./lan/warning.png", no-repeat);
+}
+
+.z-pointerpopupwindow-content {
   font-family: @baseContentFontFamily;
   font-size: @fontSizeSmall;
   font-weight: normal;
-  width: 250px;
+  width: 100%;
   min-height: 130px;
-  .borderRadius(10px);
-  padding: 15px 18px 15px 45px;
+  .borderRadius(4px);
+  padding: 15px 15px 15px 15px;
   position: relative;
   overflow: hidden;
   .boxShadow('1px 1px 3px rgba(0, 0, 0, 0.35)');
 }
 
 .z-pointerpopupwindow-pointer ~ .z-pointerpopupwindow-content {
-  .displaySize(table-cell, 125px, 60px);
+  .displaySize(table-cell, 100%, 60px);
   min-height: 60px; // fix for IE9
-  .borderRadius(5px);
-  padding: 5px 18px 5px 45px;
+  .borderRadius(4px);
+  padding: 15px 15px 15px 15px;
   vertical-align: middle;
 }
 
@@ -345,124 +355,67 @@
   border: 10px solid transparent;
 }
 .z-pointerpopupwindow-left {
-  border-right-color: @notificationArrowColor;
-<c:if test="${ zk.ie == 8 }">
-border-right-color: @notificationArrowColorIE8;
-</c:if>
+  border-right-color: @popupArrowColor;
 }
 .z-pointerpopupwindow-right {
-  border-left-color: @notificationArrowColor;
-<c:if test="${ zk.ie == 8 }">
-border-left-color: @notificationArrowColorIE8;
-</c:if>
+  border-left-color: @popupArrowColor;
 }
 .z-pointerpopupwindow-up {
-  border-bottom-color: @notificationArrowColor;
-<c:if test="${ zk.ie == 8 }">
-border-bottom-color: @notificationArrowColorIE8;
-</c:if>
+  border-bottom-color: @popupArrowColor;
 }
 .z-pointerpopupwindow-down {
-  border-top-color: @notificationArrowColor;
-<c:if test="${ zk.ie == 8 }">
-border-top-color: @notificationArrowColorIE8;
-</c:if>
+  border-top-color: @popupArrowColor;
 }
 
 // notification arrow: info
 .z-pointerpopupwindow-info .z-pointerpopupwindow-content {
-  background: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-background: @notificationInfoColorIE8;
-</c:if>
+  background: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-info .z-pointerpopupwindow-left {
-  border-right-color: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-border-right-color: @notificationInfoColorIE8;
-</c:if>
+  border-right-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-info .z-pointerpopupwindow-right {
-  border-left-color: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-border-left-color: @notificationInfoColorIE8;
-</c:if>
+  border-left-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-info .z-pointerpopupwindow-up {
-  border-bottom-color: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-border-bottom-color: @notificationInfoColorIE8;
-</c:if>
+  border-bottom-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-info .z-pointerpopupwindow-down {
-  border-top-color: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-border-top-color: @notificationInfoColorIE8;
-</c:if>
+  border-top-color: @popupBackgroundColor;
 }
 
 // notification arrow: warning
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-content {
-  background: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-background: @notificationWarningColorIE8;
-</c:if>
+  background: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-left {
-  border-right-color: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-border-right-color: @notificationWarningColorIE8;
-</c:if>
+  border-right-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-right {
-  border-left-color: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-border-left-color: @notificationWarningColorIE8;
-</c:if>
+  border-left-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-up {
-  border-bottom-color: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-border-bottom-color: @notificationWarningColorIE8;
-</c:if>
+  border-bottom-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-down {
-  border-top-color: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-border-top-color: @notificationWarningColorIE8;
-</c:if>
+  border-top-color: @popupBackgroundColor;
 }
 
 // notification arrow: error
 .z-pointerpopupwindow-error .z-pointerpopupwindow-content {
-  background: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-background: @notificationErrorColorIE8;
-</c:if>
+  background: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-error .z-pointerpopupwindow-left {
-  border-right-color: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-border-right-color: @notificationErrorColorIE8;
-</c:if>
+  border-right-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-error .z-pointerpopupwindow-right {
-  border-left-color: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-border-left-color: @notificationErrorColorIE8;
-</c:if>
+  border-left-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-error .z-pointerpopupwindow-up {
-  border-bottom-color: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-border-bottom-color: @notificationErrorColorIE8;
-</c:if>
+  border-bottom-color: @popupBackgroundColor;
 }
 .z-pointerpopupwindow-error .z-pointerpopupwindow-down {
-  border-top-color: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-border-top-color: @notificationErrorColorIE8;
-</c:if>
+  border-top-color: @popupBackgroundColor;
 }
 
 .z-pointerpopupwindow-close {
@@ -497,21 +450,12 @@ border-top-color: @notificationErrorColorIE8;
 }
 
 .z-pointerpopupwindow-info .z-pointerpopupwindow-close:hover {
-  color: @notificationInfoColor;
-<c:if test="${ zk.ie == 8 }">
-color: @notificationInfoColorIE8;
-</c:if>
+  color: @popupTextColor;
 }
 .z-pointerpopupwindow-warning .z-pointerpopupwindow-close:hover {
-  color: @notificationWarningColor;
-<c:if test="${ zk.ie == 8 }">
-color: @notificationWarningColorIE8;
-</c:if>
+  color: @popupTextColor;
 }
 .z-pointerpopupwindow-error .z-pointerpopupwindow-close:hover {
-  color: @notificationErrorColor;
-<c:if test="${ zk.ie == 8 }">
-color: @notificationErrorColorIE8;
-</c:if>
+  color: @popupTextColor;
 }
 
