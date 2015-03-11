@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package name="lan.test" language="xul/html" depends="zul.wgt">
+<package name="lan.test" language="xul/html" depends="zul.wgt,zul.sel">
 	<widget name="ExtendedButton"/>
 	<widget name="PointerPopupWindow"/>
+	<widget name="IteratorListbox"/>
 </package>

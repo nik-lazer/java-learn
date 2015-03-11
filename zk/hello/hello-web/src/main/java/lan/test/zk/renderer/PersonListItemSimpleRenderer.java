@@ -14,6 +14,9 @@ public class PersonListItemSimpleRenderer implements ListitemRenderer<lan.test.z
 	public void render(Listitem item, Person data, int index) throws Exception {
 		item.appendChild(new Listcell());
 		addListcell(item, data.getName());
+		addListcell(item, data.getSurname());
+		addListcell(item, data.getAge()+"");
+		addListcell(item, data.getAddress());
 	}
 
 	private void addListcell (Listitem listitem, String value) {

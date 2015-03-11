@@ -10,13 +10,23 @@
 				</hlayout>
 			</north>
 			<center>
-				<div height="300px" width="600px">
-				<listbox id="table" checkmark="true" vflex="true">
-					<listhead>
-						<listheader width="30"></listheader>
-						<listheader align="center" sort="auto(name)">Name</listheader>
-					</listhead>
-				</listbox>
+				<div height="300px" width="700px">
+					<iteratorlistbox zclass="iterator" id="table" checkmark="true">
+						<listhead>
+							<listheader width="30px"></listheader>
+							<listheader width="100px" id="nameColumn" align="center">Name</listheader>
+							<listheader width="100px" align="center">Surname</listheader>
+							<listheader width="40px" id="ageColumn" align="center">Age</listheader>
+							<listheader width="200px" align="center">Address</listheader>
+						</listhead>
+					</iteratorlistbox>
+					<hbox zclass="z-toolbar" width="100%" id="toolbar">
+						<hbox pack="start"></hbox>
+						<hbox hflex="1" pack="end">
+							<button id="disableNameButton">Disable name</button>
+							<button id="disableAgeButton">Disable age</button>
+						</hbox>
+					</hbox>
 				</div>
 			</center>
 		</borderlayout>

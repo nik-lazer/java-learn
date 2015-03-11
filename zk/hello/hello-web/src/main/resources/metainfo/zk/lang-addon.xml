@@ -12,4 +12,10 @@
 			<css-uri>css/extended-button.css.dsp</css-uri>
 		</mold>
 	</component>
+
+	<component>
+		<component-name>iteratorlistbox</component-name>
+		<component-class>lan.test.zk.component.IteratorListbox</component-class>
+		<widget-class>lan.test.IteratorListbox</widget-class>
+	</component>
 </language-addon>
