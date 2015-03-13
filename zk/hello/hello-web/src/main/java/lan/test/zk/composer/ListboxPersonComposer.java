@@ -47,6 +47,7 @@ public class ListboxPersonComposer extends SelectorComposer<Window> {
 		tableModel.setMultiple(true);
 		tableModel.addAll(DataUtil.getPersons());
 		table.setModel(tableModel);
+		table.setPageSize(5);
 		table.setItemRenderer(new PersonListItemSimpleRenderer());
 		selButton.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {

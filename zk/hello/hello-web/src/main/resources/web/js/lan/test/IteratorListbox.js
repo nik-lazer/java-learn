@@ -5,6 +5,9 @@ lan.test.IteratorListbox = zk.$extends(zul.sel.Listbox, {
 		if (allWidths) {
 			var hdtbl = this.eheadtbl;
 			if (hdtbl && hdtbl.style.width) {
+				if (this.paging) {
+					this.paging.setWidth(hdtbl.style.width);
+				}
 				this.fire('onIteratorSize', {width: hdtbl.style.width}, {toServer: true});
 			}
 		}

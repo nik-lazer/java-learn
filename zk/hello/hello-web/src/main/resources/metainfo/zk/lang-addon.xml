@@ -17,5 +17,14 @@
 		<component-name>iteratorlistbox</component-name>
 		<component-class>lan.test.zk.component.IteratorListbox</component-class>
 		<widget-class>lan.test.IteratorListbox</widget-class>
+		<mold>
+			<mold-name>default</mold-name>
+		</mold>
+		<mold>
+			<mold-name>select</mold-name>
+		</mold>
+		<mold>
+			<mold-name>paging</mold-name>
+		</mold>
 	</component>
 </language-addon>

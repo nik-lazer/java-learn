@@ -11,7 +11,7 @@
 			</north>
 			<center>
 				<div height="300px" width="700px">
-					<iteratorlistbox zclass="iterator" id="table" checkmark="true">
+					<iteratorlistbox mold="paging" zclass="iterator" id="table" checkmark="true">
 						<listhead>
 							<listheader width="30px"></listheader>
 							<listheader width="100px" id="nameColumn" align="center">Name</listheader>
