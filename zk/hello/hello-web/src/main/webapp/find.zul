@@ -7,15 +7,6 @@
 	        id="quickSearch" closable="true" border="none" sclass="quickSearch"
 	        apply="lan.test.zk.composer.FindComposer"
 	        title="Search">
-		<style>
-			.quickSearch .z-window-content {
-				padding: 0px;
-			}
-
-			.findSeparator {
-				background-color: #eeeeef;
-			}
-		</style>
 		<vlayout>
 			<label value="Find" id="label"/>
 			<textbox id="editor" constraint="no empty"/>
