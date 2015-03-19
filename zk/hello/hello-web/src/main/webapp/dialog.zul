@@ -3,7 +3,7 @@
 	        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
 	        apply="lan.test.zk.composer.DialogComposer" height="80%"
-	        width="600px" sizable="false" contentStyle="overflow:auto"
+	        width="850px" sizable="false" contentStyle="overflow:auto"
 	        closable="true" sclass="dialog" position="center,top"
 	        id="simpleDialog" title="Simple dialog">
 		<style>
@@ -11,9 +11,28 @@
 				margin-top: 50px;
 			}
 		</style>
+		<script type="text/javascript">
+			function addTooltip(wgt) {
+				console.log("start")
+				var text = wgt.getText();
+				console.log("text="+text);
+				if (!wgt.getTooltiptext()) {
+					wgt.setTooltiptext(text);
+					console.log("set text="+text);
+				} else {
+					console.log("tooltip="+wgt.getTooltiptext());
+				}
+			}
+		</script>
 		<vlayout sclass="sign-report">
 			<hlayout>
 				<button id="addRowButton">Add row</button>
+				<textbox id="textBox" value="value 1" readonly="true"></textbox>
+				<button id="simpleButton">simpleButton</button>
+				<textbox id="textBoxReadonly" value="value readonly" readonly="true"></textbox>
+				<button id="readonlyButton">readonlyButton</button>
+				<textbox id="textBoxDisabled" value="value disabled" disabled="true"></textbox>
+				<button id="disabledButton">disabledButton</button>
 			</hlayout>
 			<grid id="grid">
 				<columns>

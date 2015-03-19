@@ -2,6 +2,10 @@ package lan.test.zk.composer;
 
 import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Person;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.event.SerializableEventListener;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -12,6 +16,7 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.RowRenderer;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import java.util.List;
@@ -28,6 +33,12 @@ public class DialogComposer extends SelectorComposer<Window> {
 	Button addrowButton;
 	@Wire
 	Grid grid;
+	@Wire
+	Textbox textBox;
+	@Wire
+	Textbox textBoxReadonly;
+	@Wire
+	Textbox textBoxDisabled;
 
 	ListModelList<Person> listModel = new ListModelList<Person>();
 
@@ -55,6 +66,21 @@ public class DialogComposer extends SelectorComposer<Window> {
 	@Listen("onClick=#addRowButton")
 	public void addRow() {
 		putRandomDataToModel();
+	}
+
+	@Listen("onClick=#simpleButton")
+	public void simpleClick() {
+		textBox.setValue(textBox.getValue() + "clicked");
+	}
+
+	@Listen("onClick=#readonlyButton")
+	public void readonlyClick() {
+		textBoxReadonly.setValue(textBoxReadonly.getValue() + "clicked");
+	}
+
+	@Listen("onClick=#disabledButton")
+	public void disabledClick() {
+		textBoxDisabled.setValue(textBoxDisabled.getValue() + "clicked");
 	}
 
 	private void putRandomDataToModel() {
