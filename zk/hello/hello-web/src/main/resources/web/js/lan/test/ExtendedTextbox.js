@@ -1,0 +1,1 @@
+lan.test.ExtendedTextbox = zk.$extends(zul.inp.Textbox, {});

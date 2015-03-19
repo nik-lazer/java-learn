@@ -27,4 +27,10 @@
 			<mold-name>paging</mold-name>
 		</mold>
 	</component>
+
+	<component>
+		<component-name>extendedtextbox</component-name>
+		<component-class>lan.test.zk.component.ExtendedTextbox</component-class>
+		<widget-class>lan.test.ExtendedTextbox</widget-class>
+	</component>
 </language-addon>

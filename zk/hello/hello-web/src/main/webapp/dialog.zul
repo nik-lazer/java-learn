@@ -27,11 +27,11 @@
 		<vlayout sclass="sign-report">
 			<hlayout>
 				<button id="addRowButton">Add row</button>
-				<textbox id="textBox" value="value 1" readonly="true"></textbox>
+				<extendedtextbox id="textBox" value="value 1"></extendedtextbox>
 				<button id="simpleButton">simpleButton</button>
-				<textbox id="textBoxReadonly" value="value readonly" readonly="true"></textbox>
+				<extendedtextbox id="textBoxReadonly" value="value readonly" readonly="true"></extendedtextbox>
 				<button id="readonlyButton">readonlyButton</button>
-				<textbox id="textBoxDisabled" value="value disabled" disabled="true"></textbox>
+				<extendedtextbox id="textBoxDisabled" value="value disabled" disabled="true" ></extendedtextbox>
 				<button id="disabledButton">disabledButton</button>
 			</hlayout>
 			<grid id="grid">

@@ -1,5 +1,6 @@
 package lan.test.zk.composer;
 
+import lan.test.zk.component.ExtendedTextbox;
 import lan.test.zk.util.DataUtil;
 import lan.test.zk.domain.Person;
 import org.zkoss.zk.ui.event.Event;
@@ -34,11 +35,11 @@ public class DialogComposer extends SelectorComposer<Window> {
 	@Wire
 	Grid grid;
 	@Wire
-	Textbox textBox;
+	ExtendedTextbox textBox;
 	@Wire
-	Textbox textBoxReadonly;
+	ExtendedTextbox textBoxReadonly;
 	@Wire
-	Textbox textBoxDisabled;
+	ExtendedTextbox textBoxDisabled;
 
 	ListModelList<Person> listModel = new ListModelList<Person>();
 
@@ -70,17 +71,17 @@ public class DialogComposer extends SelectorComposer<Window> {
 
 	@Listen("onClick=#simpleButton")
 	public void simpleClick() {
-		textBox.setValue(textBox.getValue() + "clicked");
+		textBox.setValue(textBox.getValue() + " clicked");
 	}
 
 	@Listen("onClick=#readonlyButton")
 	public void readonlyClick() {
-		textBoxReadonly.setValue(textBoxReadonly.getValue() + "clicked");
+		textBoxReadonly.setValue(textBoxReadonly.getValue() + " clicked");
 	}
 
 	@Listen("onClick=#disabledButton")
 	public void disabledClick() {
-		textBoxDisabled.setValue(textBoxDisabled.getValue() + "clicked");
+		textBoxDisabled.setValue(textBoxDisabled.getValue() + " clicked");
 	}
 
 	private void putRandomDataToModel() {
