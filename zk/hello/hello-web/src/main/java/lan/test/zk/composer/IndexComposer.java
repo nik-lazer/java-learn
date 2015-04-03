@@ -1,5 +1,9 @@
 package lan.test.zk.composer;
 
+import lan.test.zk.domain.Contributor;
+import lan.test.zk.model.RefreshableListModel;
+import lan.test.zk.renderer.ContributorRenderer;
+import lan.test.zk.util.DataUtil;
 import org.zkoss.bind.BindComposer;
 import org.zkoss.web.theme.StandardTheme;
 import org.zkoss.zk.ui.Executions;
@@ -7,6 +11,7 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Grid;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Window;
 import org.zkoss.zul.theme.Themes;
@@ -26,10 +31,20 @@ public class IndexComposer extends SelectorComposer<Window> {
 	Button openFindDialog;
 	@Wire
 	Button openGroupBoxdialog;
+	@Wire
+	Button updateModel;
+	@Wire
+	Grid grid;
+	RefreshableListModel<Contributor> model;
+
 
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
+		Executions.getCurrent().getDesktop().enableServerPush(true);
 		currentTheme.setValue(Themes.getCurrentTheme());
+		model = new RefreshableListModel<Contributor>(DataUtil.getContributors());
+		grid.setModel(model);
+		grid.setRowRenderer(new ContributorRenderer());
 	}
 
 	@Listen("onClick=#switchTheme")
@@ -67,4 +82,8 @@ public class IndexComposer extends SelectorComposer<Window> {
 		window.doModal();
 	}
 
+	@Listen("onClick=#updateModel")
+	public void updateModel() {
+		model.updateData(DataUtil.getContributors());
+	}
 }

@@ -3,168 +3,43 @@
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 	<window apply="lan.test.zk.composer.IndexComposer"
 		viewModel="@id('vm')@init('lan.test.zk.model.MyViewModel')"
-		validationMessages="@id('vmsgs')">
-		<hlayout>count: <label value="@load(vm.count)" /></hlayout>
-		<hbox id="outerBox" width="100%">
-			<hbox id="leftBox" pack="start">
-				<button label="add" onClick="@command('cmd')"/>
-				<label id="currentTheme"></label>
-				<button label="Switch theme" id="switchTheme"></button>
-			</hbox>
-			<hbox id="separatorBox" hflex="100%"></hbox>
-			<hbox id="rightBox" pack="end" hflex="min">
-				<button label="Dialog" id="openDialog"></button>
-				<button label="Find" id="openFindDialog"></button>
-				<button label="GroupBox" id="openGroupBoxDialog"></button>
-				<button label="Error Dialog" id="errorDialog"></button>
-			</hbox>
-		</hbox>
+		validationMessages="@id('vmsgs')" height="100%" width="100%">
+		<borderlayout width="100%" height="100%">
+			<north size="200">
+				<vlayout>
+					<hlayout>count: <label value="@load(vm.count)" /></hlayout>
+					<hbox id="outerBox" width="100%">
+						<hbox id="leftBox" pack="start">
+							<button label="add" onClick="@command('cmd')"/>
+							<label id="currentTheme"></label>
+							<button label="Switch theme" id="switchTheme"></button>
+						</hbox>
+						<hbox id="separatorBox" hflex="100%"></hbox>
+						<hbox id="rightBox" pack="end" hflex="min">
+							<button label="Dialog" id="openDialog"></button>
+							<button label="Find" id="openFindDialog"></button>
+							<button label="GroupBox" id="openGroupBoxDialog"></button>
+							<button label="Error Dialog" id="errorDialog"></button>
+							<button label="Update model" id="updateModel"></button>
+						</hbox>
+					</hbox>
+					<separator bar="true" orient="horizontal" spacing="20px" sclass="sep"/>
+				</vlayout>
+			</north>
+			<center autoscroll="true">
+				<grid hflex="min" id="grid">
+					<auxhead>
+						<auxheader colspan="4" label="Contributor of ZK International Message(Part)" />
+					</auxhead>
+					<columns>
+						<column>Language</column>
+						<column>Contributor</column>
+						<column>Charset</column>
+						<column>Comment</column>
+					</columns>
+				</grid>
+			</center>
+			<south height="300px"></south>
+		</borderlayout>
 	</window>
-	<style>
-	</style>
-
-	<separator bar="true" orient="horizontal" spacing="20px" sclass="sep"/>
-
-	<grid>
-		<auxhead>
-			<auxheader colspan="4" label="Contributor of ZK International Message(Part)" />
-		</auxhead>
-		<columns>
-			<column hflex="5">Language</column>
-			<column hflex="6">Contributor</column>
-			<column hflex="3">Charset</column>
-			<column hflex="4">Comment</column>
-		</columns>
-		<rows sclass="narrow">
-			<group label="Asia"/>
-			<row>
-				<label value="Arabic (ar)" />
-				<label value="Ayman Elgharabawy" />
-				<label value="iso-8859-6" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Indonesian (id)" />
-				<label value="James Liam Supangkat" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Japanese (ja)" />
-				<label value="Poli Lee" />
-				<label value=" iso-2022-jp" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Korean (ko)" />
-				<label value="Deok-su Lee" />
-				<label value="euc-kr" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Turkish (tr)" />
-				<label value="Kursat Kurt" />
-				<label value="iso-8859-9" />
-				<textbox />
-			</row>
-			<group label="Europe"/>
-			<row>
-				<label value="Hungarian (hu)" />
-				<label value="Andreas Klein" />
-				<label value="iso-8859-2" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Italian (it)" />
-				<label value="Matteo Barbieri" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Dutch (nl)" />
-				<label value="Wido Jansen" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Portuguese (pt)" />
-				<label value="Airton Carrara" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Romanian (ro)" />
-				<label value="Calin Vaida" />
-				<label value="iso-8859-2" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Russian (ru)" />
-				<label value="Denis Yarkovoy" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="French (fr)" />
-				<label value="Jêrôme Vergereau" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Spanish (es)" />
-				<label value="Daniel Octavio Ruiz Rodriguez" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="German (de)" />
-				<label value="H.-Dirk Schmitt" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Czech (cs)" />
-				<label value="Pavel Mica" />
-				<label value="iso-8859-2" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Catalan (ca)" />
-				<label value="Xavier Covas O'Ryan" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Bulgarian (bg)" />
-				<label value="Boril Yonchev" />
-				<label value="iso-8859-5" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Ukrainian (uk)" />
-				<label value="Denis Yarkovoy" />
-				<label value="iso-8859-5" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Swedish (sv)" />
-				<label value="Easit AB" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-			<row>
-				<label value="Slovenian (sl)" />
-				<label value="Ziga" />
-				<label value="iso-8859-2" />
-				<textbox />
-			</row>
-			<group label="South America"/>
-			<row>
-				<label value="Brazilian Portugese (pt_BR)" />
-				<label value="Airton Carrara" />
-				<label value="iso-8859-1" />
-				<textbox />
-			</row>
-		</rows>
-	</grid>
 </zk>
