@@ -1,11 +1,13 @@
 package lan.test.zk.composer;
 
+import com.google.common.collect.FluentIterable;
 import lan.test.zk.domain.Contributor;
 import lan.test.zk.model.RefreshableListModel;
 import lan.test.zk.renderer.ContributorRenderer;
 import lan.test.zk.util.DataUtil;
 import org.zkoss.bind.BindComposer;
 import org.zkoss.web.theme.StandardTheme;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -14,7 +16,10 @@ import org.zkoss.zul.Button;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Window;
+import org.zkoss.zul.impl.MessageboxDlg;
 import org.zkoss.zul.theme.Themes;
+
+import java.util.Collection;
 
 /**
  * Composer for main page
@@ -33,6 +38,8 @@ public class IndexComposer extends SelectorComposer<Window> {
 	Button openGroupBoxdialog;
 	@Wire
 	Button updateModel;
+	@Wire
+	Button errorButton;
 	@Wire
 	Grid grid;
 	RefreshableListModel<Contributor> model;
@@ -82,8 +89,28 @@ public class IndexComposer extends SelectorComposer<Window> {
 		window.doModal();
 	}
 
+	@Listen("onClick=#errorButton")
+	public void openPeoppleWindow() {
+		Window window = (Window)Executions.createComponents("/frameWithError.zul", null, null);
+		window.doModal();
+		highlightErrorMsgBoxes(window);
+	}
+
 	@Listen("onClick=#updateModel")
 	public void updateModel() {
 		model.updateData(DataUtil.getContributors());
 	}
+
+	/**
+	 * Change parent for rendered before messages
+	 * @param overlappedWindow
+	 */
+	private void highlightErrorMsgBoxes(Window overlappedWindow) {
+		Collection<Component> roots = overlappedWindow.getPage().getRoots();
+		FluentIterable<MessageboxDlg> errorMsgBoxIterable = FluentIterable.from(roots).filter(MessageboxDlg.class);
+		for (MessageboxDlg zkossErrorMsgBox : errorMsgBoxIterable) {
+			zkossErrorMsgBox.setParent(overlappedWindow);
+		}
+	}
+
 }

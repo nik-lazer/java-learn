@@ -21,6 +21,7 @@
 							<button label="GroupBox" id="openGroupBoxDialog"></button>
 							<button label="Error Dialog" id="errorDialog"></button>
 							<button label="Update model" id="updateModel"></button>
+							<button label="Error" id="errorButton"></button>
 						</hbox>
 					</hbox>
 					<separator bar="true" orient="horizontal" spacing="20px" sclass="sep"/>
