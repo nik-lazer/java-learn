@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language-addon>
+	<language-name>xul/html</language-name>
+	<javascript src="~./js/overrideListbox.js" charset="UTF-8"/>
+</language-addon>
+

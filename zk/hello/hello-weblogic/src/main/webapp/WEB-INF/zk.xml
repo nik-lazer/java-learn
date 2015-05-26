@@ -25,4 +25,7 @@
 		<theme-provider-class>lan.test.zk.CustomThemeProvider</theme-provider-class>
 	</desktop-config>
 
+	<language-config>
+		<addon-uri>/WEB-INF/select-lang-addon.xml</addon-uri>
+	</language-config>
 </zk>

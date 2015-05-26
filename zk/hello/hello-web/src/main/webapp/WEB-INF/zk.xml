@@ -51,4 +51,7 @@
 		<value>5</value>
 	</preference>
 
+	<language-config>
+		<addon-uri>/WEB-INF/select-lang-addon.xml</addon-uri>
+	</language-config>
 </zk>
