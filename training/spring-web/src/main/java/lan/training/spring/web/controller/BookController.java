@@ -53,7 +53,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addBook(@Valid Book book, Model model, BindingResult bindingResult) {
+	public String addBook(@Valid Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
 			return "books/add";
@@ -63,10 +63,10 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	public String updateBook(@PathVariable UUID id, @Valid Book book, Model model, BindingResult bindingResult) {
+	public String updateBook(@PathVariable UUID id, @Valid Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
-			return "books/update";
+			return "books/update/";
 		}
 		bookService.update(id, book);
 		return "redirect:/book/list";
