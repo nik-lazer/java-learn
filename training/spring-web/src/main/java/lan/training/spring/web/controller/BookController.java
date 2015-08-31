@@ -66,7 +66,7 @@ public class BookController {
 	public String updateBook(@PathVariable UUID id, @Valid Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
-			return "books/update/";
+			return "books/update";
 		}
 		bookService.update(id, book);
 		return "redirect:/book/list";
