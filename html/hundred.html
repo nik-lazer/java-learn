@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>DIV with 100% height</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        div {
+            height:100%;
+            background-color: #f00;
+        }
+        div[class^="test qwer"] {
+            background-color: #0f0;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="test qwert">Some text</div>
+</div>
+</body>
+</html>
