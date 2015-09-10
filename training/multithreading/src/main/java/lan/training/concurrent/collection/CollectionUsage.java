@@ -8,7 +8,7 @@ import java.util.List;
  * Collections.synchronizedXXX methods usage
  * @author nik-lazer  09.09.2015   16:10
  */
-public class CollectionTest {
+public class CollectionUsage {
 	public static void main(String[] args) {
 		List<String> simpleList = new ArrayList<>();
 		List list = Collections.synchronizedList(simpleList);
