@@ -8,14 +8,14 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="lan.training.spring"/>
+	<context:component-scan base-package="lan.training.dao"/>
 
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
-				<bean class="lan.training.spring.util.LanguageConverter"/>
-				<bean class="lan.training.spring.util.AuthorConverter"/>
-				<bean class="lan.training.spring.util.PublisherConverter"/>
+				<bean class="lan.training.util.LanguageConverter"/>
+				<bean class="lan.training.util.AuthorConverter"/>
+				<bean class="lan.training.util.PublisherConverter"/>
 			</set>
 		</property>
 	</bean>

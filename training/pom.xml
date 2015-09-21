@@ -14,7 +14,13 @@
 		<module>hibernate</module>
 		<module>spring-web</module>
 		<module>advanced</module>
+		<module>core</module>
+		<module>memory-stub</module>
 	</modules>
+
+	<properties>
+		<spring.version>4.2.1.RELEASE</spring.version>
+	</properties>
 
 	<build>
 		<plugins>
