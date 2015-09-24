@@ -1,5 +1,6 @@
 package lan.training.core.model;
 
+import javax.persistence.Id;
 import java.util.UUID;
 
 /**
