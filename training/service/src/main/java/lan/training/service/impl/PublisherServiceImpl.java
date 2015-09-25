@@ -30,12 +30,12 @@ public class PublisherServiceImpl implements PublisherService {
 
 	@Override
 	public void update(Publisher model) {
-		publisherDao.update(model.getId(), model);
+		publisherDao.update(model.getUid(), model);
 	}
 
 	@Override
 	public void delete(Publisher model) {
-		publisherDao.delete(model.getId());
+		publisherDao.delete(model.getUid());
 	}
 
 	@Override

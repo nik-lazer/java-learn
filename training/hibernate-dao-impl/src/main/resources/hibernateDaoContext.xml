@@ -11,15 +11,9 @@
 	">
 	<context:component-scan base-package="lan.training.hibernate.dao"/>
 
-	<jdbc:embedded-database id="dataSource" type="HSQL">
-		<jdbc:script location="classpath:sql/create-schema.sql" />
-		<jdbc:script location="classpath:sql/insert-data.sql" />
-	</jdbc:embedded-database>
+	<import resource="classpath*: /dbContext.xml"/>
 
-
-	<import resource="classpath*: dbContext.xml"/>
-
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="flyway">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="lan.training.core.model" />
 		<property name="hibernateProperties">

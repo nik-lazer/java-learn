@@ -1,13 +1,19 @@
 package lan.training.core.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Book POJO
  * @author nik-lazer 03.12.2014   13:15
  */
-public class Book extends AbstractEntity {
+public class Book implements IEntity {
+	@Id
+	@Column(columnDefinition = "BINARY(16)")
+	private UUID uid;
 	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;
 	private Publisher publisher;
@@ -63,4 +69,14 @@ public class Book extends AbstractEntity {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	@Override
+	public UUID getUid() {
+		return uid;
+	}
+
+	public void setUid(UUID uid) {
+		this.uid = uid;
+	}
+
 }

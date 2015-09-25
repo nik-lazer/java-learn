@@ -30,12 +30,12 @@ public class LanguageServiceimpl implements LanguageService {
 
 	@Override
 	public void update(Language model) {
-		languageDao.update(model.getId(), model);
+		languageDao.update(model.getUid(), model);
 	}
 
 	@Override
 	public void delete(Language model) {
-		languageDao.delete(model.getId());
+		languageDao.delete(model.getUid());
 	}
 
 	@Override

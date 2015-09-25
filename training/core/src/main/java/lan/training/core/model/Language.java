@@ -1,15 +1,17 @@
 package lan.training.core.model;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Language POJO
  * @author nik-lazer  09.12.2014   19:09
  */
-@javax.persistence.Entity
-public class Language extends AbstractEntity {
+@Entity
+public class Language implements IEntity {
 	@Id
-	private int uid;
+	@Column(columnDefinition = "BINARY(16)")
+	private UUID uid;
 	@Column
 	private String name;
 
@@ -21,11 +23,12 @@ public class Language extends AbstractEntity {
 		this.name = name;
 	}
 
-	public int getUid() {
+	@Override
+	public UUID getUid() {
 		return uid;
 	}
 
-	public void setUid(int uid) {
+	public void setUid(UUID uid) {
 		this.uid = uid;
 	}
 }

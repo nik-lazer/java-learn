@@ -31,12 +31,12 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public void update(Author model) {
-		authorDao.update(model.getId(), model);
+		authorDao.update(model.getUid(), model);
 	}
 
 	@Override
 	public void delete(Author model) {
-		authorDao.delete(model.getId());
+		authorDao.delete(model.getUid());
 	}
 
 	@Override

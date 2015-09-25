@@ -30,12 +30,12 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void update(Book model) {
-		bookDao.update(model.getId(), model);
+		bookDao.update(model.getUid(), model);
 	}
 
 	@Override
 	public void delete(Book model) {
-		bookDao.delete(model.getId());
+		bookDao.delete(model.getUid());
 	}
 
 	@Override

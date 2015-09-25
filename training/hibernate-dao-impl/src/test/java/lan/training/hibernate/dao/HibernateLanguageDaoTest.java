@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
  * @author nik-lazer  23.12.2014   16:47
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/hibernateDaoContext.xml"})
+@ContextConfiguration(locations = {"/dbContext.xml", "/hibernateDaoContext.xml"})
 public class HibernateLanguageDaoTest {
 	@Autowired
 	LanguageDao languageDao;
