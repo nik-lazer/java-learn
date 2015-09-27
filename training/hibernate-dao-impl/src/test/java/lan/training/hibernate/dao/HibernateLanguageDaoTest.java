@@ -1,6 +1,8 @@
 package lan.training.hibernate.dao;
 
 import lan.training.core.dao.LanguageDao;
+import lan.training.core.model.Language;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Test for {@link lan.training.hibernate.dao.HibernateLanguageDaoImpl}
@@ -22,8 +26,21 @@ public class HibernateLanguageDaoTest {
 	LanguageDao languageDao;
 
 	@Test
-	public void testList() {
+	public void getListTest() {
 		List list = languageDao.getList();
 		assertEquals("Must be 2", 2, list.size());
+	}
+
+	@Test
+	@Ignore
+	public void getByIdTest() {
+		Language language = new Language();
+		UUID uuid = UUID.randomUUID();
+		language.setUid(uuid);
+		language.setName("getByIdTest");
+		languageDao.add(language);
+		Language finded = languageDao.getById(uuid);
+		assertNotNull(finded);
+		assertEquals(language.getName(), finded.getName());
 	}
 }

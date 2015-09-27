@@ -13,14 +13,19 @@
 
 	<import resource="classpath*: /dbContext.xml"/>
 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="flyway">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="lan.training.core.model" />
+		<!--<property name="hibernate.connection.url"
+				  value="jdbc:hsqldb:mem:books;shutdown=true;hsqldb.write_delay_millis=0" />-->
 		<property name="hibernateProperties">
 				<props>
 					<!--note -->
 					<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-					<prop key="hibernate.connection.autocommit">false</prop>
+					<prop key="hibernate.connection.autocommit">true</prop>
+					<prop key="connection.autocommit">true</prop>
 					<prop key="hibernate.hbm2ddl.auto">validate</prop>
 					<prop key="jdbc.use_streams_for_binary">true</prop>
 					<!--suppress SpringPlaceholdersInspection -->
