@@ -18,7 +18,7 @@ public class PublisherConverter implements Converter<String, Publisher> {
 
 	@Override
 	public Publisher convert(String source) {
-		UUID uuid = UUID.fromString(source);
+		int uuid = Integer.valueOf(source);
 		Publisher publisher = publisherService.getById(uuid);
 		return publisher;
 	}

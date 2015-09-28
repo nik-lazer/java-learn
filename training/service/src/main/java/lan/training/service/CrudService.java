@@ -3,7 +3,6 @@ package lan.training.service;
 import lan.training.core.model.IEntity;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * CRUD interface
@@ -14,5 +13,5 @@ public interface CrudService<T extends IEntity> {
 	void add(T model);
 	void update(T model);
 	void delete(T model);
-	T getById(UUID id);
+	T getById(int id);
 }

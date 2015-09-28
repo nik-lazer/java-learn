@@ -69,7 +69,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-	public String updateBookForm(@PathVariable UUID id, Model model) {
+	public String updateBookForm(@PathVariable int id, Model model) {
 		Book book = bookService.getById(id);
 		if (book != null) {
 			putModelForForm(model, book);
@@ -80,7 +80,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/delete/{id}")
-	public String deleteBook(@PathVariable UUID id) {
+	public String deleteBook(@PathVariable int id) {
 		Book book = bookService.getById(id);
 		if (book != null) {
 			bookService.delete(book);

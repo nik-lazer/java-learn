@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Book POJO
@@ -13,7 +12,7 @@ import java.util.UUID;
 public class Book implements IEntity {
 	@Id
 	@Column(columnDefinition = "BINARY(16)")
-	private UUID uid;
+	private Integer uid;
 	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;
 	private Publisher publisher;
@@ -71,11 +70,11 @@ public class Book implements IEntity {
 	}
 
 	@Override
-	public UUID getUid() {
+	public Integer getUid() {
 		return uid;
 	}
 
-	public void setUid(UUID uid) {
+	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
 

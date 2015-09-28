@@ -1,6 +1,7 @@
 create table Language (
-	uid BINARY(16),
+	uid int primary key,
 	name varchar (50)
 );
-insert into Language (uid, name) values (UUID(), 'English');
-insert into Language (uid, name) values (UUID(), 'French');
+insert into Language (uid, name) values (1, 'English');
+insert into Language (uid, name) values (2, 'French');
+insert into Language (uid, name) values (3, 'German');

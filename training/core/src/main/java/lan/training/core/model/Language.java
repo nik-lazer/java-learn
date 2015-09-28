@@ -1,7 +1,6 @@
 package lan.training.core.model;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 /**
  * Language POJO
@@ -11,7 +10,7 @@ import java.util.UUID;
 public class Language implements IEntity {
 	@Id
 	@Column(columnDefinition = "BINARY(16)")
-	private UUID uid;
+	private Integer uid;
 	@Column
 	private String name;
 
@@ -24,11 +23,11 @@ public class Language implements IEntity {
 	}
 
 	@Override
-	public UUID getUid() {
+	public Integer getUid() {
 		return uid;
 	}
 
-	public void setUid(UUID uid) {
+	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
 }

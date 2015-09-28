@@ -1,14 +1,11 @@
 package lan.training.core.model;
 
-import javax.persistence.Id;
-import java.util.UUID;
-
 /**
  * Root interface for entities
  * @author nik-lazer  21.09.2015   16:34
  */
 public interface IEntity {
-	public UUID getUid();
+	public Integer getUid();
 
-	void setUid(UUID uuid);
+	void setUid(Integer uuid);
 }

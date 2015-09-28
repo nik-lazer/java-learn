@@ -18,7 +18,7 @@ public class LanguageConverter implements Converter<String, Language> {
 
 	@Override
 	public Language convert(String source) {
-		UUID uuid = UUID.fromString(source);
+		int uuid = Integer.valueOf(source);
 		Language language = languageService.getById(uuid);
 		return language;
 	}

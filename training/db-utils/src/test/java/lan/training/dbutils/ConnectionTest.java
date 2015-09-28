@@ -41,6 +41,6 @@ public class ConnectionTest {
 				return null;
 			}
 		});
-		assertEquals(2, list.size());
+		assertEquals(3, list.size());
 	}
 }

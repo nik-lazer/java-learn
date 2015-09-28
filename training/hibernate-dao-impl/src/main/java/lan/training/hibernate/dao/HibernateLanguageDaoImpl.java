@@ -3,7 +3,6 @@ package lan.training.hibernate.dao;
 import lan.training.core.model.Language;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import lan.training.core.dao.LanguageDao;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Hibernate implementation for {@link lan.training.core.dao.LanguageDao}
@@ -42,12 +40,12 @@ public class HibernateLanguageDaoImpl implements LanguageDao {
 	}
 
 	@Override
-	public void update(UUID id, Language model) {
+	public void update(Integer id, Language model) {
 		sessionFactory.openSession().update(model);
 	}
 
 	@Override
-	public void delete(UUID id) {
+	public void delete(Integer id) {
 		Language language = getById(id);
 		if (language != null) {
 			sessionFactory.openSession().delete(language);
@@ -55,7 +53,7 @@ public class HibernateLanguageDaoImpl implements LanguageDao {
 	}
 
 	@Override
-	public Language getById(UUID id) {
+	public Language getById(Integer id) {
 		return sessionFactory.openSession().get(Language.class, id);
 	}
 }

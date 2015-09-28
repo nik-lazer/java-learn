@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Implementation of {@link lan.training.service.LanguageService}
@@ -39,7 +38,7 @@ public class LanguageServiceimpl implements LanguageService {
 	}
 
 	@Override
-	public Language getById(UUID id) {
+	public Language getById(int id) {
 		return languageDao.getById(id);
 	}
 }

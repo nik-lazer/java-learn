@@ -18,7 +18,7 @@ public class AuthorConverter implements Converter<String, Author> {
 
 	@Override
 	public Author convert(String source) {
-		UUID uuid = UUID.fromString(source);
+		int uuid = Integer.valueOf(source);
 		Author author = authorService.getById(uuid);
 		return author;
 	}

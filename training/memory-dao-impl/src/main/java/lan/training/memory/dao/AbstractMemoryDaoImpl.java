@@ -7,31 +7,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Random;
 
 /**
  * Abstract service for in-memory data storing
  * @author nik-lazer  10.12.2014   13:25
  */
 public abstract class AbstractMemoryDaoImpl<T extends IEntity> implements CrudDao<T> {
-	private Map<UUID, T> data;
+	private Map<Integer, T> data;
 
-	public Map<UUID, T> listToMap(List<T> list) {
-		Map<UUID, T> map = new HashMap<>();
+	public Map<Integer, T> listToMap(List<T> list) {
+		Map<Integer, T> map = new HashMap<>();
 		for (T domain: list) {
 			if (domain.getUid() == null) {
-				domain.setUid(UUID.randomUUID());
+				Random random = new Random();
+				domain.setUid(random.nextInt());
 			}
 			map.put(domain.getUid(), domain);
 		}
 		return map;
 	}
 
-	protected Map<UUID, T> getData() {
+	protected Map<Integer, T> getData() {
 		return data;
 	}
 
-	protected void setData(Map<UUID, T> data) {
+	protected void setData(Map<Integer, T> data) {
 		this.data = data;
 	}
 
@@ -43,23 +44,24 @@ public abstract class AbstractMemoryDaoImpl<T extends IEntity> implements CrudDa
 	@Override
 	public void add(T model) {
 		if (model.getUid() == null) {
-			model.setUid(UUID.randomUUID());
+			Random random = new Random();
+			model.setUid(random.nextInt());
 		}
 		data.put(model.getUid(), model);
 	}
 
 	@Override
-	public void update(UUID id, T model) {
+	public void update(Integer id, T model) {
 		data.put(model.getUid(), model);
 	}
 
 	@Override
-	public void delete(UUID id) {
+	public void delete(Integer id) {
 		data.remove(id);
 	}
 
 	@Override
-	public T getById(UUID id) {
+	public T getById(Integer id) {
 		return data.get(id);
 	}
 

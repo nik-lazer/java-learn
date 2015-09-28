@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Implementation of {@link lan.training.service.PublisherService}
@@ -39,7 +38,7 @@ public class PublisherServiceImpl implements PublisherService {
 	}
 
 	@Override
-	public Publisher getById(UUID id) {
+	public Publisher getById(int id) {
 		return publisherDao.getById(id);
 	}
 }

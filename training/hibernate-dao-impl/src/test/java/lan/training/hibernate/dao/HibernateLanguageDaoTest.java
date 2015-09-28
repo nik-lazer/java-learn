@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -28,14 +27,14 @@ public class HibernateLanguageDaoTest {
 	@Test
 	public void getListTest() {
 		List list = languageDao.getList();
-		assertEquals("Must be 2", 2, list.size());
+		assertEquals("Must be 3", 3, list.size());
 	}
 
 	@Test
 	@Ignore
 	public void getByIdTest() {
 		Language language = new Language();
-		UUID uuid = UUID.randomUUID();
+		int uuid = 1;
 		language.setUid(uuid);
 		language.setName("getByIdTest");
 		languageDao.add(language);

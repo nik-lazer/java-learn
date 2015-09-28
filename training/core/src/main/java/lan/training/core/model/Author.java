@@ -2,7 +2,6 @@ package lan.training.core.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.util.UUID;
 
 /**
  * Author POJO
@@ -11,7 +10,7 @@ import java.util.UUID;
 public class Author implements IEntity {
 	@Id
 	@Column(columnDefinition = "BINARY(16)")
-	private UUID uid;
+	private Integer uid;
 	private String firstName;
 	private String lastName;
 
@@ -36,11 +35,11 @@ public class Author implements IEntity {
 	}
 
 	@Override
-	public UUID getUid() {
+	public Integer getUid() {
 		return uid;
 	}
 
-	public void setUid(UUID uid) {
+	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
 
