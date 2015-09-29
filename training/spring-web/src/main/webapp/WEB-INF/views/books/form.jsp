@@ -5,6 +5,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div>
 	<sf:form method="POST" modelAttribute="book">
+		<sf:hidden path="uid" id="uid"/>
 		<fieldset>
 			<table cellspacing="0">
 				<tr>
@@ -17,21 +18,21 @@
 				<tr>
 					<th><label for="publisher">publisher:</label></th>
 					<td>
-						<sf:select path="publisher" items="${publishers}" itemLabel="name" itemValue="id" id="publisher"/>
+						<sf:select path="publisher" items="${publishers}" itemLabel="name" itemValue="uid" id="publisher"/>
 						<sf:errors path="publisher" cssClass="error" />
 					</td>
 				</tr>
 				<tr>
 					<th><label for="author">author:</label></th>
 					<td>
-						<sf:select path="author" items="${authors}" itemLabel="lastName" itemValue="id" id="author"/>
+						<sf:select path="author" items="${authors}" itemLabel="lastName" itemValue="uid" id="author"/>
 						<sf:errors path="author" cssClass="error" />
 					</td>
 				</tr>
 				<tr>
 					<th><label for="language">language:</label></th>
 					<td>
-						<sf:select path="language" items="${langs}" itemLabel="name" itemValue="id" id="language"/>
+						<sf:select path="language" items="${langs}" itemLabel="name" itemValue="uid" id="language"/>
 						<sf:errors path="language" cssClass="error" />
 					</td>
 				</tr>

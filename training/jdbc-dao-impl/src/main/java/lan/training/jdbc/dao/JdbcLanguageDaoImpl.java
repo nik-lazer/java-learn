@@ -14,10 +14,9 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Random;
 
 /**
- * JDBC Message DAO implementation
+ * JDBC implementation for {@link lan.training.core.dao.LanguageDao}
  * @author nik-lazer  23.12.2014   16:01
  */
 @Repository
@@ -38,11 +37,7 @@ public class JdbcLanguageDaoImpl implements LanguageDao {
 
 	@Override
 	public void add(Language model) {
-		if (model.getUid() == null) {
-			Random random = new Random();
-			model.setUid(random.nextInt());
-		}
-		jdbcTemplate.update("insert into Language (uid, name) values (?, ?)", model.getUid(), model.getName());
+		jdbcTemplate.update("insert into Language (name) values (?)", model.getName());
 	}
 
 	@Override

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 
 /**
@@ -59,7 +58,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	public String updateBook(@PathVariable UUID id, @Valid Book book, BindingResult bindingResult, Model model) {
+	public String updateBook(@PathVariable int id, @Valid Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
 			return "books/update";

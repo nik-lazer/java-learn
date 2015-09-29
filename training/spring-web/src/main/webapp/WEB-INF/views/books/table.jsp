@@ -13,8 +13,8 @@
 	</tr>
 	<c:forEach items="${books}" var="book">
 		<tr>
-			<td><a href="<s:url value="/book/update/${book.id}/" />">update</a></td>
-			<td><a href="<s:url value="/book/delete/${book.id}/"/>">delete</a></td>
+			<td><a href="<s:url value="/book/update/${book.uid}/" />">update</a></td>
+			<td><a href="<s:url value="/book/delete/${book.uid}/"/>">delete</a></td>
 			<td>${book.name}</td>
 			<td>${book.publisher.name}</td>
 			<td>${book.author.getName()}</td>

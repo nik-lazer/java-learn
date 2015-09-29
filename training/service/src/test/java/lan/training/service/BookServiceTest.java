@@ -1,6 +1,7 @@
 package lan.training.service;
 
 import lan.training.core.model.Book;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
  * @author nik-lazer  22.09.2015   15:01
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/memoryDaoContext.xml", "/serviceContext.xml"})
+@ContextConfiguration(locations = {"/dbContext.xml", "/jdbcDaoContext.xml", "/serviceContext.xml"})
 public class BookServiceTest {
 	@Autowired
 	BookService bookService;
