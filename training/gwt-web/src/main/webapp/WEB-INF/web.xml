@@ -16,7 +16,12 @@
     <url-pattern>/GwtWeb/greet</url-pattern>
   </servlet-mapping>
 
-  <!-- Default page to serve -->
+	<servlet-mapping>
+		<servlet-name>greetServlet</servlet-name>
+		<url-pattern>/GwtWeb/book</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>GwtWeb.html</welcome-file>
   </welcome-file-list>

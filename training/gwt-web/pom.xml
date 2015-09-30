@@ -59,6 +59,17 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+	  <dependency>
+		  <groupId>lan.training</groupId>
+		  <artifactId>core</artifactId>
+		  <version>1.0-SNAPSHOT</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>lan.training</groupId>
+		  <artifactId>service</artifactId>
+		  <version>1.0-SNAPSHOT</version>
+	  </dependency>
+
   </dependencies>
 
   <build>
@@ -78,7 +89,7 @@
 				  </goals>
 				  <configuration>
 					  <sources>
-						  <source>${project.build.directory}/generated-sources/apt</source>
+						  <!--<source>${project.build.directory}/generated-sources/apt</source>-->
 						  <source>${project.build.directory}/generated-sources/gwt</source>
 					  </sources>
 				  </configuration>

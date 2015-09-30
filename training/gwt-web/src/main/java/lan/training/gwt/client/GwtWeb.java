@@ -1,5 +1,6 @@
 package lan.training.gwt.client;
 
+import lan.training.core.model.Book;
 import lan.training.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -17,6 +18,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import java.util.List;
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -32,6 +35,7 @@ public class GwtWeb implements EntryPoint {
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
+  private final BookServiceAsync bookService = GWT.create(BookService.class);
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
   private final Messages messages = GWT.create(Messages.class);
@@ -41,6 +45,7 @@ public class GwtWeb implements EntryPoint {
    */
   public void onModuleLoad() {
     final Button sendButton = new Button( messages.sendButton() + " to server" );
+	final Button bookButton = new Button( "books" );
     final TextBox nameField = new TextBox();
     nameField.setText( messages.nameField() );
     final Label errorLabel = new Label();
@@ -52,6 +57,7 @@ public class GwtWeb implements EntryPoint {
     // Use RootPanel.get() to get the entire body element
     RootPanel.get("nameFieldContainer").add(nameField);
     RootPanel.get("sendButtonContainer").add(sendButton);
+	RootPanel.get("sendButtonContainer").add(bookButton);
     RootPanel.get("errorLabelContainer").add(errorLabel);
 
     // Focus the cursor on the name field when the app loads
@@ -144,6 +150,30 @@ public class GwtWeb implements EntryPoint {
     // Add a handler to send the name to the server
     MyHandler handler = new MyHandler();
     sendButton.addClickHandler(handler);
+	bookButton.addClickHandler(new ClickHandler() {
+		@Override
+		public void onClick(ClickEvent event) {
+			bookService.getList(new AsyncCallback<List<Book>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					dialogBox.setText("Remote Procedure Call - Failure");
+					serverResponseLabel.addStyleName("serverResponseLabelError");
+					serverResponseLabel.setHTML(SERVER_ERROR);
+					dialogBox.center();
+					closeButton.setFocus(true);
+				}
+
+				@Override
+				public void onSuccess(List<Book> result) {
+					dialogBox.setText("Remote Procedure Call");
+					serverResponseLabel.removeStyleName("serverResponseLabelError");
+					serverResponseLabel.setHTML(""+result.size());
+					dialogBox.center();
+					closeButton.setFocus(true);
+				}
+			});
+		}
+	});
     nameField.addKeyUpHandler(handler);
   }
 }
