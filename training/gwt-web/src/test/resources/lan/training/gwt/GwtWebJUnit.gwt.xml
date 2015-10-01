@@ -5,6 +5,6 @@
 
   <!-- Specify the path to any remote services.                   -->
   <servlet path="/GwtWeb/greet" class="lan.training.gwt.server.GreetingServiceImpl" />
-  <servlet path="/GwtWeb/books" class="lan.training.gwt.server.BookServiceImpl" />
+  <servlet path="/GwtWeb/books" class="lan.training.gwt.server.BookRemoteServiceImpl" />
 
 </module>

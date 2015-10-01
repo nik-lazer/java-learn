@@ -1,6 +1,5 @@
 package lan.training.gwt.client;
 
-import lan.training.core.model.Book;
 import lan.training.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -17,6 +16,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import lan.training.gwt.shared.dto.BookDto;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class GwtWeb implements EntryPoint {
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
-  private final BookServiceAsync bookService = GWT.create(BookService.class);
+  private final BookRemoteServiceAsync bookService = GWT.create(BookRemoteService.class);
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
   private final Messages messages = GWT.create(Messages.class);
@@ -153,7 +153,7 @@ public class GwtWeb implements EntryPoint {
 	bookButton.addClickHandler(new ClickHandler() {
 		@Override
 		public void onClick(ClickEvent event) {
-			bookService.getList(new AsyncCallback<List<Book>>() {
+			bookService.getList(new AsyncCallback<List<BookDto>>() {
 				@Override
 				public void onFailure(Throwable caught) {
 					dialogBox.setText("Remote Procedure Call - Failure");
@@ -164,10 +164,14 @@ public class GwtWeb implements EntryPoint {
 				}
 
 				@Override
-				public void onSuccess(List<Book> result) {
+				public void onSuccess(List<BookDto> result) {
 					dialogBox.setText("Remote Procedure Call");
 					serverResponseLabel.removeStyleName("serverResponseLabelError");
-					serverResponseLabel.setHTML(""+result.size());
+					StringBuilder stringBuilder = new StringBuilder("<div>").append(result.size()).append("</div>");
+					for (BookDto book: result) {
+						stringBuilder.append("<div>").append("id=").append(book.getUid()).append(", name=").append(book.getName()).append("</div>");
+					}
+					serverResponseLabel.setHTML(stringBuilder.toString());
 					dialogBox.center();
 					closeButton.setFocus(true);
 				}
