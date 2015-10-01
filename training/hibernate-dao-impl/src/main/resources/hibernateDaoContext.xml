@@ -15,14 +15,25 @@
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" depends-on="flyway">
-		<property name="dataSource" ref="dataSource" />
+	<bean id="customDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+		<property name="url" value="jdbc:hsqldb:mem:books;shutdown=true;hsqldb.write_delay_millis=0"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+
+	<bean id="transactionManager"
+	      class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" depends-on="flyway">
+		<property name="dataSource" ref="customDataSource" />
 		<property name="packagesToScan" value="lan.training.core.model" />
-		<!--<property name="hibernate.connection.url"
-				  value="jdbc:hsqldb:mem:books;shutdown=true;hsqldb.write_delay_millis=0" />-->
 		<property name="hibernateProperties">
 				<props>
 					<!--note -->
+					<!--<prop key="hibernate.connection.url">jdbc:hsqldb:mem:books;shutdown=true;hsqldb.write_delay_millis=0</prop>-->
 					<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 					<prop key="hibernate.connection.autocommit">true</prop>
 					<prop key="connection.autocommit">true</prop>

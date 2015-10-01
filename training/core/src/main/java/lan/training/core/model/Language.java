@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 public class Language implements IEntity {
 	@Id
-	@Column(columnDefinition = "BINARY(16)")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer uid;
 	@Column
 	private String name;

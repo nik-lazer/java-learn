@@ -11,7 +11,6 @@ import java.util.Date;
  */
 public class Book implements IEntity {
 	@Id
-	@Column(columnDefinition = "BINARY(16)")
 	private Integer uid;
 	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;

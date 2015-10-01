@@ -9,7 +9,6 @@ import javax.persistence.Id;
  */
 public class Author implements IEntity {
 	@Id
-	@Column(columnDefinition = "BINARY(16)")
 	private Integer uid;
 	private String firstName;
 	private String lastName;

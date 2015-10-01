@@ -3,12 +3,14 @@ package lan.training.hibernate.dao;
 import lan.training.core.model.Language;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import lan.training.core.dao.LanguageDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,9 +36,14 @@ public class HibernateLanguageDaoImpl implements LanguageDao {
 	}
 
 	@Override
+	//@Transactional
 	public void add(Language model) {
 		Session session = sessionFactory.openSession();
-		sessionFactory.openSession().saveOrUpdate(model);
+		Transaction transaction = session.beginTransaction();
+		session.saveOrUpdate(model);
+		session.flush();
+		transaction.commit();
+		session.close();
 	}
 
 	@Override
