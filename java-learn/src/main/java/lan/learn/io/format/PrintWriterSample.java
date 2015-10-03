@@ -1,4 +1,4 @@
-package lan.learn.io.contact;
+package lan.learn.io.format;
 
 import java.io.Console;
 import java.io.PrintWriter;
