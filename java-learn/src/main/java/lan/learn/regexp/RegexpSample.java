@@ -1,5 +1,9 @@
 package lan.learn.regexp;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,5 +34,21 @@ public class RegexpSample {
 		for(String result : results) {
 			System.out.println(result);
 		}
+	}
+
+	public static Set getDataSetWithIgnoreCase(String data) {
+		if (data != null) {
+			Set<String> stringSet = new HashSet<>();
+			stringSet.addAll(Arrays.asList(data.toLowerCase().split("[ ]*,[ ]*")));
+			return stringSet;
+		}
+		return new HashSet();
+	}
+
+	public static boolean containsIgnoreCase(Set<String> set, String search) {
+		if (search != null) {
+			return set.contains(search.toLowerCase());
+		}
+		return false;
 	}
 }
