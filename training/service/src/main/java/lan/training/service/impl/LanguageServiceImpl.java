@@ -13,7 +13,7 @@ import java.util.List;
  * @author nik-lazer  22.09.2015   14:51
  */
 @Service
-public class LanguageServiceimpl implements LanguageService {
+public class LanguageServiceImpl implements LanguageService {
 	@Autowired
 	private LanguageDao languageDao;
 

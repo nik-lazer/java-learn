@@ -4,7 +4,9 @@
   <inherits name='lan.training.gwt.GwtWeb' />
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/GwtWeb/greet" class="lan.training.gwt.server.GreetingServiceImpl" />
   <servlet path="/GwtWeb/books" class="lan.training.gwt.server.BookRemoteServiceImpl" />
+	<servlet path="/GwtWeb/authors" class="lan.training.gwt.server.AuthorRemoteServiceImpl" />
+	<servlet path="/GwtWeb/publishers" class="lan.training.gwt.server.PublisherRemoteServiceImpl" />
+	<servlet path="/GwtWeb/languages" class="lan.training.gwt.server.LanguageRemoteServiceImpl" />
 
 </module>

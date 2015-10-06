@@ -5,7 +5,6 @@ import lan.training.service.BookService;
 import lan.training.service.LanguageService;
 import lan.training.service.PublisherService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  * Locator for linking GWT reomte services and Spring beans

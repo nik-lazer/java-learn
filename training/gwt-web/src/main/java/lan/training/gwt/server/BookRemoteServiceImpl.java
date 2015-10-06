@@ -5,12 +5,7 @@ import lan.training.core.model.Book;
 import lan.training.gwt.client.BookRemoteService;
 import lan.training.gwt.server.util.ServiceLocator;
 import lan.training.gwt.shared.dto.BookDto;
-import lan.training.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +20,12 @@ public class BookRemoteServiceImpl extends RemoteServiceServlet implements BookR
 	public List<BookDto> getList() {
 		List<Book> bookList = ServiceLocator.getBookService().getList();
 		List<BookDto> list = new ArrayList<>();
-		for (Book book: bookList) {
+		for (Book book : bookList) {
 			BookDto bookDto = new BookDto();
 			bookDto.setName(book.getName());
 			bookDto.setUid(book.getUid());
+			bookDto.setDate(book.getDate());
+			bookDto.setDesc(book.getDesc());
 			list.add(bookDto);
 		}
 		return list;

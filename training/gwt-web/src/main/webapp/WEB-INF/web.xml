@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app
-    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd">
+		PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+		"http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>lan.training.gwt.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-
+	<!-- Servlets -->
 	<servlet>
 		<servlet-name>bookServlet</servlet-name>
 		<servlet-class>lan.training.gwt.server.BookRemoteServiceImpl</servlet-class>
 	</servlet>
 
-	<servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/GwtWeb/greet</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>authorServlet</servlet-name>
+		<servlet-class>lan.training.gwt.server.AuthorRemoteServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>publisherServlet</servlet-name>
+		<servlet-class>lan.training.gwt.server.PublisherRemoteServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>languageServlet</servlet-name>
+		<servlet-class>lan.training.gwt.server.LanguageRemoteServiceImpl</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>bookServlet</servlet-name>
 		<url-pattern>/GwtWeb/book</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>authorServlet</servlet-name>
+		<url-pattern>/GwtWeb/author</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>publisherServlet</servlet-name>
+		<url-pattern>/GwtWeb/publisher</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>languageServlet</servlet-name>
+		<url-pattern>/GwtWeb/language</url-pattern>
+	</servlet-mapping>
+
 	<!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>GwtWeb.html</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>GwtWeb.html</welcome-file>
+	</welcome-file-list>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
