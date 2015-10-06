@@ -56,7 +56,6 @@ public class GridPanel extends SimplePanel {
 				return object.getDate().toString();
 			}
 		};
-		table.addColumn(idColumn);
 		Column<BookDto, String> descColumn = new TextColumn<BookDto>() {
 			@Override
 			public String getValue(BookDto object) {
@@ -117,7 +116,6 @@ public class GridPanel extends SimplePanel {
 				return object.getName();
 			}
 		};
-		table.addColumn(idColumn);
 		Column<PublisherDto, String> addressColumn = new TextColumn<PublisherDto>() {
 			@Override
 			public String getValue(PublisherDto object) {
@@ -148,7 +146,6 @@ public class GridPanel extends SimplePanel {
 				return object.getName();
 			}
 		};
-		table.addColumn(idColumn);
 		table.addColumn(idColumn, "id");
 		table.addColumn(nameColumn, "name");
 		dataProvider.setList(dtoList);
