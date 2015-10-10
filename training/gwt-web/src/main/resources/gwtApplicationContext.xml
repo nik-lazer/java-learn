@@ -7,10 +7,20 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="classpath*:/coreContext.xml"/>
-	<import resource="classpath*:/dbContext.xml"/>
-	<import resource="classpath*:/jdbcDaoContext.xml"/>
-	<import resource="classpath*:/serviceContext.xml"/>
+	<beans profile="jdbc">
+		<import resource="classpath*:/jdbcDaoContext.xml"/>
+	</beans>
+	<beans profile="hibernate">
+		<import resource="classpath*:/hibernateDaoContext.xml"/>
+	</beans>
+	<beans profile="memory">
+		<import resource="classpath*:/memoryDaoContext.xml"/>
+	</beans>
+	<beans>
+		<import resource="classpath*:/coreContext.xml"/>
+		<import resource="classpath*:/dbContext.xml"/>
+		<import resource="classpath*:/serviceContext.xml"/>
 
-	<context:component-scan base-package="lan.training.gwt.server"/>
+		<context:component-scan base-package="lan.training.gwt.server"/>
+	</beans>
 </beans>

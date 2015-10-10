@@ -5,6 +5,10 @@
 
 <web-app>
 
+	<init-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>jdbc</param-value>
+	</init-param>
 	<!-- Servlets -->
 	<servlet>
 		<servlet-name>bookServlet</servlet-name>

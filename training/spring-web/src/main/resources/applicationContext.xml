@@ -8,28 +8,37 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="classpath*:/coreContext.xml"/>
-	<import resource="classpath*:/dbContext.xml"/>
-	<import resource="classpath*:/jdbcDaoContext.xml"/>
-	<import resource="classpath*:/serviceContext.xml"/>
+	<beans profile="jdbc">
+		<import resource="classpath*:/jdbcDaoContext.xml"/>
+	</beans>
+	<beans profile="hibernate">
+		<import resource="classpath*:/hibernateDaoContext.xml"/>
+	</beans>
+	<beans profile="memory">
+		<import resource="classpath*:/memoryDaoContext.xml"/>
+	</beans>
+	<beans>
+		<import resource="classpath*:/coreContext.xml"/>
+		<import resource="classpath*:/dbContext.xml"/>
+		<import resource="classpath*:/serviceContext.xml"/>
 
-	<context:component-scan base-package="lan.training.spring.web"/>
+		<context:component-scan base-package="lan.training.spring.web"/>
 
-	<mvc:annotation-driven conversion-service="conversionService"/>
+		<mvc:annotation-driven conversion-service="conversionService"/>
 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/views/"/>
+			<property name="suffix" value=".jsp"/>
+		</bean>
 
-	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-		<property name="converters">
-			<set>
-				<bean class="lan.training.service.converter.LanguageConverter"/>
-				<bean class="lan.training.service.converter.AuthorConverter"/>
-				<bean class="lan.training.service.converter.PublisherConverter"/>
-			</set>
-		</property>
-	</bean>
-
+		<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+			<property name="converters">
+				<set>
+					<bean class="lan.training.service.converter.LanguageConverter"/>
+					<bean class="lan.training.service.converter.AuthorConverter"/>
+					<bean class="lan.training.service.converter.PublisherConverter"/>
+				</set>
+			</property>
+		</bean>
+	</beans>
 </beans>

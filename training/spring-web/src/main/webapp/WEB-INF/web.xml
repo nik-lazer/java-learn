@@ -5,6 +5,11 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 
+	<init-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>jdbc</param-value>
+	</init-param>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:/applicationContext.xml
