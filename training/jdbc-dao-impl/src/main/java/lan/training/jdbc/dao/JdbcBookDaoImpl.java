@@ -36,7 +36,7 @@ public class JdbcBookDaoImpl implements BookDao {
 
 	@Override
 	public List<Book> getList() {
-		return jdbcTemplate.query("select uid, name, publisher_id, author_id, language_id, date, desc from Book", new BookRowMapper());
+		return jdbcTemplate.query("select b.uid, b.name, b.publisher_id, b.author_id, b.language_id, b.date, b.desc, l.uid as luid, l.name as lname, a.uid as auid, a.firstName as aFirstName, a.lastName as aLastName, p.uid as puid, p.name as pname, p.address as paddress from Book b left join Language l on l.uid=b.language_id left join Author a on a.uid=b.author_id left join Publisher p on p.uid=b.publisher_id", new BookRowMapper());
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class JdbcBookDaoImpl implements BookDao {
 
 	@Override
 	public Book getById(Integer id) {
-		List<Book> list = jdbcTemplate.query("select uid, name, publisher_id, author_id, language_id, date, desc from Book where uid = ?", new BookRowMapper(), id);
+		List<Book> list = jdbcTemplate.query("select b.uid, b.name, b.publisher_id, b.author_id, b.language_id, b.date, b.desc, l.uid as luid, l.name as lname, a.uid as auid, a.firstName as aFirstName, a.lastName as aLastName, p.uid as puid, p.name as pname, p.address as paddress from Book b left join Language l on l.uid=b.language_id left join Author a on a.uid=b.author_id left join Publisher p on p.uid=b.publisher_id where uid = ?", new BookRowMapper(), id);
 		return DataAccessUtils.singleResult(list);
 	}
 
@@ -66,15 +66,26 @@ public class JdbcBookDaoImpl implements BookDao {
 			Book book = new Book();
 			book.setUid(rs.getInt("uid"));
 			book.setName(rs.getString("name"));
-			Publisher publisher = new Publisher();
-			publisher.setUid(rs.getInt("publisher_id"));
-			book.setPublisher(publisher);
-			Author author = new Author();
-			author.setUid(rs.getInt("author_id"));
-			book.setAuthor(author);
-			Language language = new Language();
-			language.setUid(rs.getInt("language_id"));
-			book.setLanguage(language);
+			if (rs.getInt("publisher_id") != 0) {
+				Publisher publisher = new Publisher();
+				publisher.setUid(rs.getInt("puid"));
+				publisher.setName(rs.getString("pname"));
+				publisher.setAddress(rs.getString("paddress"));
+				book.setPublisher(publisher);
+			}
+			if (rs.getInt("author_id") != 0) {
+				Author author = new Author();
+				author.setUid(rs.getInt("auid"));
+				author.setFirstName(rs.getString("aFirstName"));
+				author.setLastName(rs.getString("aLastName"));
+				book.setAuthor(author);
+			}
+			if (rs.getInt("language_id") != 0) {
+				Language language = new Language();
+				language.setUid(rs.getInt("luid"));
+				language.setName(rs.getString("lname"));
+				book.setLanguage(language);
+			}
 			book.setDate(rs.getDate("date"));
 			book.setDesc(rs.getString("desc"));
 			return book;
