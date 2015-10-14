@@ -36,14 +36,9 @@ public class HibernateLanguageDaoImpl implements LanguageDao {
 	}
 
 	@Override
-	//@Transactional
 	public void add(Language model) {
 		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
 		session.saveOrUpdate(model);
-		session.flush();
-		transaction.commit();
-		session.close();
 	}
 
 	@Override
