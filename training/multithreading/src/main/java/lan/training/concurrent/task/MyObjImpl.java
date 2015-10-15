@@ -4,7 +4,7 @@ import lan.training.concurrent.task.MyObj;
 
 /**
  * {@link lan.concurrent.task.MyObj} implementation
- * @author lazarev_nv 25.12.2013   10:02
+ * @author nik-lazer 25.12.2013   10:02
  */
 public class MyObjImpl implements MyObj {
 	private boolean ready = false;
