@@ -19,43 +19,18 @@ import java.util.List;
  * @author nik-lazer  24.12.2014   09:29
  */
 @Repository
-public class HibernateLanguageDaoImpl implements LanguageDao {
+public class HibernateLanguageDaoImpl extends AbstractHibernateDao<Language> implements LanguageDao {
 	private static Logger log = LoggerFactory.getLogger(HibernateLanguageDaoImpl.class);
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public List<Language> getList() {
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		List list = session.createQuery("from Language").list();
 		return list;
 	}
 
 	@Override
-	public void add(Language model) {
-		Session session = sessionFactory.openSession();
-		session.saveOrUpdate(model);
-	}
-
-	@Override
-	public void update(Integer id, Language model) {
-		sessionFactory.openSession().update(model);
-	}
-
-	@Override
-	public void delete(Integer id) {
-		Language language = getById(id);
-		if (language != null) {
-			sessionFactory.openSession().delete(language);
-		}
-	}
-
-	@Override
 	public Language getById(Integer id) {
-		return sessionFactory.openSession().get(Language.class, id);
+		return getSessionFactory().openSession().get(Language.class, id);
 	}
 }
