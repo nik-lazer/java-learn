@@ -64,6 +64,6 @@ public class HibernateAuthorDaoTest {
 	public void getByIdTest() {
 		Author author = authorDao.getById(1);
 		assertNotNull(author);
-		assertEquals("English", author.getFirstName());
+		assertEquals("Craig", author.getFirstName());
 	}
 }

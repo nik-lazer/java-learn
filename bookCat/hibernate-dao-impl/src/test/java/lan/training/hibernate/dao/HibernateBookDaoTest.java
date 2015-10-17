@@ -64,6 +64,6 @@ public class HibernateBookDaoTest {
 	public void getByIdTest() {
 		Book book = bookDao.getById(1);
 		assertNotNull(book);
-		assertEquals("English", book.getName());
+		assertEquals("Book 1", book.getName());
 	}
 }

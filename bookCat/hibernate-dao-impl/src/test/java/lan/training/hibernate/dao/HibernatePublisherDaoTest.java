@@ -64,6 +64,6 @@ public class HibernatePublisherDaoTest {
 	public void getByIdTest() {
 		Publisher publisher = publisherDao.getById(1);
 		assertNotNull(publisher);
-		assertEquals("English", publisher.getName());
+		assertEquals("O'Reily", publisher.getName());
 	}
 }
