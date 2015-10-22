@@ -5,6 +5,7 @@ import lan.training.core.model.IEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,21 +25,24 @@ public abstract class AbstractHibernateDao<T extends IEntity> implements CrudDao
 	}
 
 	@Override
+	@Transactional
 	public void add(T model) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(model);
 	}
 
 	@Override
+	@Transactional
 	public void update(Integer id, T model) {
-		sessionFactory.openSession().update(model);
+		sessionFactory.getCurrentSession().update(model);
 	}
 
 	@Override
+	@Transactional
 	public void delete(Integer id) {
 		T model = getById(id);
 		if (model != null) {
-			sessionFactory.openSession().delete(model);
+			sessionFactory.getCurrentSession().delete(model);
 		}
 
 	}

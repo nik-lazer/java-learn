@@ -30,7 +30,6 @@ public class HibernatePublisherDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void addTest() {
 		Publisher publisher = new Publisher();
 		publisher.setUid(4);
@@ -42,7 +41,6 @@ public class HibernatePublisherDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void updateTest() {
 		Publisher publisher = publisherDao.getById(2);
 		publisher.setName("Update test");
@@ -52,7 +50,6 @@ public class HibernatePublisherDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void deleteTest() {
 		assertNotNull(publisherDao.getById(3));
 		publisherDao.delete(3);

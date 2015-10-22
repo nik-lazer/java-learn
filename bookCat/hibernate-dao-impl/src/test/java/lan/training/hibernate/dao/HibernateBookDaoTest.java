@@ -1,7 +1,10 @@
 package lan.training.hibernate.dao;
 
 import lan.training.core.dao.BookDao;
+import lan.training.core.model.Author;
 import lan.training.core.model.Book;
+import lan.training.core.model.Language;
+import lan.training.core.model.Publisher;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,11 +33,19 @@ public class HibernateBookDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void addTest() {
 		Book book = new Book();
 		book.setUid(4);
 		book.setName("jdbcAddTest");
+		Publisher publisher = new Publisher();
+		publisher.setUid(1);
+		book.setPublisher(publisher);
+		Language language = new Language();
+		language.setUid(1);
+		book.setLanguage(language);
+		Author author = new Author();
+		author.setUid(1);
+		book.setAuthor(author);
 		bookDao.add(book);
 		book = bookDao.getById(4);
 		assertNotNull(book);
@@ -42,7 +53,6 @@ public class HibernateBookDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void updateTest() {
 		Book book = bookDao.getById(2);
 		book.setName("Update test");
@@ -52,7 +62,6 @@ public class HibernateBookDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void deleteTest() {
 		assertNotNull(bookDao.getById(3));
 		bookDao.delete(3);

@@ -30,7 +30,6 @@ public class HibernateAuthorDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void addTest() {
 		Author author = new Author();
 		author.setUid(4);
@@ -42,7 +41,6 @@ public class HibernateAuthorDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void updateTest() {
 		Author author = authorDao.getById(2);
 		author.setFirstName("Update test");
@@ -52,7 +50,6 @@ public class HibernateAuthorDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void deleteTest() {
 		assertNotNull(authorDao.getById(3));
 		authorDao.delete(3);
