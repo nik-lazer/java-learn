@@ -1,0 +1,12 @@
+To overcome these problems, Java introduced NIO (New IO) in Java 4. The key features of NIO were:
+•	 Channels and Selectors: NIO offered support for various types of channels. A channel is
+an abstraction over lower-level file system features (such as memory-mapped files and file
+locking) that lets you transfer data at a faster speed. Channels are non-blocking, so Java
+provides another feature—a selector—to select a ready channel for data transfer. A socket is a
+blocking feature whereas a channel is a non-blocking feature.
+•	 Buffers: Java 4 introduced buffering for all primitive classes (except for Boolean). It provided
+the Buffer class that offers operations such as clear, flip, mark, reset, and rewind. Concrete
+classes (subclasses of the Buffer base class) offers getters and setters for setting and getting
+data to and from a buffer.
+•	 Charset: Java 4 also introduced charset (java.nio.charset), encoders, and decoders to map
+bytes and Unicode symbols.
