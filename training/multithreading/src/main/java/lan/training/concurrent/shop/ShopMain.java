@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.SortedSet;
@@ -18,10 +20,12 @@ import java.util.TreeSet;
  */
 public class ShopMain extends Thread {
 	Logger log = LoggerFactory.getLogger(ShopMain.class);
-	private volatile boolean isGone = true;
+	private volatile Boolean isGone = true;
 	private ShopSettings shopSettings;
 	List<Cachbox> cachboxes = new ArrayList<>();
+	Queue<Customer> customers = new LinkedList<>();
 	private int id;
+	private Object customerMonitor = new Object();
 
 	public static void main(String[] args) {
 		ShopMain main = new ShopMain();
@@ -32,7 +36,7 @@ public class ShopMain extends Thread {
 	public void run() {
 		ShopSettings settings = getSettings();
 		for (int i=0; i<settings.getCachBoxNumber(); i++) {
-			Cachbox cachbox = new Cachbox(i+1);
+			Cachbox cachbox = new Cachbox(i+1, this);
 			Thread thread = new Thread(cachbox);
 			cachboxes.add(cachbox);
 			thread.start();
@@ -49,18 +53,12 @@ public class ShopMain extends Thread {
 			}
 		}.start();
 		while (isGone) {
-			Customer customer = generateCustomer();
-			Collections.sort(cachboxes);
-			Cachbox cachbox = cachboxes.get(0);
-			log.info("Selected {} as the least loaded", cachbox);
-			cachbox.addCustomer(customer);
-			long delay = Math.round(Math.random() * 1000000 / settings.getCachBoxNumber());
-			synchronized (this) {
-				try {
-					wait(delay);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			generateCustomer();
+			long delay = Math.round(Math.random() * 10000 / settings.getCachBoxNumber());
+			try {
+				Thread.sleep(delay);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 		log.info("Main is finished");
@@ -77,19 +75,34 @@ public class ShopMain extends Thread {
 
 	private void stopThreads() {
 		log.info("Shutdown");
-		synchronized (this) {
+		synchronized (customerMonitor) {
 			isGone = false;
-			notify();
-		}
-		for (Cachbox cachbox: cachboxes) {
-			cachbox.shutdown();
+			for (Cachbox cachbox: cachboxes) {
+				cachbox.shutdown();
+			}
+			customerMonitor.notifyAll();
 		}
 	}
 
-	private Customer generateCustomer() {
+	private void generateCustomer() {
 		long timeForProcessing = Math.round(Math.random() * 10000);
 		Customer customer = new Customer(++id, timeForProcessing);
 		log.info("{} is generated", customer);
-		return customer;
+		synchronized (customerMonitor) {
+			customers.add(customer);
+			customerMonitor.notifyAll();
+		}
+	}
+
+	public Customer getNextCustomer() {
+		synchronized (customerMonitor) {
+			Customer customer = customers.poll();
+			log.info("{} is get", customer);
+			return customer;
+		}
+	}
+
+	public Object getCustomerMonitor() {
+		return customerMonitor;
 	}
 }

@@ -5,32 +5,37 @@ import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Cachebox model
  * @author nik-lazer  26.10.2015   09:34
  */
-public class Cachbox implements Runnable, Comparable<Cachbox> {
+public class Cachbox implements Runnable {
 	private static final Logger log = LoggerFactory.getLogger(Cachbox.class);
 	private Integer number;
+	private ShopMain shopMain;
 	private volatile Boolean isGone = true;
-	private Queue<Customer> customers = new LinkedList<>();
 
-	public Cachbox(int number) {
+	public Cachbox(int number, ShopMain shopMain) {
 		this.number = number;
+		this.shopMain = shopMain;
 	}
 
 	@Override
 	public void run() {
 		while (isGone) {
-			Customer customer = customers.poll();
+			Customer customer = shopMain.getNextCustomer();
 			if (customer != null) {
 				processNextCustomer(customer);
 			} else {
-				synchronized (this) {
+				synchronized (shopMain) {
 					try {
 						log.info("There are no for processing, {} is waiting", this);
-						wait(10000);
+						shopMain.wait(10000);
 					} catch (InterruptedException e) {
 						log.error("{} is interrupted in waiting", e, this);
 					}
@@ -38,11 +43,6 @@ public class Cachbox implements Runnable, Comparable<Cachbox> {
 			}
 		}
 		log.info("{} is finished", this);
-	}
-
-	public synchronized void addCustomer(Customer customer) {
-		customers.add(customer);
-		notifyAll();
 	}
 
 	private void processNextCustomer(Customer customer) {
@@ -56,31 +56,13 @@ public class Cachbox implements Runnable, Comparable<Cachbox> {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof Cachbox)) {
-			return false;
-		}
-		if (this == obj) {
-			return true;
-		}
-		return number.equals(((Cachbox) obj).number);
-	}
-
-	@Override
-	public int compareTo(Cachbox o) {
-		Integer size = customers.size();
-		return size.compareTo(o.customers.size());
-	}
-
-	@Override
 	public String toString() {
 		return "Cachbox{" +
 		       "number=" + number +
 		       '}';
 	}
 
-	public synchronized void shutdown() {
+	public void shutdown() {
 		isGone = false;
-		notifyAll();
 	}
 }
