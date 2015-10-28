@@ -13,6 +13,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Main class for shop model
@@ -22,10 +24,9 @@ public class ShopMain extends Thread {
 	Logger log = LoggerFactory.getLogger(ShopMain.class);
 	private volatile Boolean isGone = true;
 	private ShopSettings shopSettings;
-	List<Cachbox> cachboxes = new ArrayList<>();
-	Queue<Customer> customers = new LinkedList<>();
+	List<Thread> cachboxes = new ArrayList<>();
+	BlockingQueue<Customer> customers = new LinkedBlockingQueue<>();
 	private int id;
-	private Object customerMonitor = new Object();
 
 	public static void main(String[] args) {
 		ShopMain main = new ShopMain();
@@ -38,7 +39,7 @@ public class ShopMain extends Thread {
 		for (int i=0; i<settings.getCachBoxNumber(); i++) {
 			Cachbox cachbox = new Cachbox(i+1, this);
 			Thread thread = new Thread(cachbox);
-			cachboxes.add(cachbox);
+			cachboxes.add(thread);
 			thread.start();
 		}
 		new Thread() {
@@ -58,7 +59,8 @@ public class ShopMain extends Thread {
 			try {
 				Thread.sleep(delay);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				log.error("sleeping error", e);
+				stopThreads();
 			}
 		}
 		log.info("Main is finished");
@@ -75,12 +77,9 @@ public class ShopMain extends Thread {
 
 	private void stopThreads() {
 		log.info("Shutdown");
-		synchronized (customerMonitor) {
-			isGone = false;
-			for (Cachbox cachbox: cachboxes) {
-				cachbox.shutdown();
-			}
-			customerMonitor.notifyAll();
+		isGone = false;
+		for (Thread cachbox: cachboxes) {
+			cachbox.interrupt();;
 		}
 	}
 
@@ -88,21 +87,21 @@ public class ShopMain extends Thread {
 		long timeForProcessing = Math.round(Math.random() * 10000);
 		Customer customer = new Customer(++id, timeForProcessing);
 		log.info("{} is generated", customer);
-		synchronized (customerMonitor) {
-			customers.add(customer);
-			customerMonitor.notifyAll();
+		try {
+			customers.put(customer);
+		} catch (InterruptedException e) {
+			log.error("generate error", e);
 		}
 	}
 
 	public Customer getNextCustomer() {
-		synchronized (customerMonitor) {
-			Customer customer = customers.poll();
-			log.info("{} is get", customer);
-			return customer;
+		Customer customer = null;
+		try {
+			customer = customers.take();
+		} catch (InterruptedException e) {
+			log.error("taking error", e);
 		}
-	}
-
-	public Object getCustomerMonitor() {
-		return customerMonitor;
+		log.info("{} is got", customer);
+		return customer;
 	}
 }

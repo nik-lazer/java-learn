@@ -31,15 +31,6 @@ public class Cachbox implements Runnable {
 			Customer customer = shopMain.getNextCustomer();
 			if (customer != null) {
 				processNextCustomer(customer);
-			} else {
-				synchronized (shopMain) {
-					try {
-						log.info("There are no for processing, {} is waiting", this);
-						shopMain.wait(10000);
-					} catch (InterruptedException e) {
-						log.error("{} is interrupted in waiting", e, this);
-					}
-				}
 			}
 		}
 		log.info("{} is finished", this);
@@ -50,7 +41,8 @@ public class Cachbox implements Runnable {
 		try {
 			Thread.sleep(customer.getTimeOfProcessing());
 		} catch (InterruptedException e) {
-			log.error("Cachbox {} is interrupted during processinf", e, this);
+			log.error("Cachbox {} is interrupted during processing", e, this);
+			shutdown();
 		}
 		log.info("{} Processing customer {} finished", this, customer);
 	}
