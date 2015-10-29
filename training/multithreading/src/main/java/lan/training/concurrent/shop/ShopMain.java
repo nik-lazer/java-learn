@@ -4,15 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -71,6 +64,7 @@ public class ShopMain extends Thread {
 			}
 		}
 		printResults();
+		log.info("Count of unprocesses customers: {}", customers.size());
 		log.info("Main is finished");
 	}
 
