@@ -14,7 +14,12 @@ import java.util.Scanner;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Main class for shop model
@@ -24,8 +29,10 @@ public class ShopMain extends Thread {
 	Logger log = LoggerFactory.getLogger(ShopMain.class);
 	private volatile Boolean isGone = true;
 	private ShopSettings shopSettings;
-	List<Thread> cachboxes = new ArrayList<>();
+	List<Cachbox> cachboxes = new ArrayList<>();
+	private ExecutorService pool;
 	BlockingQueue<Customer> customers = new LinkedBlockingQueue<>();
+	List<Future<Integer>> results = new ArrayList<>();
 	private int id;
 
 	public static void main(String[] args) {
@@ -36,11 +43,11 @@ public class ShopMain extends Thread {
 	@Override
 	public void run() {
 		ShopSettings settings = getSettings();
+		pool = Executors.newFixedThreadPool(settings.getCachBoxNumber());
 		for (int i=0; i<settings.getCachBoxNumber(); i++) {
-			Cachbox cachbox = new Cachbox(i+1, this);
-			Thread thread = new Thread(cachbox);
-			cachboxes.add(thread);
-			thread.start();
+			Cachbox cachbox = new Cachbox(i, this);
+			results.add(pool.submit(cachbox));
+			cachboxes.add(cachbox);
 		}
 		new Thread() {
 			@Override
@@ -63,23 +70,52 @@ public class ShopMain extends Thread {
 				stopThreads();
 			}
 		}
+		printResults();
 		log.info("Main is finished");
 	}
 
 	private ShopSettings getSettings() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please input number of cachbox");
+		System.out.println("Please input number of cachbox:");
 		int cachBoxNumber = scanner.nextInt();
-		System.out.println("Please input true for output in file");
+		System.out.println("Please input true for output in file:");
 		boolean isFile = scanner.nextBoolean();
 		return new ShopSettings(cachBoxNumber, (isFile?StatOutputType.FILE:StatOutputType.CONSOLE));
+	}
+
+	private void printResults() {
+		log.info("Results:");
+		for (Future<Integer> result: results) {
+			try {
+				log.info("processed: " + result.get());
+			} catch (InterruptedException e) {
+				log.error("Interruption error during printing result was occured", e);
+			} catch (ExecutionException e) {
+				log.error("Execution error during printing result was occured", e);
+			}
+		}
 	}
 
 	private void stopThreads() {
 		log.info("Shutdown");
 		isGone = false;
-		for (Thread cachbox: cachboxes) {
-			cachbox.interrupt();;
+		for (Cachbox cachbox: cachboxes) {
+			cachbox.shutdown();
+		}
+		pool.shutdown(); // Disable new tasks from being submitted
+		try {
+			// Wait a while for existing tasks to terminate
+			if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
+				pool.shutdownNow(); // Cancel currently executing tasks
+				// Wait a while for tasks to respond to being cancelled
+				if (!pool.awaitTermination(60, TimeUnit.SECONDS))
+					log.error("Pool did not terminate");
+			}
+		} catch (InterruptedException ie) {
+			// (Re-)Cancel if current thread also interrupted
+			pool.shutdownNow();
+			// Preserve interrupt status
+			Thread.currentThread().interrupt();
 		}
 	}
 
