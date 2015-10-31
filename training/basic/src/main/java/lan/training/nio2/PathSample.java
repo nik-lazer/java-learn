@@ -17,7 +17,7 @@ public class PathSample {
 
 	private static void addiditionalPath() {
 		ClassLoader classLoader = PathSample.class.getClassLoader();
-		Path path = new File(classLoader.getResource("nio2.txt").getFile()).toPath();
+		Path path = new File(classLoader.getResource("nio2/nio2.txt").getFile()).toPath();
 		System.out.printf("The file name is %s%n", path.getFileName());
 		System.out.printf("It's URI is %s%n", path.toUri());
 		try {
@@ -31,7 +31,7 @@ public class PathSample {
 
 	private static void simplePath() {
 		ClassLoader classLoader = PathSample.class.getClassLoader();
-		File file = new File(classLoader.getResource("nio2.txt").getFile());
+		File file = new File(classLoader.getResource("nio2/nio2.txt").getFile());
 		Path testFilePath = Paths.get(file.toURI());
 		System.out.println("Printing file information: ");
 		System.out.println("\tfile name: " + testFilePath.getFileName());
