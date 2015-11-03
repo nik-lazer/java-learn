@@ -34,10 +34,12 @@ public class FileWalk {
 	static class MyFileVisitor extends SimpleFileVisitor<Path> {
 		public FileVisitResult visitFile(Path path, BasicFileAttributes fileAttributes){
 			System.out.println("file name:" + path.getFileName());
+			System.out.printf( "Readable: %b, Writable: %b, Executable: %b %n", Files.isReadable(path), Files.isWritable(path), Files.isExecutable(path));
 			return FileVisitResult.CONTINUE;
 		}
 		public FileVisitResult preVisitDirectory(Path path, BasicFileAttributes fileAttributes){
 			System.out.println("----------Directory name:" + path + "----------");
+			System.out.printf( "----------Readable: %b, Writable: %b, Executable: %b ----------%n", Files.isReadable(path), Files.isWritable(path), Files.isExecutable(path));
 			return FileVisitResult.CONTINUE;
 		}
 
