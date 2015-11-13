@@ -8,10 +8,11 @@
 				<hlayout>
 					<button id="refreshButton">Refresh</button>
 					<button id="addButton">Add</button>
+					<button id="reattachButton">Reattach</button>
 				</hlayout>
 			</north>
-			<center>
-				<listbox id="table" checkmark="true" vflex="true" use="lan.test.zk.component.AdvancedListbox">
+			<center id="center">
+				<listbox id="table" checkmark="true" vflex="true" use="lan.test.zk.component.ColoredListbox">
 					<listhead>
 						<listheader></listheader>
 						<listheader align="center">Name</listheader>
