@@ -9,9 +9,7 @@ import javax.persistence.Id;
  * @author nik-lazer  09.12.2014   19:13
  */
 @Entity
-public class Publisher implements IEntity {
-	@Id
-	private Integer uid;
+public class Publisher extends AbstractEntity {
 	@Column
 	private String name;
 	@Column
@@ -32,13 +30,4 @@ public class Publisher implements IEntity {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@Override
-	public Integer getUid() {
-		return uid;
-	}
-
-	public void setUid(Integer uid) {
-		this.uid = uid;
-	}
-
 }

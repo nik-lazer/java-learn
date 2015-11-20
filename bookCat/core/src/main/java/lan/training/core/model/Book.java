@@ -9,9 +9,7 @@ import java.util.Date;
  * @author nik-lazer 03.12.2014   13:15
  */
 @Entity
-public class Book implements IEntity {
-	@Id
-	private Integer uid;
+public class Book extends AbstractEntity {
 	@Column
 	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;
@@ -76,14 +74,4 @@ public class Book implements IEntity {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-
-	@Override
-	public Integer getUid() {
-		return uid;
-	}
-
-	public void setUid(Integer uid) {
-		this.uid = uid;
-	}
-
 }
