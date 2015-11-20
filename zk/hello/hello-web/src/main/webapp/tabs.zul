@@ -1,0 +1,22 @@
+<zk>
+	<window xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        apply="lan.test.zk.composer.TabboxComposer"
+	        closable="true" border="normal" title="Tabbox" ctrlKeys="" height="400px" width="700px">
+		<borderlayout width="100%" height="100%">
+			<center>
+				<tabbox id="tabbox" height="100%" width="100%">
+					<tabs>
+						<tab id="buttonTable" label="buttons"/>
+					</tabs>
+					<tabpanels>
+						<tabpanel>
+							<button id="newButton">New</button>
+							<button id="sameButton">Same</button>
+						</tabpanel>
+					</tabpanels>
+				</tabbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

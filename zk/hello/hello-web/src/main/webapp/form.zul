@@ -1,0 +1,36 @@
+<zk>
+	<div xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd"
+	        ctrlKeys="" height="100%" width="100%" use="lan.test.zk.component.SimpleFormDiv">
+		<tablelayout width="100%" columns="2">
+			<tablechildren>
+				<panel>
+					<panelchildren>
+						<label>Field 1:</label>
+					</panelchildren>
+				</panel>
+			</tablechildren>
+			<tablechildren>
+				<panel>
+					<panelchildren>
+						<textbox id="field1" cols="50"></textbox>
+					</panelchildren>
+				</panel>
+			</tablechildren>
+			<tablechildren>
+				<panel>
+					<panelchildren>
+						<label>Field 2:</label>
+					</panelchildren>
+				</panel>
+			</tablechildren>
+			<tablechildren>
+				<panel>
+					<panelchildren>
+						<textbox id="field2" cols="50"></textbox>
+					</panelchildren>
+				</panel>
+			</tablechildren>
+		</tablelayout>
+	</div>
+</zk>
