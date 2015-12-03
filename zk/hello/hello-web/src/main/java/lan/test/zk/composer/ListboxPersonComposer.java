@@ -20,16 +20,20 @@ import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Window;
 
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Composer for person.zul
  * @author nik-lazer 28.10.2014   16:08
  */
 public class ListboxPersonComposer extends SelectorComposer<Window> {
+	private static Logger log = Logger.getLogger(ListboxPersonComposer.class.getName());
 	@Wire
 	private IteratorListbox table;
 	@Wire
 	private Button selButton;
+	@Wire
+	private Button remButton;
 	@Wire
 	private Button disableNameButton;
 	@Wire
@@ -41,9 +45,11 @@ public class ListboxPersonComposer extends SelectorComposer<Window> {
 	@Wire
 	private Hbox toolbar;
 
+	private ListModelList<Person> tableModel;
+
 	public void doAfterCompose(Window comp) throws Exception {
 		super.doAfterCompose(comp);
-		final ListModelList tableModel = new ListModelList();
+		tableModel = new ListModelList<Person>();
 		tableModel.setMultiple(true);
 		tableModel.addAll(DataUtil.getPersons());
 		table.setModel(tableModel);
@@ -72,6 +78,11 @@ public class ListboxPersonComposer extends SelectorComposer<Window> {
 				toolbar.invalidate();
 			}
 		});
+		table.addEventListener(Events.ON_SELECT, new SerializableEventListener<Event>() {
+			public void onEvent(Event event) throws Exception {
+				fireSelection();
+			}
+		});
 	}
 
 	@Listen("onClick=#disableNameButton")
@@ -93,6 +104,22 @@ public class ListboxPersonComposer extends SelectorComposer<Window> {
 		} else {
 			ageColumn.setVisible(true);
 			disableAgeButton.setLabel("Disable age");
+		}
+	}
+
+	@Listen("onClick=#remButton")
+	public void removeSelected() {
+		Set<Person> set = tableModel.getSelection();
+		tableModel.removeAll(set);
+		fireSelection();
+	}
+
+	private void fireSelection() {
+		int index = table.getSelectedIndex();
+		if (index > 0) {
+			log.info("Selected row: " + index + ", data: " + tableModel.get(index).getName());
+		} else {
+			log.info("There aren't selected items");
 		}
 	}
 }
