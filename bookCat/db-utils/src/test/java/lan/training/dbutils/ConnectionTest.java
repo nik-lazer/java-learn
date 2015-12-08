@@ -15,8 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,12 +35,35 @@ public class ConnectionTest {
 	@Test
 	public void testData() {
 		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(dataSource);
-		List list = template.query("select * from Language", new RowMapper<Object>() {
+		List list = template.query("select * from Language", new RowMapper<String>() {
 			@Override
-			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return null;
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("name");
 			}
 		});
 		assertEquals(3, list.size());
+	}
+
+	@Test
+	public void simpleTest() {
+		String user = "sa";
+		String password = "";
+		String url = "jdbc:hsqldb:mem:books";
+		String driver = "org.hsqldb.jdbcDriver";
+		try {
+			Class.forName(driver);
+			Connection c = DriverManager.getConnection(url, user, password);
+			Statement st = c.createStatement();
+			ResultSet rs = st.executeQuery("select * from Language");
+			List<String> list = new ArrayList<>();
+			while(rs.next()){
+				list.add(rs.getString("name"));
+			}
+			assertEquals(3, list.size());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
