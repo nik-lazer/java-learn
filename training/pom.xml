@@ -15,6 +15,7 @@
 		<module>multithreading</module>
 		<module>jdk8-features</module>
 		<module>swing</module>
+		<module>jdk7-features</module>
 	</modules>
 
 	<properties>

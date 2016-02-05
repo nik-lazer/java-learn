@@ -5,11 +5,15 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * По рецептам {@see http://habrahabr.ru/post/213805/}
+ * {@see http://habrahabr.ru/post/213805/}
  * @author nik-lazer 20.03.2014   11:02
  */
 public class Lambda {
-	private List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+	private List<Integer> numbers;
+
+	public Lambda(Integer... number) {
+		numbers = Arrays.asList(number);
+	}
 
 	public void printOld() {
 		for (int number : numbers) {

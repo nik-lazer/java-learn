@@ -1,3 +1,5 @@
+package lan.training.jdk8features;
+
 import org.junit.Test;
 
 import java.io.File;
