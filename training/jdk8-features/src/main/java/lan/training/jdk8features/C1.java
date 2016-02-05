@@ -5,12 +5,12 @@ package lan.training.jdk8features;
  */
 public class C1 implements I1, I2 {
 	@Override
-	public void test() {
-		System.out.println("C1");
+	public String test() {
+		return "C1";
 	}
 
-	public void testDouble() {
-		System.out.println("C1 double");
+	public String testDouble() {
+		return "C1 double";
 	}
 
 }
