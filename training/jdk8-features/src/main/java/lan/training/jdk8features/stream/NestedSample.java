@@ -1,6 +1,7 @@
 package lan.training.jdk8features.stream;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by nik-lazer on 2/5/2016.
@@ -24,12 +25,10 @@ public class NestedSample {
         return result;
     }
 
-    public String getByStrightStreams(List<MainModel> mainModelList, MainModel cMainModel, SubModel cSubModel, SubSubModel cSubSubModel) {
+    public String getByStraightStreams(List<MainModel> mainModelList, MainModel cMainModel, SubModel cSubModel, SubSubModel cSubSubModel) {
         StringBuilder newResult = new StringBuilder();
         mainModelList.stream()
                 .filter(mainModel -> mainModel.getMainField().equals(cMainModel.getMainField()))
-                .filter(mainModel2 -> mainModel2.getSubModels().stream().anyMatch(
-                        subModel -> subModel.getSubField().equals(cSubModel.getSubField())))
                 .filter(mainModel3 -> mainModel3.getSubModels().stream().filter(
                         subModel1 -> subModel1.getSubField().equals(cSubModel.getSubField())).anyMatch(
                         subModel2 -> subModel2.getSubSubModels().stream().anyMatch(
@@ -42,10 +41,14 @@ public class NestedSample {
         StringBuilder newResult = new StringBuilder();
         mainModelList.stream()
                 .filter(mainModel -> mainModel.getMainField().equals(cMainModel.getMainField()))
-                .filter(mainModel2 -> mainModel2.isSuitable(subModel -> subModel.getSubField().equals(cSubModel.getSubField())))
-                .filter(mainModel3 -> mainModel3.getSubModels().stream().filter(subModel2 -> subModel2.getSubField().equals(cSubModel.getSubField()))
-                        .anyMatch(subModel1 -> subModel1.isSuitable(subSubModel -> subSubModel.getSubSubField().equals(cSubSubModel.getSubSubField()))))
-                .forEach(mainModel1 -> newResult.append(mainModel1.getMainField() + "[" + mainModel1.getValue() + "]"));
+                .filter(mainModel3 -> mainModel3.isSuitable(
+                        subModel2 -> subModel2.getSubField().equals(cSubModel.getSubField())
+                                && subModel2.isSuitable(subSubModel -> subSubModel.getSubSubField().equals(cSubSubModel.getSubSubField()))))
+                .forEach(getPrintConsumer(newResult));
         return newResult.toString();
+    }
+
+    private Consumer<MainModel> getPrintConsumer(StringBuilder stringBuilder) {
+        return mainModel -> stringBuilder.append(mainModel.getMainField() + "[" + mainModel.getValue() + "]");
     }
 }

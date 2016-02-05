@@ -86,7 +86,7 @@ public class NestedTest {
     @Test
     public void nestedTest() {
         String loopsResult = nestedSample.getByLoops(mainModelList, cMainModel, cSubModel, cSubSubModel);
-        String strightStreamsResult = nestedSample.getByStrightStreams(mainModelList, cMainModel, cSubModel, cSubSubModel);
+        String strightStreamsResult = nestedSample.getByStraightStreams(mainModelList, cMainModel, cSubModel, cSubSubModel);
         String simplerStreamsResult = nestedSample.getBySimplerStreams(mainModelList, cMainModel, cSubModel, cSubSubModel);
         assertEquals("mainfield1[10]mainfield1[12]", loopsResult);
         assertEquals("mainfield1[10]mainfield1[12]", strightStreamsResult);
