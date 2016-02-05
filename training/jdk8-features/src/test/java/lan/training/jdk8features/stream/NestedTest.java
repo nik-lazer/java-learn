@@ -1,9 +1,5 @@
-package lan.training.jdk8features.steam;
+package lan.training.jdk8features.stream;
 
-import lan.training.jdk8features.stream.MainModel;
-import lan.training.jdk8features.stream.NestedSample;
-import lan.training.jdk8features.stream.SubModel;
-import lan.training.jdk8features.stream.SubSubModel;
 import org.junit.Before;
 import org.junit.Test;
 
