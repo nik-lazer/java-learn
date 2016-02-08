@@ -45,6 +45,22 @@ public class ReflectionHelper {
 		}
 	}
 
+	public static Object getFieldValue(Object object, String fieldName) {
+		try {
+			Field field = object.getClass().getDeclaredField(fieldName);
+			Class<?> type = field.getType();
+			field.setAccessible(true);
+			Object val  = field.get(object);
+			field.setAccessible(false);
+			return val;
+		} catch (NoSuchFieldException e) {
+			log.log(Level.SEVERE, "Field " + fieldName + " is not exists in object " + object.getClass().getName(), e);
+		} catch (IllegalAccessException e) {
+			log.log(Level.SEVERE, "Illegal access error", e);
+		}
+		return null;
+	}
+
 	public static Object methodInvoke(String methodName, Object instance) {
 		try {
 			Method method = instance.getClass().getMethod(methodName);

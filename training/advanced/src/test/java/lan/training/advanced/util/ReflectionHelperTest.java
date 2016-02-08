@@ -29,6 +29,17 @@ public class ReflectionHelperTest {
 	}
 
 	@Test
+	public void gettingFieldTest() {
+		Domain domain = new Domain(1, "first", 2);
+		Object o1 = ReflectionHelper.getFieldValue(domain, "id");
+		Object o2 = ReflectionHelper.getFieldValue(domain, "name");
+		Object o3 = ReflectionHelper.getFieldValue(domain, "nextId");
+		assertEquals("ID must be 2", 1, o1);
+		assertEquals("Name must be 'second'", "first", o2);
+		assertEquals("nextID must be 3", 2, o3);
+	}
+
+	@Test
 	public void invokeMethodTest() {
 		Domain domain = new Domain(1, "one", 2);
 		Object result = ReflectionHelper.methodInvoke("getNextId", domain);
