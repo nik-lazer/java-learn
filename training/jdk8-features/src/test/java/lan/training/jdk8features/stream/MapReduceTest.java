@@ -19,10 +19,10 @@ public class MapReduceTest {
     @Before
     public void init() {
         persons.addAll(Arrays.asList(
-                new Person("John", "Smith"),
-                new Person("John", "Doe"),
-                new Person("John", "Smith"),
-                new Person("Jane", "Doe")
+                new Person("John", "Smith", 34),
+                new Person("John", "Doe", 45),
+                new Person("John", "Smith", 23),
+                new Person("Jane", "Doe", 33)
         ));
     }
 
@@ -43,6 +43,16 @@ public class MapReduceTest {
                 .distinct()
                 .collect(Collectors.joining(", "));
         assertEquals("Smith, John, Doe, Jane", ret);
+    }
+
+    @Test
+    public void reduceTest() {
+        Person oldest = persons.stream()
+                .reduce((person, person2) -> (person.getAge() > person2.getAge() ? person : person2))
+                .get();
+        assertEquals(45, oldest.getAge());
+        assertEquals("John", oldest.getFirstName());
+        assertEquals("Doe", oldest.getLastName());
     }
 
 }
