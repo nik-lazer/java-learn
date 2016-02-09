@@ -29,12 +29,13 @@ import org.openjdk.jmh.annotations.*;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @State(Scope.Benchmark)
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-//@BenchmarkMode(Mode.AverageTime)
+@BenchmarkMode(Mode.Throughput)
 @Fork(5)
 public class SortBenchmark {
     int[] arr = new int[1000000];
@@ -58,5 +59,14 @@ public class SortBenchmark {
         Collections.sort(list);
     }
 
+    @Benchmark
+    public void testParallelArr() {
+        Arrays.parallelSort(arr);
+    }
+
+    @Benchmark
+    public void testParallelList() {
+        list.parallelStream().sorted().collect(Collectors.toList());
+    }
 
 }
