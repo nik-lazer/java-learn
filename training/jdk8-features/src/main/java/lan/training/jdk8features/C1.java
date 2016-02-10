@@ -10,7 +10,7 @@ public class C1 implements I1, I2 {
 	}
 
 	public String testDouble() {
-		return "C1 double";
+		return I1.super.testDouble() + "C1 double";
 	}
 
 }
