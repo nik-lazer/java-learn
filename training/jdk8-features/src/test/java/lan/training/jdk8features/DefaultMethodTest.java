@@ -29,7 +29,7 @@ public class DefaultMethodTest {
     public void overrideTest() {
         C1 c1 = new C1();
         assertEquals("C1", c1.test());
-        assertEquals("C1 double", c1.testDouble());
+        assertEquals("I1C1 double", c1.testDouble());
         assertEquals("I2 third", c1.testThird());
     }
 

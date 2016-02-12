@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by nik-lazer on 2/5/2016.
@@ -91,5 +92,21 @@ public class NestedTest {
         assertEquals("mainfield1[10]mainfield1[12]", loopsResult);
         assertEquals("mainfield1[10]mainfield1[12]", strightStreamsResult);
         assertEquals("mainfield1[10]mainfield1[12]", simplerStreamsResult);
+    }
+
+    @Test
+    public void nestedMatchTest() {
+        boolean resultAny = mainModelList.stream()
+                .flatMap(mainModel -> mainModel.getSubModels().stream())
+                .anyMatch(subModel -> subModel.getSubField().equals("subfield1"));
+        boolean resultAll = mainModelList.stream()
+                .flatMap(mainModel -> mainModel.getSubModels().stream())
+                .allMatch(subModel -> subModel.getSubField().startsWith("subfield"));
+        boolean resultNone = mainModelList.stream()
+                .flatMap(mainModel -> mainModel.getSubModels().stream())
+                .noneMatch(subModel -> subModel.getSubField().startsWith("wrongfield"));
+        assertTrue(resultAny);
+        assertTrue(resultAll);
+        assertTrue(resultNone);
     }
 }

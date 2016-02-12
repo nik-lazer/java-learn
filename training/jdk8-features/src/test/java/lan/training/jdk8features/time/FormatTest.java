@@ -16,21 +16,26 @@ import static org.junit.Assert.assertEquals;
  * Created by nik-lazer on 2/5/2016.
  */
 public class FormatTest {
-    DateTimeFormatter formatter;
+    DateTimeFormatter dateTimeFormatter;
+    DateTimeFormatter dateFormatter;
     @Before
     public void init() {
-        formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm");
+        dateTimeFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy - HH:mm");
+        dateFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
     }
     @Test
     public void formatTest() {
         LocalDateTime localDateTime = LocalDateTime.of(2014, 11, 3, 7, 13, 23);
-        String string = formatter.format(localDateTime);
-        assertEquals("Nov 03, 2014 - 07:13", string);
+        LocalDate localDate = LocalDate.of(2014, 12, 5);
+        String formattedDateTime = dateTimeFormatter.format(localDateTime);
+        String formattedDate = dateFormatter.format(localDate);
+        assertEquals("Nov 03, 2014 - 07:13", formattedDateTime);
+        assertEquals("Dec 05, 2014", formattedDate);
     }
 
     @Test
     public void parseTest() {
-        LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", formatter);
+        LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2014 - 07:13", dateTimeFormatter);
         assertEquals(3, parsed.getDayOfMonth());
         assertEquals(2014, parsed.getYear());
         assertEquals(Month.NOVEMBER, parsed.getMonth());

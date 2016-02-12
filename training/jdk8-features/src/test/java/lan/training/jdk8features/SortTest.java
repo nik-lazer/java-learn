@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
@@ -13,8 +12,7 @@ import static org.junit.Assert.assertTrue;
  * Created by nik-lazer on 2/4/2016.
  */
 public class SortTest {
-    private List<UUID> valuesForSequential;
-    private List<UUID> valuesForParallel;
+    private List<UUID> valuesList;
     private SortMeter sortMeter = new SortMeter();
     int[] arr = new int[1000000];
     Integer[] wrapperArr = new Integer[1000000];
@@ -28,8 +26,7 @@ public class SortTest {
             UUID uuid = UUID.randomUUID();
             values.add(uuid);
         }
-        valuesForParallel = new ArrayList<>(values);
-        valuesForSequential = new ArrayList<>(values);
+        valuesList = new ArrayList<>(values);
         Random random = new Random();
         for (int i=0; i<1000000; i++) {
             arr[i] = random.nextInt();
@@ -40,10 +37,9 @@ public class SortTest {
 
     @Test
     public void sortTest() {
-        long sequentialDuration = sortMeter.sequentialSort(valuesForSequential);
-        long parallelDuration = sortMeter.parallelSort(valuesForParallel);
+        long sequentialDuration = sortMeter.sortStream(valuesList.stream());
+        long parallelDuration = sortMeter.sortStream(valuesList.parallelStream());
         assertTrue(parallelDuration <= sequentialDuration);
-        assertArrayEquals(valuesForParallel.toArray(), valuesForSequential.toArray());
     }
 
     @Test

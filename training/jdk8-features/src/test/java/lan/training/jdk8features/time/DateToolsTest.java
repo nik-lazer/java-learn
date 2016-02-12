@@ -20,6 +20,7 @@ public class DateToolsTest {
     ZoneId zone2;
     @Before
     public void init() {
+        System.out.println(ZoneId.getAvailableZoneIds());
         zone1 = ZoneId.of("Europe/Berlin");
         zone2 = ZoneId.of("Brazil/East");
         System.out.println(zone1.getRules());
@@ -42,8 +43,12 @@ public class DateToolsTest {
     public void localTimeTest() {
         LocalTime now1 = LocalTime.now(zone1);
         LocalTime now2 = LocalTime.now(zone2);
-
         assertFalse(now1.isBefore(now2));
+
+        LocalTime localTime = LocalTime.of(23, 59);
+        localTime = localTime.plusMinutes(10);
+        assertEquals(0, localTime.getHour());
+        assertEquals(9, localTime.getMinute());
 
         long hoursBetween = ChronoUnit.HOURS.between(now1, now2);
         long minutesBetween = ChronoUnit.MINUTES.between(now1, now2);
@@ -63,7 +68,11 @@ public class DateToolsTest {
         LocalDate independenceDay = LocalDate.of(2014, Month.JULY, 4);
         DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();
         assertEquals(DayOfWeek.FRIDAY, dayOfWeek);
+    }
 
+    @Test(expected = DateTimeException.class)
+    public void unrealDateTest() {
+        LocalDate.of(2014, Month.FEBRUARY, 30);
     }
 
     @Test
