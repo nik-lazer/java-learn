@@ -15,19 +15,21 @@ public class Publisher extends AbstractEntity {
 	@Column
 	private String address;
 
+	private Publisher() {
+		super(null);
+	}
+
+	public Publisher(Integer uid, String name, String address) {
+		super(uid);
+		this.name = name;
+		this.address = address;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getAddress() {
 		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 }

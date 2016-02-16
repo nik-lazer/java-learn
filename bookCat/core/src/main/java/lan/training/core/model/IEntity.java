@@ -5,7 +5,5 @@ package lan.training.core.model;
  * @author nik-lazer  21.09.2015   16:34
  */
 public interface IEntity {
-	public Integer getUid();
-
-	void setUid(Integer uuid);
+	Integer getUid();
 }

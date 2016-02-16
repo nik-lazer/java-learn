@@ -2,9 +2,11 @@ package lan.training.memory.dao;
 
 import lan.training.core.dao.LanguageDao;
 import lan.training.core.model.Language;
-import lan.training.memory.util.DataUtil;
+import lan.training.memory.util.DataUtilBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Language service implementation
@@ -12,8 +14,11 @@ import org.springframework.stereotype.Service;
  */
 @Repository
 public class LanguageDaoImpl extends AbstractMemoryDaoImpl<Language> implements LanguageDao {
+	@Autowired
+	private DataUtilBean dataUtilBean;
 
-	public LanguageDaoImpl() {
-		setData(listToMap(DataUtil.getLanguages()));
+	@PostConstruct
+	public void init() {
+		setData(listToMap(dataUtilBean.getLanguages()));
 	}
 }

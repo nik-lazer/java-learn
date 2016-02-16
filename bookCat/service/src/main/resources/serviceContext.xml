@@ -11,14 +11,5 @@
 	<import resource="classpath*:/jdbcDaoContext.xml"/>
 
 	<context:component-scan base-package="lan.training.service"/>
-
-<!--	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-		<property name="converters">
-			<set>
-				<bean class="lan.training.service.converter.LanguageConverter"/>
-				<bean class="lan.training.service.converter.AuthorConverter"/>
-				<bean class="lan.training.service.converter.PublisherConverter"/>
-			</set>
-		</property>
-	</bean>-->
+	<context:component-scan base-package="lan.training.core.factory"/>
 </beans>

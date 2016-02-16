@@ -1,6 +1,7 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.PublisherDao;
+import lan.training.core.factory.PublisherFactory;
 import lan.training.core.model.Publisher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,8 @@ public class JdbcPublisherDaoTest {
 
 	@Autowired
 	PublisherDao publisherDao;
+	@Autowired
+	PublisherFactory publisherFactory;
 	@Test
 	public void getListTest() {
 		List<Publisher> list = publisherDao.getList();
@@ -31,9 +34,7 @@ public class JdbcPublisherDaoTest {
 
 	@Test
 	public void addTest() {
-		Publisher publisher = new Publisher();
-		publisher.setUid(4);
-		publisher.setName("jdbcAddTest");
+		Publisher publisher = publisherFactory.of(4, "jdbcAddTest", null);
 		publisherDao.add(publisher);
 		publisher = publisherDao.getById(4);
 		assertNotNull(publisher);
@@ -43,7 +44,7 @@ public class JdbcPublisherDaoTest {
 	@Test
 	public void update() {
 		Publisher publisher = publisherDao.getById(2);
-		publisher.setName("Update test");
+		publisher = publisherFactory.of(publisher.getUid(), "Update test", publisher.getAddress());
 		publisherDao.update(publisher.getUid(), publisher);
 		publisher = publisherDao.getById(2);
 		assertEquals("Update test", publisher.getName());

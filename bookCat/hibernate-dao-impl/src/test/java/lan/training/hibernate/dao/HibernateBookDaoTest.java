@@ -1,6 +1,10 @@
 package lan.training.hibernate.dao;
 
 import lan.training.core.dao.BookDao;
+import lan.training.core.factory.AuthorFactory;
+import lan.training.core.factory.BookFactory;
+import lan.training.core.factory.LanguageFactory;
+import lan.training.core.factory.PublisherFactory;
 import lan.training.core.model.Author;
 import lan.training.core.model.Book;
 import lan.training.core.model.Language;
@@ -12,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -25,6 +30,14 @@ import static org.junit.Assert.*;
 public class HibernateBookDaoTest {
 	@Autowired
 	BookDao bookDao;
+	@Autowired
+	BookFactory bookFactory;
+	@Autowired
+	PublisherFactory publisherFactory;
+	@Autowired
+	LanguageFactory languageFactory;
+	@Autowired
+	AuthorFactory authorFactory;
 
 	@Test
 	public void getListTest() {
@@ -34,18 +47,11 @@ public class HibernateBookDaoTest {
 
 	@Test
 	public void addTest() {
-		Book book = new Book();
-		book.setUid(4);
-		book.setName("jdbcAddTest");
-		Publisher publisher = new Publisher();
-		publisher.setUid(1);
-		book.setPublisher(publisher);
-		Language language = new Language();
-		language.setUid(1);
-		book.setLanguage(language);
-		Author author = new Author();
-		author.setUid(1);
-		book.setAuthor(author);
+		Book book = bookFactory.of(4, "jdbcAddTest",
+				publisherFactory.of(1, "", ""),
+				authorFactory.of(1, "", ""),
+				languageFactory.of(1, ""),
+				new Date(), "");
 		bookDao.add(book);
 		book = bookDao.getById(4);
 		assertNotNull(book);
@@ -55,7 +61,7 @@ public class HibernateBookDaoTest {
 	@Test
 	public void updateTest() {
 		Book book = bookDao.getById(2);
-		book.setName("Update test");
+		book = bookFactory.of(book.getUid(), "Update test", book.getPublisher(), book.getAuthor(), book.getLanguage(), book.getDate(), book.getDesc());
 		bookDao.update(book.getUid(), book);
 		book = bookDao.getById(2);
 		assertEquals("Update test", book.getName());

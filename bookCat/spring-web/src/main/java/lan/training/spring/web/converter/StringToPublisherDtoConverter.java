@@ -1,25 +1,26 @@
-package lan.training.service.converter;
+package lan.training.spring.web.converter;
 
 import lan.training.core.model.Publisher;
 import lan.training.service.PublisherService;
+import lan.training.spring.web.dto.PublisherDto;
+import lan.training.spring.web.service.PublisherDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
-import java.util.UUID;
 
 /**
  * String to {@link lan.training.core.model.Publisher} converter for forms
  * @author nik-lazer  10.12.2014   15:07
  */
-public class PublisherConverter implements Converter<String, Publisher> {
+public class StringToPublisherDtoConverter implements Converter<String, PublisherDto> {
 
 	@Autowired
-	PublisherService publisherService;
+	PublisherDtoService publisherService;
 
 	@Override
-	public Publisher convert(String source) {
+	public PublisherDto convert(String source) {
 		int uuid = Integer.valueOf(source);
-		Publisher publisher = publisherService.getById(uuid);
+		PublisherDto publisher = publisherService.getById(uuid);
 		return publisher;
 	}
 }

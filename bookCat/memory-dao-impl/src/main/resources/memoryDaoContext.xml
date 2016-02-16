@@ -9,4 +9,6 @@
 
 	<import resource="classpath*: coreContext.xml"/>
 	<context:component-scan base-package="lan.training.memory"/>
+	<context:component-scan base-package="lan.training.core.factory"/>
+
 </beans>

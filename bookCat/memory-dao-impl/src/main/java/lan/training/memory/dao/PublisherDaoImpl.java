@@ -2,9 +2,11 @@ package lan.training.memory.dao;
 
 import lan.training.core.dao.PublisherDao;
 import lan.training.core.model.Publisher;
-import lan.training.memory.util.DataUtil;
+import lan.training.memory.util.DataUtilBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Publisher service implementation
@@ -12,8 +14,11 @@ import org.springframework.stereotype.Service;
  */
 @Repository
 public class PublisherDaoImpl extends AbstractMemoryDaoImpl<Publisher> implements PublisherDao {
+	@Autowired
+	private DataUtilBean dataUtilBean;
 
-	public PublisherDaoImpl() {
-		setData(listToMap(DataUtil.getPublishers()));
+	@PostConstruct
+	public void init() {
+		setData(listToMap(dataUtilBean.getPublishers()));
 	}
 }

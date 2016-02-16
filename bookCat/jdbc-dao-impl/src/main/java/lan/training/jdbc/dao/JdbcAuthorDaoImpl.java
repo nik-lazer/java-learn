@@ -1,6 +1,7 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.AuthorDao;
+import lan.training.core.factory.AuthorFactory;
 import lan.training.core.model.Author;
 import lan.training.core.model.Language;
 import org.slf4j.Logger;
@@ -25,6 +26,8 @@ import java.util.List;
 public class JdbcAuthorDaoImpl implements AuthorDao {
 	private static Logger log = LoggerFactory.getLogger(JdbcAuthorDaoImpl.class);
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private AuthorFactory authorFactory;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -60,10 +63,7 @@ public class JdbcAuthorDaoImpl implements AuthorDao {
 	private class AuthorRowMapper implements RowMapper<Author> {
 		@Override
 		public Author mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Author author = new Author();
-			author.setUid(rs.getInt("uid"));
-			author.setFirstName(rs.getString("firstName"));
-			author.setLastName(rs.getString("lastName"));
+			Author author = authorFactory.of(rs.getInt("uid"), rs.getString("firstName"), rs.getString("lastName"));
 			return author;
 		}
 	}

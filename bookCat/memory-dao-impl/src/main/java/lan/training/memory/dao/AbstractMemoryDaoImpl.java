@@ -19,10 +19,6 @@ public abstract class AbstractMemoryDaoImpl<T extends IEntity> implements CrudDa
 	public Map<Integer, T> listToMap(List<T> list) {
 		Map<Integer, T> map = new HashMap<>();
 		for (T domain: list) {
-			if (domain.getUid() == null) {
-				Random random = new Random();
-				domain.setUid(random.nextInt());
-			}
 			map.put(domain.getUid(), domain);
 		}
 		return map;
@@ -43,10 +39,6 @@ public abstract class AbstractMemoryDaoImpl<T extends IEntity> implements CrudDa
 
 	@Override
 	public void add(T model) {
-		if (model.getUid() == null) {
-			Random random = new Random();
-			model.setUid(random.nextInt());
-		}
 		data.put(model.getUid(), model);
 	}
 

@@ -1,10 +1,12 @@
 package lan.training.memory.dao;
 
 import lan.training.core.dao.AuthorDao;
-import lan.training.memory.util.DataUtil;
+import lan.training.memory.util.DataUtilBean;
 import lan.training.core.model.Author;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Author service implementation
@@ -12,9 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Repository
 public class AuthorDaoImpl extends AbstractMemoryDaoImpl<Author> implements AuthorDao {
+	@Autowired
+	private DataUtilBean dataUtilBean;
 
-	public AuthorDaoImpl() {
-		setData(listToMap(DataUtil.getAuthors()));
+	@PostConstruct
+	public void init() {
+		setData(listToMap(dataUtilBean.getAuthors()));
 	}
 
 }

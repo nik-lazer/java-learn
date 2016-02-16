@@ -1,6 +1,10 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.BookDao;
+import lan.training.core.factory.AuthorFactory;
+import lan.training.core.factory.BookFactory;
+import lan.training.core.factory.LanguageFactory;
+import lan.training.core.factory.PublisherFactory;
 import lan.training.core.model.Author;
 import lan.training.core.model.Book;
 import lan.training.core.model.Language;
@@ -28,6 +32,14 @@ public class JdbcBookDaoImpl implements BookDao {
 	private static Logger log = LoggerFactory.getLogger(JdbcBookDaoImpl.class);
 
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private BookFactory bookFactory;
+	@Autowired
+	private PublisherFactory publisherFactory;
+	@Autowired
+	private AuthorFactory authorFactory;
+	@Autowired
+	private LanguageFactory languageFactory;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -63,31 +75,15 @@ public class JdbcBookDaoImpl implements BookDao {
 	private class BookRowMapper implements RowMapper<Book> {
 		@Override
 		public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Book book = new Book();
-			book.setUid(rs.getInt("uid"));
-			book.setName(rs.getString("name"));
-			if (rs.getInt("publisher_id") != 0) {
-				Publisher publisher = new Publisher();
-				publisher.setUid(rs.getInt("puid"));
-				publisher.setName(rs.getString("pname"));
-				publisher.setAddress(rs.getString("paddress"));
-				book.setPublisher(publisher);
-			}
-			if (rs.getInt("author_id") != 0) {
-				Author author = new Author();
-				author.setUid(rs.getInt("auid"));
-				author.setFirstName(rs.getString("aFirstName"));
-				author.setLastName(rs.getString("aLastName"));
-				book.setAuthor(author);
-			}
-			if (rs.getInt("language_id") != 0) {
-				Language language = new Language();
-				language.setUid(rs.getInt("luid"));
-				language.setName(rs.getString("lname"));
-				book.setLanguage(language);
-			}
-			book.setDate(rs.getDate("date"));
-			book.setDesc(rs.getString("desc"));
+			Book book = bookFactory.of(
+					rs.getInt("uid"),
+					rs.getString("name"),
+					(rs.getInt("publisher_id") != 0) ? publisherFactory.of(rs.getInt("puid"), rs.getString("pname"), rs.getString("paddress")) : null,
+					(rs.getInt("author_id") != 0) ? authorFactory.of(rs.getInt("auid"), rs.getString("aFirstName"), rs.getString("aLastName")) : null,
+					(rs.getInt("language_id") != 0) ? languageFactory.of(rs.getInt("luid"), rs.getString("lname")) : null,
+					rs.getDate("date"),
+					rs.getString("desc")
+			);
 			return book;
 		}
 	}

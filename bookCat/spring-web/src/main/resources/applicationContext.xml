@@ -34,11 +34,20 @@
 		<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
 			<property name="converters">
 				<set>
-					<bean class="lan.training.service.converter.LanguageConverter"/>
-					<bean class="lan.training.service.converter.AuthorConverter"/>
-					<bean class="lan.training.service.converter.PublisherConverter"/>
+					<bean class="lan.training.spring.web.converter.StringToLanguageDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.StringToAuthorDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.StringToPublisherDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.BookToDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.AuthorToDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.PublisherToDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.LanguageToDtoConverter"/>
+					<bean class="lan.training.spring.web.converter.BookDtoToBookConverter"/>
+					<bean class="lan.training.spring.web.converter.AuthorDtoToAuthorConverter"/>
+					<bean class="lan.training.spring.web.converter.PublisherDtoToPublisherConverter"/>
+					<bean class="lan.training.spring.web.converter.LanguageDtoToLanguageConverter"/>
 				</set>
 			</property>
 		</bean>
+
 	</beans>
 </beans>

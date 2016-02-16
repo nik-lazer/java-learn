@@ -1,6 +1,7 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.LanguageDao;
+import lan.training.core.factory.LanguageFactory;
 import lan.training.core.model.Language;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,8 @@ public class JdbcLanguageDaoImpl implements LanguageDao {
 	private static Logger log = LoggerFactory.getLogger(JdbcLanguageDaoImpl.class);
 
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private LanguageFactory languageFactory;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -56,13 +59,11 @@ public class JdbcLanguageDaoImpl implements LanguageDao {
 		return DataAccessUtils.singleResult(language);
 	}
 
-	private static class LanguageRowMapper implements RowMapper<Language> {
+	private class LanguageRowMapper implements RowMapper<Language> {
 
 		@Override
 		public Language mapRow(ResultSet resultSet, int i) throws SQLException {
-			Language language = new Language();
-			language.setUid(resultSet.getInt("uid"));
-			language.setName(resultSet.getString("name"));
+			Language language = languageFactory.of(resultSet.getInt("uid"), resultSet.getString("name"));
 			return language;
 		}
 	}

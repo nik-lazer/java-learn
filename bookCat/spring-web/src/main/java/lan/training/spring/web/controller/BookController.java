@@ -1,10 +1,12 @@
 package lan.training.spring.web.controller;
 
-import lan.training.core.model.Book;
 import lan.training.service.AuthorService;
-import lan.training.service.BookService;
-import lan.training.service.LanguageService;
 import lan.training.service.PublisherService;
+import lan.training.spring.web.dto.BookDto;
+import lan.training.spring.web.service.AuthorDtoService;
+import lan.training.spring.web.service.BookDtoService;
+import lan.training.spring.web.service.LanguageDtoService;
+import lan.training.spring.web.service.PublisherDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,30 +27,30 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
 	@Autowired
-	BookService bookService;
+	BookDtoService bookService;
 	@Autowired
-	LanguageService languageService;
+	LanguageDtoService languageService;
 	@Autowired
-	AuthorService authorService;
+	AuthorDtoService authorService;
 	@Autowired
-	PublisherService publisherService;
+	PublisherDtoService publisherService;
 
 	@RequestMapping("/list")
 	public String listBook(Model model) {
-		List<Book> list = bookService.getList();
+		List<BookDto> list = bookService.getList();
 		model.addAttribute("books", list);
 		return "books/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addBookForm(Model model) {
-		Book book = new Book();
+		BookDto book = new BookDto();
 		putModelForForm(model, book);
 		return "books/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addBook(@Valid Book book, BindingResult bindingResult, Model model) {
+	public String addBook(@Valid BookDto book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
 			return "books/add";
@@ -58,7 +60,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	public String updateBook(@PathVariable int id, @Valid Book book, BindingResult bindingResult, Model model) {
+	public String updateBook(@PathVariable int id, @Valid BookDto book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			putModelForForm(model, book);
 			return "books/update";
@@ -69,7 +71,7 @@ public class BookController {
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public String updateBookForm(@PathVariable int id, Model model) {
-		Book book = bookService.getById(id);
+		BookDto book = bookService.getById(id);
 		if (book != null) {
 			putModelForForm(model, book);
 			return "books/update";
@@ -80,7 +82,7 @@ public class BookController {
 
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteBook(@PathVariable int id) {
-		Book book = bookService.getById(id);
+		BookDto book = bookService.getById(id);
 		if (book != null) {
 			bookService.delete(book);
 			return "redirect:/book/list";
@@ -89,8 +91,8 @@ public class BookController {
 		}
 	}
 
-	private void putModelForForm(Model model, Book book) {
-		model.addAttribute("book", book);
+	private void putModelForForm(Model model, BookDto bookDto) {
+		model.addAttribute("book", bookDto);
 		model.addAttribute("langs", languageService.getList());
 		model.addAttribute("publishers", publisherService.getList());
 		model.addAttribute("authors", authorService.getList());

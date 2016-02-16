@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 public class Book extends AbstractEntity {
 	@Column
-	@Size(min=3, max=500, message="Username must be between 3 and 500 characters long.")
 	private String name;
 	@ManyToOne
 	@JoinColumn(name = "publisher_id")
@@ -27,51 +26,41 @@ public class Book extends AbstractEntity {
 	@Column
 	private String desc;
 
-	public String getName() {
-		return name;
+	private Book() {
+		super(null);
 	}
 
-	public void setName(String name) {
+	public Book(Integer uid, String name, Publisher publisher, Author author, Language language, Date date, String desc) {
+		super(uid);
 		this.name = name;
+		this.publisher = publisher;
+		this.author = author;
+		this.language = language;
+		this.date = date;
+		this.desc = desc;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public Publisher getPublisher() {
 		return publisher;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
 	public Author getAuthor() {
 		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
 	}
 
 	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
-
 	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	public String getDesc() {
 		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
 	}
 }

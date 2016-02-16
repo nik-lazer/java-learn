@@ -1,6 +1,7 @@
 package lan.training.hibernate.dao;
 
 import lan.training.core.dao.LanguageDao;
+import lan.training.core.factory.LanguageFactory;
 import lan.training.core.model.Language;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,6 +30,8 @@ public class HibernateLanguageDaoTest {
 	LanguageDao languageDao;
 	@Autowired
 	SessionFactory sessionFactory;
+	@Autowired
+	LanguageFactory languageFactory;
 
 	@Test
 	public void getListTest() {
@@ -38,9 +41,7 @@ public class HibernateLanguageDaoTest {
 
 	@Test
 	public void addTest() {
-		Language language = new Language();
-		language.setUid(4);
-		language.setName("jdbcAddTest");
+		Language language = languageFactory.of(4, "jdbcAddTest");
 		languageDao.add(language);
 		language = languageDao.getById(4);
 		assertNotNull(language);
@@ -50,7 +51,7 @@ public class HibernateLanguageDaoTest {
 	@Test
 	public void updateTest() {
 		Language language = languageDao.getById(2);
-		language.setName("Update test");
+		language = languageFactory.of(language.getUid(), "Update test");
 		languageDao.update(language.getUid(), language);
 		language = languageDao.getById(2);
 		assertEquals("Update test", language.getName());

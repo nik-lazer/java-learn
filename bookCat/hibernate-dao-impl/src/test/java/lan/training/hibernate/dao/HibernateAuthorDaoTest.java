@@ -1,6 +1,7 @@
 package lan.training.hibernate.dao;
 
 import lan.training.core.dao.AuthorDao;
+import lan.training.core.factory.AuthorFactory;
 import lan.training.core.model.Author;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -22,6 +23,8 @@ import static org.junit.Assert.*;
 public class HibernateAuthorDaoTest {
 	@Autowired
 	AuthorDao authorDao;
+	@Autowired
+	AuthorFactory authorFactory;
 
 	@Test
 	public void getListTest() {
@@ -31,9 +34,7 @@ public class HibernateAuthorDaoTest {
 
 	@Test
 	public void addTest() {
-		Author author = new Author();
-		author.setUid(4);
-		author.setFirstName("jdbcAddTest");
+		Author author = authorFactory.of(4, "jdbcAddTest", null);
 		authorDao.add(author);
 		author = authorDao.getById(4);
 		assertNotNull(author);
@@ -43,7 +44,7 @@ public class HibernateAuthorDaoTest {
 	@Test
 	public void updateTest() {
 		Author author = authorDao.getById(2);
-		author.setFirstName("Update test");
+		author = authorFactory.of(author.getUid(), "Update test", author.getLastName());
 		authorDao.update(author.getUid(), author);
 		author = authorDao.getById(2);
 		assertEquals("Update test", author.getFirstName());

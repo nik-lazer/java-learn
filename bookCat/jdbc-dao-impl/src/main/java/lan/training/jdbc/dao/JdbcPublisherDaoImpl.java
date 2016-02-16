@@ -1,6 +1,7 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.PublisherDao;
+import lan.training.core.factory.PublisherFactory;
 import lan.training.core.model.Language;
 import lan.training.core.model.Publisher;
 import org.slf4j.Logger;
@@ -26,6 +27,8 @@ public class JdbcPublisherDaoImpl implements PublisherDao {
 	private static Logger log = LoggerFactory.getLogger(JdbcPublisherDaoImpl.class);
 
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private PublisherFactory publisherFactory;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -61,10 +64,7 @@ public class JdbcPublisherDaoImpl implements PublisherDao {
 	private class PublisherRowMapper implements RowMapper<Publisher> {
 		@Override
 		public Publisher mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Publisher publisher = new Publisher();
-			publisher.setUid(rs.getInt("uid"));
-			publisher.setName(rs.getString("name"));
-			publisher.setAddress(rs.getString("address"));
+			Publisher publisher = publisherFactory.of(rs.getInt("uid"), rs.getString("name"), rs.getString("address"));
 			return publisher;
 		}
 	}

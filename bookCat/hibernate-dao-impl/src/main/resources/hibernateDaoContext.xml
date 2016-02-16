@@ -11,6 +11,7 @@
 	">
 	<context:component-scan base-package="lan.training.hibernate.dao"/>
 
+	<import resource="classpath*: coreContext.xml"/>
 	<import resource="classpath*: /dbContext.xml"/>
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>

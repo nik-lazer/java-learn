@@ -12,13 +12,12 @@ public abstract class AbstractEntity implements IEntity {
 	@Id
 	private Integer uid;
 
-	@Override
-	public Integer getUid() {
-		return uid;
+	public AbstractEntity(Integer uid) {
+		this.uid = uid;
 	}
 
 	@Override
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public Integer getUid() {
+		return uid;
 	}
 }

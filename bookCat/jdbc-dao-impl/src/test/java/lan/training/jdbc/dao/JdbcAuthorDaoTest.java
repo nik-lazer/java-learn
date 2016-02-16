@@ -1,6 +1,7 @@
 package lan.training.jdbc.dao;
 
 import lan.training.core.dao.AuthorDao;
+import lan.training.core.factory.AuthorFactory;
 import lan.training.core.model.Author;
 import lan.training.core.model.Language;
 import org.junit.Test;
@@ -24,6 +25,8 @@ public class JdbcAuthorDaoTest {
 
 	@Autowired
 	AuthorDao authorDao;
+	@Autowired
+	AuthorFactory authorFactory;
 	@Test
 	public void getListTest() {
 		List<Author> list = authorDao.getList();
@@ -32,10 +35,7 @@ public class JdbcAuthorDaoTest {
 
 	@Test
 	public void addTest() {
-		Author author = new Author();
-		author.setUid(4);
-		author.setFirstName("jdbcAddTestFirst");
-		author.setLastName("jdbcAddTestLast");
+		Author author = authorFactory.of(4, "jdbcAddTestFirst", "jdbcAddTestLast");
 		authorDao.add(author);
 		author = authorDao.getById(4);
 		assertNotNull(author);
@@ -46,7 +46,7 @@ public class JdbcAuthorDaoTest {
 	@Test
 	public void update() {
 		Author author = authorDao.getById(2);
-		author.setFirstName("Update test first");
+		author = authorFactory.of(author.getUid(), "Update test first", author.getLastName());
 		authorDao.update(author.getUid(), author);
 		author = authorDao.getById(2);
 		assertEquals("Update test first", author.getFirstName());

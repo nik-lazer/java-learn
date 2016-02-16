@@ -8,14 +8,19 @@ import javax.persistence.*;
  */
 @Entity
 public class Language extends AbstractEntity {
+	private Language() {
+		super(null);
+	}
+
+	public Language(Integer id, String name) {
+		super(id);
+		this.name = name;
+	}
+
 	@Column
 	private String name;
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }
