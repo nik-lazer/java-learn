@@ -41,10 +41,10 @@
 					<bean class="lan.training.spring.web.converter.AuthorToDtoConverter"/>
 					<bean class="lan.training.spring.web.converter.PublisherToDtoConverter"/>
 					<bean class="lan.training.spring.web.converter.LanguageToDtoConverter"/>
-					<bean class="lan.training.spring.web.converter.BookDtoToBookConverter"/>
-					<bean class="lan.training.spring.web.converter.AuthorDtoToAuthorConverter"/>
-					<bean class="lan.training.spring.web.converter.PublisherDtoToPublisherConverter"/>
-					<bean class="lan.training.spring.web.converter.LanguageDtoToLanguageConverter"/>
+					<bean class="lan.training.spring.web.converter.BookDtoToEntityConverter"/>
+					<bean class="lan.training.spring.web.converter.AuthorDtoToEntityConverter"/>
+					<bean class="lan.training.spring.web.converter.PublisherDtoToEntityConverter"/>
+					<bean class="lan.training.spring.web.converter.LanguageDtoToEntityConverter"/>
 				</set>
 			</property>
 		</bean>

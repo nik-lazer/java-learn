@@ -13,7 +13,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by nik-lazer on 2/16/2016.
  */
-public class BookDtoToBookConverter implements Converter<BookDto, Book> {
+public class BookDtoToEntityConverter implements Converter<BookDto, Book> {
     @Autowired
     BookFactory bookFactory;
     @Autowired

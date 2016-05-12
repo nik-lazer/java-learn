@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by nik-lazer on 2/16/2016.
  */
-public class LanguageDtoToLanguageConverter implements Converter<LanguageDto, Language> {
+public class LanguageDtoToEntityConverter implements Converter<LanguageDto, Language> {
     @Autowired
     LanguageFactory languageFactory;
     @Override

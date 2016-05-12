@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @author nik-lazer  01.10.2015   11:11
  */
 public abstract class AbstractDto implements Serializable {
+	private static final long serialVersionUID = 1689539741959363526L;
 	private Integer uid;
 
 	public Integer getUid() {

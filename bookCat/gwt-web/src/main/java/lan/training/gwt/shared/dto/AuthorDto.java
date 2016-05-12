@@ -5,6 +5,7 @@ package lan.training.gwt.shared.dto;
  * @author nik-lazer  01.10.2015   11:02
  */
 public class AuthorDto extends AbstractDto {
+	private static final long serialVersionUID = -1302885200591163740L;
 	private String firstName;
 	private String lastName;
 

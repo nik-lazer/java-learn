@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by nik-lazer on 2/16/2016.
  */
-public class PublisherDtoToPublisherConverter implements Converter<PublisherDto, Publisher> {
+public class PublisherDtoToEntityConverter implements Converter<PublisherDto, Publisher> {
     @Autowired
     PublisherFactory publisherFactory;
     @Override

@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by nik-lazer on 2/16/2016.
  */
-public class AuthorDtoToAuthorConverter implements Converter<AuthorDto, Author> {
+public class AuthorDtoToEntityConverter implements Converter<AuthorDto, Author> {
     @Autowired
     AuthorFactory authorFactory;
     @Override
